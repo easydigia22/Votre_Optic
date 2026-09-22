@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from './services/storage';
+import { isSupabaseConfigured, loadPublicStoreData } from './services/supabase';
 import {
   Product,
   Category,
@@ -71,6 +72,31 @@ export default function App() {
   const [adminUser, setAdminUser] = useState<AdminUser | null>(() => storage.getAdminSession());
   const [adminActiveTab, setAdminActiveTab] = useState<string>('dashboard');
   const [adminOpenProductModal, setAdminOpenProductModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured) return;
+
+    let cancelled = false;
+    loadPublicStoreData()
+      .then((data) => {
+        if (cancelled) return;
+        storage.hydratePublicData(data);
+        setSettings(data.settings ?? storage.getSettings());
+        setProducts(data.products.length ? data.products : storage.getProducts());
+        setCategories(storage.getCategories());
+        setBrands(data.brands.length ? data.brands : storage.getBrands());
+        setPromotions(data.promotions.length ? data.promotions : storage.getPromotions());
+        setBanners(data.banners.length ? data.banners : storage.getBanners());
+        setReviews(data.reviews.length ? data.reviews : storage.getReviews());
+      })
+      .catch((error) => {
+        console.error('Supabase loading failed; using local cache.', error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Synchronize document title with store SEO settings
   useEffect(() => {

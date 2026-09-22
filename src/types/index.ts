@@ -2,6 +2,7 @@ export type Gender = 'femme' | 'homme' | 'enfant' | 'mixte';
 export type EyewearType = 'vue' | 'soleil';
 export type ProductStatus = 'active' | 'archived' | 'draft';
 export type AdminRole = 'ROLE_ADMIN' | 'ROLE_MANAGER' | 'ROLE_VENDEUR';
+export type ReviewStatus = 'pending' | 'approved' | 'rejected';
 
 export interface Category {
   id: string;
@@ -139,6 +140,21 @@ export interface AdminUser {
   name: string;
   role: AdminRole;
   token?: string;
+}
+
+export interface ProductReview {
+  id: string;
+  productId: string;
+  productName: string;
+  productRef: string;
+  authorName: string;
+  city: string;
+  rating: number;
+  title: string;
+  comment: string;
+  status: ReviewStatus;
+  verifiedPurchase: boolean;
+  createdAt: string;
 }
 
 export interface FilterState {

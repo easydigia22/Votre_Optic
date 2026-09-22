@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product, ProductReview } from '../types';
 import { storage } from '../services/storage';
+import { isSupabaseConfigured, submitProductReview } from '../services/supabase';
 import { Star, ShieldCheck, CheckCircle2, MessageSquare, Send, Award, Clock } from 'lucide-react';
 
 interface ProductReviewsSectionProps {
@@ -35,11 +36,11 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
     starCounts[star] = (starCounts[star] || 0) + 1;
   });
 
-  const handleSubmitReview = (e: React.FormEvent) => {
+  const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!authorName.trim() || !comment.trim()) return;
 
-    storage.addReview({
+    const review = {
       productId: product.id,
       productName: product.name,
       productRef: product.reference,
@@ -49,7 +50,16 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       title: title.trim() || 'Avis sur ' + product.name,
       comment: comment.trim(),
       verifiedPurchase,
-    });
+    };
+    storage.addReview(review);
+
+    if (isSupabaseConfigured) {
+      try {
+        await submitProductReview(review);
+      } catch (error) {
+        console.error('Supabase review submission failed; saved locally.', error);
+      }
+    }
 
     setSubmittedSuccess(true);
     setAuthorName('');

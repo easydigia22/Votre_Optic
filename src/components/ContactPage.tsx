@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StoreSettings } from '../types';
 import { storage } from '../services/storage';
+import { isSupabaseConfigured, submitCustomerMessage } from '../services/supabase';
 import confetti from 'canvas-confetti';
 import {
   Phone,
@@ -31,18 +32,27 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
 
   const cleanNumber = settings.whatsapp.replace(/[^0-9]/g, '') || '212770420663';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
     // Save to storage
-    storage.addMessage({
+    const message = {
       name: formData.name,
       phone: formData.phone,
       email: formData.email,
       subject: formData.subject,
       message: formData.message,
-    });
+    };
+    storage.addMessage(message);
+
+    if (isSupabaseConfigured) {
+      try {
+        await submitCustomerMessage(message);
+      } catch (error) {
+        console.error('Supabase message submission failed; saved locally.', error);
+      }
+    }
 
     try {
       confetti({

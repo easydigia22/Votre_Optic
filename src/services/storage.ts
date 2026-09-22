@@ -794,6 +794,24 @@ class StorageService {
     localStorage.setItem(STORAGE_KEYS.INITIALIZED, 'true');
   }
 
+  public hydratePublicData(data: {
+    settings?: StoreSettings;
+    categories?: Category[];
+    brands?: Brand[];
+    products?: Product[];
+    promotions?: Promotion[];
+    banners?: Banner[];
+    reviews?: ProductReview[];
+  }): void {
+    if (data.settings) setToStorage(STORAGE_KEYS.SETTINGS, data.settings);
+    if (data.categories?.length) setToStorage(STORAGE_KEYS.CATEGORIES, data.categories);
+    if (data.brands?.length) setToStorage(STORAGE_KEYS.BRANDS, data.brands);
+    if (data.products?.length) setToStorage(STORAGE_KEYS.PRODUCTS, data.products);
+    if (data.promotions?.length) setToStorage(STORAGE_KEYS.PROMOTIONS, data.promotions);
+    if (data.banners?.length) setToStorage(STORAGE_KEYS.BANNERS, data.banners);
+    if (data.reviews?.length) setToStorage(STORAGE_KEYS.REVIEWS, data.reviews);
+  }
+
   // --- SETTINGS & SOCIAL ---
   public getSettings(): StoreSettings {
     return getFromStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS);
