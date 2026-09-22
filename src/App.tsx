@@ -1,6 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from './services/storage';
-import { isSupabaseConfigured, loadPublicStoreData } from './services/supabase';
+import {
+  deleteAdminBanner,
+  deleteAdminBrand,
+  deleteAdminCategory,
+  deleteAdminMessage,
+  deleteAdminProduct,
+  deleteAdminPromotion,
+  deleteAdminReview,
+  getCurrentAdmin,
+  isSupabaseConfigured,
+  loadAdminPrivateData,
+  loadPublicStoreData,
+  saveAdminBanner,
+  saveAdminBrand,
+  saveAdminCategory,
+  saveAdminProduct,
+  saveAdminPromotion,
+  saveAdminSettings,
+  saveAdminStockMovement,
+  signOutAdmin,
+  updateAdminMessageStatus,
+  updateAdminReviewStatus,
+} from './services/supabase';
 import {
   Product,
   Category,
@@ -69,25 +91,48 @@ export default function App() {
   const [reviews, setReviews] = useState<ProductReview[]>(() => storage.getReviews());
 
   // Admin Auth State
-  const [adminUser, setAdminUser] = useState<AdminUser | null>(() => storage.getAdminSession());
+  const [adminUser, setAdminUser] = useState<AdminUser | null>(null);
   const [adminActiveTab, setAdminActiveTab] = useState<string>('dashboard');
   const [adminOpenProductModal, setAdminOpenProductModal] = useState<boolean>(false);
+
+  const applyPublicData = (data: Awaited<ReturnType<typeof loadPublicStoreData>>) => {
+    storage.hydratePublicData(data);
+    setSettings(data.settings ?? storage.getSettings());
+    setProducts(data.products.length ? data.products : storage.getProducts());
+    setCategories(storage.getCategories());
+    setBrands(data.brands.length ? data.brands : storage.getBrands());
+    setPromotions(data.promotions.length ? data.promotions : storage.getPromotions());
+    setBanners(data.banners.length ? data.banners : storage.getBanners());
+    setReviews(data.reviews.length ? data.reviews : storage.getReviews());
+  };
+
+  const refreshAdminData = async () => {
+    const [publicData, privateData] = await Promise.all([
+      loadPublicStoreData(),
+      loadAdminPrivateData(),
+    ]);
+    applyPublicData(publicData);
+    storage.hydrateAdminData(privateData);
+    setMessages(privateData.messages);
+    setStockMovements(privateData.stockMovements);
+  };
 
   useEffect(() => {
     if (!isSupabaseConfigured) return;
 
     let cancelled = false;
-    loadPublicStoreData()
-      .then((data) => {
+    Promise.all([getCurrentAdmin(), loadPublicStoreData()])
+      .then(async ([user, data]) => {
         if (cancelled) return;
-        storage.hydratePublicData(data);
-        setSettings(data.settings ?? storage.getSettings());
-        setProducts(data.products.length ? data.products : storage.getProducts());
-        setCategories(storage.getCategories());
-        setBrands(data.brands.length ? data.brands : storage.getBrands());
-        setPromotions(data.promotions.length ? data.promotions : storage.getPromotions());
-        setBanners(data.banners.length ? data.banners : storage.getBanners());
-        setReviews(data.reviews.length ? data.reviews : storage.getReviews());
+        setAdminUser(user);
+        applyPublicData(data);
+        if (user) {
+          const privateData = await loadAdminPrivateData();
+          if (cancelled) return;
+          storage.hydrateAdminData(privateData);
+          setMessages(privateData.messages);
+          setStockMovements(privateData.stockMovements);
+        }
       })
       .catch((error) => {
         console.error('Supabase loading failed; using local cache.', error);
@@ -117,7 +162,17 @@ export default function App() {
     setStockMovements(storage.getStockMovements());
     setWishlistIds(storage.getWishlist());
     setReviews(storage.getReviews());
-    setAdminUser(storage.getAdminSession());
+  };
+
+  const runAdminMutation = async (remoteAction: () => Promise<void>, localAction: () => void) => {
+    try {
+      await remoteAction();
+      localAction();
+      reloadData();
+    } catch (error) {
+      console.error('Supabase admin operation failed.', error);
+      window.alert(error instanceof Error ? error.message : "L'opération Supabase a échoué.");
+    }
   };
 
   // Wishlist actions
@@ -138,13 +193,17 @@ export default function App() {
 
   // Review moderation actions
   const handleUpdateReviewStatus = (id: string, status: ReviewStatus) => {
-    storage.updateReviewStatus(id, status);
-    setReviews(storage.getReviews());
+    void runAdminMutation(
+      () => updateAdminReviewStatus(id, status),
+      () => storage.updateReviewStatus(id, status),
+    );
   };
 
   const handleDeleteReview = (id: string) => {
-    storage.deleteReview(id);
-    setReviews(storage.getReviews());
+    void runAdminMutation(
+      () => deleteAdminReview(id),
+      () => storage.deleteReview(id),
+    );
   };
 
   // Navigation Handler
@@ -160,23 +219,50 @@ export default function App() {
 
   // Product actions from Admin
   const handleSaveProduct = (prod: Product) => {
-    storage.saveProduct(prod);
-    reloadData();
+    void runAdminMutation(
+      () => saveAdminProduct(prod),
+      () => { storage.saveProduct(prod); },
+    );
   };
 
   const handleDuplicateProduct = (id: string) => {
-    storage.duplicateProduct(id);
-    reloadData();
+    const source = storage.getProductById(id);
+    if (!source) return;
+    const now = new Date().toISOString();
+    const duplicate: Product = {
+      ...source,
+      id: 'prod-' + Date.now(),
+      slug: `${source.slug}-copie-${Math.floor(Math.random() * 1000)}`,
+      reference: `${source.reference}-CP`,
+      name: `${source.name} (Copie)`,
+      createdAt: now,
+      updatedAt: now,
+    };
+    void runAdminMutation(
+      () => saveAdminProduct(duplicate),
+      () => { storage.saveProduct(duplicate); },
+    );
   };
 
   const handleArchiveProduct = (id: string) => {
-    storage.archiveProduct(id);
-    reloadData();
+    const product = storage.getProductById(id);
+    if (!product) return;
+    const updated: Product = {
+      ...product,
+      status: product.status === 'archived' ? 'active' : 'archived',
+      updatedAt: new Date().toISOString(),
+    };
+    void runAdminMutation(
+      () => saveAdminProduct(updated),
+      () => { storage.saveProduct(updated); },
+    );
   };
 
   const handleDeleteProduct = (id: string) => {
-    storage.deleteProduct(id);
-    reloadData();
+    void runAdminMutation(
+      () => deleteAdminProduct(id),
+      () => storage.deleteProduct(id),
+    );
   };
 
   // Stock adjustments
@@ -187,77 +273,124 @@ export default function App() {
     comment?: string,
     type?: 'reassort' | 'vente' | 'ajustement' | 'retour'
   ) => {
-    storage.adjustStock(productId, deltaOrNewQty, isAbsolute, comment, type);
-    reloadData();
+    const product = storage.getProductById(productId);
+    if (!product) return;
+    const previousQuantity = product.stockQuantity;
+    const newQuantity = Math.max(0, isAbsolute ? deltaOrNewQty : previousQuantity + deltaOrNewQty);
+    const updated = { ...product, stockQuantity: newQuantity, updatedAt: new Date().toISOString() };
+    const movement: StockMovement = {
+      id: crypto.randomUUID(),
+      productId: product.id,
+      productName: product.name,
+      productRef: product.reference,
+      previousQuantity,
+      newQuantity,
+      change: newQuantity - previousQuantity,
+      type: type ?? 'ajustement',
+      comment: comment ?? 'Ajustement manuel',
+      createdAt: new Date().toISOString(),
+    };
+    void runAdminMutation(
+      async () => {
+        await saveAdminProduct(updated);
+        await saveAdminStockMovement(movement);
+      },
+      () => { storage.adjustStock(productId, deltaOrNewQty, isAbsolute, comment, type); },
+    );
   };
 
   const handleUpdateStockThreshold = (productId: string, threshold: number) => {
     const prod = storage.getProductById(productId);
     if (prod) {
-      storage.saveProduct({ ...prod, lowStockThreshold: threshold });
-      reloadData();
+      const updated = { ...prod, lowStockThreshold: threshold };
+      void runAdminMutation(
+        () => saveAdminProduct(updated),
+        () => { storage.saveProduct(updated); },
+      );
     }
   };
 
   // Category actions
   const handleSaveCategory = (cat: Category) => {
-    storage.saveCategory(cat);
-    reloadData();
+    void runAdminMutation(
+      () => saveAdminCategory(cat),
+      () => { storage.saveCategory(cat); },
+    );
   };
 
   const handleDeleteCategory = (id: string) => {
-    storage.deleteCategory(id);
-    reloadData();
+    void runAdminMutation(
+      () => deleteAdminCategory(id),
+      () => storage.deleteCategory(id),
+    );
   };
 
   // Brand actions
   const handleSaveBrand = (b: Brand) => {
-    storage.saveBrand(b);
-    reloadData();
+    void runAdminMutation(
+      () => saveAdminBrand(b),
+      () => { storage.saveBrand(b); },
+    );
   };
 
   const handleDeleteBrand = (id: string) => {
-    storage.deleteBrand(id);
-    reloadData();
+    void runAdminMutation(
+      () => deleteAdminBrand(id),
+      () => storage.deleteBrand(id),
+    );
   };
 
   // Promotion actions
   const handleSavePromotion = (p: Promotion) => {
-    storage.savePromotion(p);
-    reloadData();
+    void runAdminMutation(
+      () => saveAdminPromotion(p),
+      () => { storage.savePromotion(p); },
+    );
   };
 
   const handleDeletePromotion = (id: string) => {
-    storage.deletePromotion(id);
-    reloadData();
+    void runAdminMutation(
+      () => deleteAdminPromotion(id),
+      () => storage.deletePromotion(id),
+    );
   };
 
   // Banner actions
   const handleSaveBanner = (b: Banner) => {
-    storage.saveBanner(b);
-    reloadData();
+    void runAdminMutation(
+      () => saveAdminBanner(b),
+      () => { storage.saveBanner(b); },
+    );
   };
 
   const handleDeleteBanner = (id: string) => {
-    storage.deleteBanner(id);
-    reloadData();
+    void runAdminMutation(
+      () => deleteAdminBanner(id),
+      () => storage.deleteBanner(id),
+    );
   };
 
   // Message actions
   const handleUpdateMessageStatus = (id: string, status: 'unread' | 'read' | 'replied') => {
-    storage.updateMessageStatus(id, status);
-    reloadData();
+    void runAdminMutation(
+      () => updateAdminMessageStatus(id, status),
+      () => storage.updateMessageStatus(id, status),
+    );
   };
 
   const handleDeleteMessage = (id: string) => {
-    storage.deleteMessage(id);
-    reloadData();
+    void runAdminMutation(
+      () => deleteAdminMessage(id),
+      () => storage.deleteMessage(id),
+    );
   };
 
   // Settings actions
   const handleUpdateSettings = (newSettings: StoreSettings) => {
-    storage.updateSettings(newSettings);
-    reloadData();
+    void runAdminMutation(
+      () => saveAdminSettings(newSettings),
+      () => { storage.updateSettings(newSettings); },
+    );
   };
 
   const handleResetAllData = () => {
@@ -267,9 +400,11 @@ export default function App() {
 
   // Admin Logout
   const handleAdminLogout = () => {
-    storage.logoutAdmin();
-    setAdminUser(null);
-    setCurrentView('home');
+    void signOutAdmin().finally(() => {
+      storage.logoutAdmin();
+      setAdminUser(null);
+      setCurrentView('home');
+    });
   };
 
   // Quick Home Category select
@@ -306,6 +441,9 @@ export default function App() {
             setAdminUser(user);
             setCurrentView('admin');
             setAdminActiveTab('dashboard');
+            void refreshAdminData().catch((error) => {
+              console.error('Unable to refresh admin data.', error);
+            });
           }}
           onBackToStore={() => handleNavigate('home')}
         />

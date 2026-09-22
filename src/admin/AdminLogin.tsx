@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { storage } from '../services/storage';
+import { signInAdmin } from '../services/supabase';
 import { Logo } from '../components/Logo';
 import { Shield, Lock, Mail, ArrowLeft, KeyRound, AlertCircle } from 'lucide-react';
 import { AdminUser } from '../types';
@@ -14,27 +14,23 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
   onBackToStore,
 }) => {
   const [email, setEmail] = useState('admin@votreoptique.ma');
-  const [password, setPassword] = useState('admin123');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    const res = storage.loginAdmin(email, password);
-    if (res.success && res.user) {
-      onLoginSuccess(res.user);
-    } else {
-      setError(res.error || 'Identifiants invalides');
+    try {
+      const user = await signInAdmin(email.trim(), password);
+      onLoginSuccess(user);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Identifiants invalides');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  };
-
-  const handleDemoFill = () => {
-    setEmail('admin@votreoptique.ma');
-    setPassword('admin123');
   };
 
   return (
@@ -120,18 +116,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           </button>
         </form>
 
-        {/* Demo Helper Box */}
+        {/* Security notice */}
         <div className="mt-8 pt-6 border-t border-white/10 text-center">
           <div className="p-3 bg-[#0B0B0B] border border-white/5 text-[11px] text-[#A6A6A6] space-y-1.5">
-            <p className="text-[#E8C987] font-semibold">Identifiants de démonstration :</p>
-            <p className="font-mono text-white">admin@votreoptique.ma / admin123</p>
-            <button
-              type="button"
-              onClick={handleDemoFill}
-              className="text-[#D6AE62] hover:underline text-[10px] uppercase font-bold pt-1 block mx-auto"
-            >
-              Remplir automatiquement
-            </button>
+            <p className="text-[#E8C987] font-semibold">Authentification sécurisée Supabase</p>
+            <p>La session est limitée aux administrateurs autorisés.</p>
           </div>
         </div>
       </div>

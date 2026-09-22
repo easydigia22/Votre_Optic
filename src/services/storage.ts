@@ -812,6 +812,14 @@ class StorageService {
     if (data.reviews?.length) setToStorage(STORAGE_KEYS.REVIEWS, data.reviews);
   }
 
+  public hydrateAdminData(data: {
+    messages?: CustomerMessage[];
+    stockMovements?: StockMovement[];
+  }): void {
+    if (data.messages) setToStorage(STORAGE_KEYS.MESSAGES, data.messages);
+    if (data.stockMovements) setToStorage(STORAGE_KEYS.STOCK_MOVEMENTS, data.stockMovements);
+  }
+
   // --- SETTINGS & SOCIAL ---
   public getSettings(): StoreSettings {
     return getFromStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS);
