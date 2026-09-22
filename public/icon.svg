@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="#0B0B0B"/>
+  
+  <!-- Outer subtle gold border -->
+  <rect x="8" y="8" width="496" height="496" rx="120" stroke="#D6AE62" stroke-opacity="0.3" stroke-width="2"/>
+  
+  <!-- Golden brush circular ring inspired by reference logo -->
+  <circle cx="210" cy="230" r="110" stroke="url(#goldGradient)" stroke-width="22" stroke-linecap="round" stroke-dasharray="640 40" transform="rotate(-25 210 230)" />
+  <circle cx="210" cy="230" r="126" stroke="#E8C987" stroke-width="3" stroke-opacity="0.5" stroke-dasharray="400 120" />
+  
+  <!-- Eyeglasses icon -->
+  <!-- Left lens -->
+  <circle cx="150" cy="230" r="46" fill="#0B0B0B" stroke="#D6AE62" stroke-width="8"/>
+  <circle cx="150" cy="230" r="38" fill="#151515"/>
+  <path d="M130 210 A 30 30 0 0 1 170 215" stroke="#E8C987" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Right lens -->
+  <circle cx="270" cy="230" r="46" fill="#0B0B0B" stroke="#D6AE62" stroke-width="8"/>
+  <circle cx="270" cy="230" r="38" fill="#151515"/>
+  <path d="M250 210 A 30 30 0 0 1 290 215" stroke="#E8C987" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Bridge between lenses -->
+  <path d="M196 220 Q 210 208 224 220" stroke="#D6AE62" stroke-width="8" stroke-linecap="round" fill="none"/>
+  
+  <!-- Temples / Arms -->
+  <path d="M104 228 L 74 220" stroke="#D6AE62" stroke-width="7" stroke-linecap="round"/>
+  <path d="M316 228 L 346 220" stroke="#D6AE62" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Brand Typography -->
+  <text x="320" y="210" font-family="'Cormorant Garamond', 'Playfair Display', serif" font-size="44" font-weight="600" fill="#E8C987" letter-spacing="1">Votre</text>
+  <text x="320" y="260" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="52" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">Optique</text>
+  
+  <!-- Slogan -->
+  <text x="256" y="400" text-anchor="middle" font-family="'Cormorant Garamond', 'Playfair Display', serif" font-size="22" font-style="italic" fill="#D6AE62" letter-spacing="1.5">Votre optique, votre Élégance entre nos mains</text>
+
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="goldGradient" x1="100" y1="120" x2="320" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D6AE62"/>
+      <stop offset="50%" stop-color="#F0D8A5"/>
+      <stop offset="100%" stop-color="#C59B4B"/>
+    </linearGradient>
+  </defs>
+</svg>

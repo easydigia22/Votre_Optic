@@ -1,0 +1,6 @@
+{
+  "name": "Votre Optique Maroc - Optique & Montures d'Élégance",
+  "description": "Votre optique, votre Élégance entre nos mains. Boutique d'optique premium au Maroc, montures de vue et de soleil sélectionnées, commande WhatsApp et suivi personnalisé.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
