@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const subtitle = banner?.subtitle || 'Des montures sélectionnées pour sublimer votre regard.';
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-between bg-[#11110F] text-[#FFFDF7] pt-32 pb-12 overflow-hidden border-b border-[#C6A53A]/25">
+    <section className="relative min-h-[92vh] flex flex-col justify-between bg-[#11110F] text-[#FFFDF7] pt-32 pb-28 sm:pb-12 overflow-hidden border-b border-[#C6A53A]/25">
       {/* Background Ambience & Lighting */}
       <div className="absolute inset-0 z-0 opacity-25">
         {banner?.image ? (
