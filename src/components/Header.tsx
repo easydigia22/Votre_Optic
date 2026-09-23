@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   ChevronRight,
   Heart,
+  BriefcaseBusiness,
 } from 'lucide-react';
 import { StoreSettings } from '../types';
 
@@ -96,9 +97,10 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             ) : (
               <button
-                onClick={() => onNavigate('admin-login')}
-                className="text-xs text-[#A6A6A6] hover:text-[#D6AE62] transition-colors"
+                onClick={() => onNavigate('professional')}
+                className="flex items-center gap-1 text-xs text-[#A6A6A6] hover:text-[#D6AE62] transition-colors"
               >
+                <BriefcaseBusiness className="w-3 h-3" />
                 Espace Pro
               </button>
             )}
@@ -237,6 +239,20 @@ export const Header: React.FC<HeaderProps> = ({
             </form>
 
             <div className="space-y-1">
+              <button
+                onClick={() => {
+                  onNavigate('professional');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-between py-3.5 text-left border-b border-white/5 text-base font-medium text-[#E8C987] hover:text-[#D6AE62]"
+              >
+                <div className="flex items-center gap-2">
+                  <BriefcaseBusiness className="w-4 h-4" />
+                  <span>Espace Professionnel</span>
+                </div>
+                <ChevronRight className="w-4 h-4 text-[#D6AE62]" />
+              </button>
+
               <button
                 onClick={() => {
                   onNavigate('wishlist');

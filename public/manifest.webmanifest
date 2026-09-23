@@ -3,18 +3,34 @@
   "name": "Votre Optique Maroc",
   "short_name": "VotreOptique",
   "description": "Votre optique, votre Élégance entre nos mains - Lunettes de vue et de soleil au Maroc",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0B0B0B",
   "theme_color": "#0B0B0B",
   "orientation": "portrait-primary",
+  "categories": ["shopping", "business", "lifestyle"],
+  "lang": "fr-MA",
   "icons": [
     {
       "src": "/icon.svg",
-      "sizes": "192x192 512x512",
+      "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any"
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Espace professionnel",
+      "short_name": "Espace Pro",
+      "url": "/?view=professional",
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Catalogue",
+      "short_name": "Catalogue",
+      "url": "/?view=catalogue",
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }

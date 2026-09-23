@@ -52,6 +52,8 @@ import { BrandShowcase } from './components/BrandShowcase';
 import { OpticalExpertiseSection } from './components/OpticalExpertiseSection';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 import { WishlistPage } from './components/WishlistPage';
+import { ProfessionalPortal } from './components/ProfessionalPortal';
+import { PWAInstallButton } from './components/PWAInstallButton';
 
 // Admin Components
 import { AdminLogin } from './admin/AdminLogin';
@@ -72,7 +74,11 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function App() {
   // Navigation View State
-  const [currentView, setCurrentView] = useState<string>('home');
+  const [currentView, setCurrentView] = useState<string>(() => {
+    const requestedView = new URLSearchParams(window.location.search).get('view');
+    const publicViews = ['home', 'catalogue', 'promotions', 'about', 'contact', 'wishlist', 'professional'];
+    return requestedView && publicViews.includes(requestedView) ? requestedView : 'home';
+  });
   const [catalogFilters, setCatalogFilters] = useState<Record<string, string>>({});
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -89,6 +95,19 @@ export default function App() {
   );
   const [wishlistIds, setWishlistIds] = useState<string[]>(() => storage.getWishlist());
   const [reviews, setReviews] = useState<ProductReview[]>(() => storage.getReviews());
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const requestedView = new URLSearchParams(window.location.search).get('view');
+      const publicViews = ['home', 'catalogue', 'promotions', 'about', 'contact', 'wishlist', 'professional'];
+      setCurrentView(requestedView && publicViews.includes(requestedView) ? requestedView : 'home');
+      setSelectedProduct(null);
+      window.scrollTo({ top: 0 });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Admin Auth State
   const [adminUser, setAdminUser] = useState<AdminUser | null>(null);
@@ -209,6 +228,11 @@ export default function App() {
   // Navigation Handler
   const handleNavigate = (view: string, param?: Record<string, string>) => {
     setCurrentView(view);
+    const nextUrl = view === 'home' ? '/' : `/?view=${encodeURIComponent(view)}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}`;
+    if (currentUrl !== nextUrl) {
+      window.history.pushState({ view }, '', nextUrl);
+    }
     if (param) {
       setCatalogFilters(param);
     } else if (view === 'catalogue') {
@@ -711,6 +735,10 @@ export default function App() {
         )}
 
         {currentView === 'contact' && <ContactPage settings={settings} />}
+
+        {currentView === 'professional' && (
+          <ProfessionalPortal settings={settings} onNavigate={handleNavigate} />
+        )}
       </main>
 
       {/* Footer */}
@@ -718,6 +746,11 @@ export default function App() {
 
       {/* Floating Direct WhatsApp Button */}
       <FloatingWhatsAppButton whatsappNumber={settings.whatsapp} />
+
+      {/* Installation remains visible when the page is opened from WhatsApp's mobile browser. */}
+      <div className="fixed bottom-5 left-4 z-30 lg:hidden">
+        <PWAInstallButton compact />
+      </div>
 
       {/* Product Detail Modal */}
       {selectedProduct && (
