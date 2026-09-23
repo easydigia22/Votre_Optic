@@ -25,7 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-between bg-[#11110F] text-[#FFFDF7] pt-32 pb-12 overflow-hidden border-b border-[#C6A53A]/25">
       {/* Background Ambience & Lighting */}
-      <div className="absolute inset-0 z-0 opacity-40">
+      <div className="absolute inset-0 z-0 opacity-25">
         {banner?.image ? (
           <img
             src={banner.image}
@@ -33,10 +33,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="w-full h-full object-cover object-center filter brightness-60 contrast-110"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-[#11110F] via-[#1B1A15] to-[#11110F]" />
+          <div className="w-full h-full bg-gradient-to-r from-[#FFFDF7] via-[#F5F0E4] to-[#FFFDF7]" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#11110F] via-[#11110F]/85 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#11110F] via-[#11110F]/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF7] via-[#FFFDF7]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFDF7] via-[#FFFDF7]/80 to-transparent" />
       </div>
 
       {/* Main Content Area */}

@@ -11,11 +11,16 @@
     --color-ivoire: #FFFDF7;
     --color-sable: #F5E6A6;
     --color-gris-texte: #9F9A8E;
+    --surface-page: #FFFDF7;
+    --surface-card: #FFFFFF;
+    --surface-soft: #F5F0E4;
+    --text-primary: #171612;
+    --text-secondary: #6F6A60;
   }
 
   body {
-    background-color: var(--color-noir-optique);
-    color: var(--color-ivoire);
+    background-color: var(--surface-page);
+    color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
   }
@@ -46,7 +51,57 @@
 }
 
 .brand-surface {
-  background: linear-gradient(145deg, #1B1A15 0%, #11110F 100%);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F5F0E4 100%);
+}
+
+/* White Optic & Gold — the selected visual identity. */
+.brand-light {
+  background: var(--surface-page);
+  color: var(--text-primary);
+}
+
+.brand-light [class*="bg-[#11110F]"] {
+  background-color: #FFFDF7 !important;
+}
+
+.brand-light [class*="bg-[#1B1A15]"] {
+  background-color: #FFFFFF !important;
+}
+
+.brand-light [class*="bg-[#29271F]"] {
+  background-color: #F5F0E4 !important;
+}
+
+.brand-light [class*="text-[#FFFDF7]"],
+.brand-light [class*="text-white"] {
+  color: #171612 !important;
+}
+
+.brand-light [class*="text-[#E8E5DD]"] {
+  color: #36322A !important;
+}
+
+.brand-light [class*="text-[#9F9A8E]"] {
+  color: #6F6A60 !important;
+}
+
+.brand-light [class*="border-white"] {
+  border-color: rgba(23, 22, 18, 0.12) !important;
+}
+
+.brand-light > header {
+  background: rgba(255, 253, 247, 0.96) !important;
+  border-color: rgba(198, 165, 58, 0.36) !important;
+}
+
+.brand-light footer {
+  background: #171612 !important;
+  border-color: rgba(198, 165, 58, 0.42) !important;
+}
+
+.brand-light footer [class*="text-[#171612]"],
+.brand-light footer [class*="text-white"] {
+  color: #FFFDF7 !important;
 }
 
 /* Hide scrollbar for category carousels while allowing smooth scrolling */

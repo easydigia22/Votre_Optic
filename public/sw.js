@@ -1,4 +1,4 @@
-const CACHE_NAME = 'votre-optic-v2';
+const CACHE_NAME = 'votre-optic-v3';
 const APP_SHELL = ['/', '/manifest.webmanifest', '/icon.svg', '/logo-votre-optique.png'];
 
 self.addEventListener('install', (event) => {

@@ -460,37 +460,40 @@ export default function App() {
   if (currentView === 'admin' || currentView === 'admin-login') {
     if (!adminUser) {
       return (
-        <AdminLogin
-          onLoginSuccess={(user) => {
-            setAdminUser(user);
-            setCurrentView('admin');
-            setAdminActiveTab('dashboard');
-            void refreshAdminData().catch((error) => {
-              console.error('Unable to refresh admin data.', error);
-            });
-          }}
-          onBackToStore={() => handleNavigate('home')}
-        />
+        <div className="brand-light">
+          <AdminLogin
+            onLoginSuccess={(user) => {
+              setAdminUser(user);
+              setCurrentView('admin');
+              setAdminActiveTab('dashboard');
+              void refreshAdminData().catch((error) => {
+                console.error('Unable to refresh admin data.', error);
+              });
+            }}
+            onBackToStore={() => handleNavigate('home')}
+          />
+        </div>
       );
     }
 
     return (
-      <AdminLayout
-        user={adminUser}
-        activeTab={adminActiveTab}
-        onSelectTab={(tab) => {
-          setAdminActiveTab(tab);
-          setAdminOpenProductModal(false);
-        }}
-        onLogout={handleAdminLogout}
-        onBackToStore={() => handleNavigate('home')}
-        badgeCounts={{
-          lowStock: lowStockCount,
-          unreadMessages: unreadMessagesCount,
-          activePromos: activePromosCount,
-          pendingReviews: pendingReviewsCount,
-        }}
-      >
+      <div className="brand-light">
+        <AdminLayout
+          user={adminUser}
+          activeTab={adminActiveTab}
+          onSelectTab={(tab) => {
+            setAdminActiveTab(tab);
+            setAdminOpenProductModal(false);
+          }}
+          onLogout={handleAdminLogout}
+          onBackToStore={() => handleNavigate('home')}
+          badgeCounts={{
+            lowStock: lowStockCount,
+            unreadMessages: unreadMessagesCount,
+            activePromos: activePromosCount,
+            pendingReviews: pendingReviewsCount,
+          }}
+        >
         {adminActiveTab === 'dashboard' && (
           <AdminDashboard
             products={products}
@@ -595,7 +598,8 @@ export default function App() {
             onResetAllData={handleResetAllData}
           />
         )}
-      </AdminLayout>
+        </AdminLayout>
+      </div>
     );
   }
 
@@ -606,7 +610,7 @@ export default function App() {
   const featuredProducts = products.filter((p) => p.status === 'active' && p.isFeatured).slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] flex flex-col font-sans selection:bg-[#C6A53A] selection:text-[#11110F]">
+    <div className="brand-light min-h-screen bg-[#FFFDF7] text-[#171612] flex flex-col font-sans selection:bg-[#C6A53A] selection:text-[#171612]">
       {/* Header with Sticky Behavior & WhatsApp Button */}
       <Header
         currentView={currentView}
