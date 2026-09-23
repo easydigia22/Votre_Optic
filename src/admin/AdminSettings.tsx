@@ -27,13 +27,13 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
   return (
     <div className="space-y-8 max-w-3xl">
       <div className="border-b border-white/10 pb-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-[#D6AE62]">
+        <span className="text-xs font-mono uppercase tracking-widest text-[#C6A53A]">
           Configuration Générale
         </span>
         <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
           Paramètres du Magasin & SEO
         </h1>
-        <p className="text-xs text-[#A6A6A6]">
+        <p className="text-xs text-[#9F9A8E]">
           Gérez l'identité de l'établissement, les coordonnées de contact à Casablanca et le référencement naturel
         </p>
       </div>
@@ -47,14 +47,14 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
 
       <form onSubmit={handleSubmit} className="space-y-6 text-xs">
         {/* Identity & Slogan */}
-        <div className="bg-[#151515] border border-white/5 p-6 space-y-4">
-          <h2 className="font-serif-luxury text-lg text-[#F0D8A5]">
+        <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
+          <h2 className="font-serif-luxury text-lg text-[#F5E6A6]">
             Identité & Accroche de Référence
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Nom de la boutique
               </label>
               <input
@@ -62,141 +62,141 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
                 required
                 value={form.storeName}
                 onChange={(e) => setForm((p) => ({ ...p, storeName: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
               />
             </div>
 
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Slogan Officiel
               </label>
               <input
                 type="text"
                 value={form.tagline}
                 onChange={(e) => setForm((p) => ({ ...p, tagline: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
               Sous-titre d'Élégance
             </label>
             <input
               type="text"
               value={form.subtitle}
               onChange={(e) => setForm((p) => ({ ...p, subtitle: e.target.value }))}
-              className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
             />
           </div>
         </div>
 
         {/* Contact & Location */}
-        <div className="bg-[#151515] border border-white/5 p-6 space-y-4">
-          <h2 className="font-serif-luxury text-lg text-[#F0D8A5]">
+        <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
+          <h2 className="font-serif-luxury text-lg text-[#F5E6A6]">
             Coordonnées Casablanca & WhatsApp
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Téléphone Boutique
               </label>
               <input
                 type="text"
                 value={form.phone}
                 onChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 font-mono"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 font-mono"
               />
             </div>
 
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Numéro WhatsApp Officiel
               </label>
               <input
                 type="text"
                 value={form.whatsapp}
                 onChange={(e) => setForm((p) => ({ ...p, whatsapp: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 font-mono"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 font-mono"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Email de contact
               </label>
               <input
                 type="email"
                 value={form.email}
                 onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
               />
             </div>
 
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Lien Google Maps
               </label>
               <input
                 type="url"
                 value={form.mapsUrl}
                 onChange={(e) => setForm((p) => ({ ...p, mapsUrl: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Adresse physique
               </label>
               <input
                 type="text"
                 value={form.address}
                 onChange={(e) => setForm((p) => ({ ...p, address: e.target.value }))}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
               />
             </div>
 
             <div>
-              <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
                 Ville & Pays
               </label>
               <input
                 type="text"
                 value={`${form.city}, ${form.country}`}
                 disabled
-                className="w-full bg-[#0B0B0B] border border-white/5 text-[#A6A6A6] p-2.5"
+                className="w-full bg-[#11110F] border border-white/5 text-[#9F9A8E] p-2.5"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
               Horaires d'ouverture
             </label>
             <input
               type="text"
               value={form.hours}
               onChange={(e) => setForm((p) => ({ ...p, hours: e.target.value }))}
-              className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
             />
           </div>
         </div>
 
         {/* SEO */}
-        <div className="bg-[#151515] border border-white/5 p-6 space-y-4">
-          <h2 className="font-serif-luxury text-lg text-[#F0D8A5]">
+        <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
+          <h2 className="font-serif-luxury text-lg text-[#F5E6A6]">
             Référencement SEO & Réseaux Sociaux
           </h2>
 
           <div>
-            <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
               Balise Meta Title
             </label>
             <input
@@ -208,12 +208,12 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
                   seo: { ...p.seo, metaTitle: e.target.value },
                 }))
               }
-              className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
             />
           </div>
 
           <div>
-            <label className="block text-[#A6A6A6] uppercase mb-1 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
               Balise Meta Description
             </label>
             <textarea
@@ -225,7 +225,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
                   seo: { ...p.seo, metaDescription: e.target.value },
                 }))
               }
-              className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
             />
           </div>
         </div>
@@ -234,7 +234,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
         <div className="flex justify-end">
           <button
             type="submit"
-            className="px-8 py-3 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold text-xs uppercase tracking-widest flex items-center gap-2"
+            className="px-8 py-3 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-widest flex items-center gap-2"
           >
             <Save className="w-4 h-4" />
             <span>Enregistrer tous les paramètres</span>
@@ -249,7 +249,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
             <AlertTriangle className="w-4 h-4" />
             <span>Zone de Réinitialisation</span>
           </div>
-          <p className="text-xs text-[#A6A6A6]">
+          <p className="text-xs text-[#9F9A8E]">
             Restaure l'ensemble des données initiales de démonstration (produits, stock faible d'alerte, promotions, bannières).
           </p>
         </div>

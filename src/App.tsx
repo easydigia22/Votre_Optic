@@ -606,7 +606,7 @@ export default function App() {
   const featuredProducts = products.filter((p) => p.status === 'active' && p.isFeatured).slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-[#F8F5EF] flex flex-col font-sans selection:bg-[#D6AE62] selection:text-[#0B0B0B]">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] flex flex-col font-sans selection:bg-[#C6A53A] selection:text-[#11110F]">
       {/* Header with Sticky Behavior & WhatsApp Button */}
       <Header
         currentView={currentView}
@@ -634,12 +634,12 @@ export default function App() {
             />
 
             {/* Featured Selection / Montures Vedettes */}
-            <section className="py-20 bg-[#0B0B0B] border-b border-white/5">
+            <section className="py-20 bg-[#11110F] border-b border-white/5">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#151515] border border-[#D6AE62]/30 text-[#E8C987] text-[10px] font-mono uppercase tracking-widest mb-2">
-                      <Sparkles className="w-3 h-3 text-[#D6AE62]" />
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1B1A15] border border-[#C6A53A]/30 text-[#E3C866] text-[10px] font-mono uppercase tracking-widest mb-2">
+                      <Sparkles className="w-3 h-3 text-[#C6A53A]" />
                       <span>Sélection Signature</span>
                     </div>
                     <h2 className="font-serif-luxury text-3xl sm:text-4xl text-white font-medium">
@@ -649,7 +649,7 @@ export default function App() {
 
                   <button
                     onClick={() => handleNavigate('catalogue')}
-                    className="text-xs uppercase tracking-widest font-semibold text-[#D6AE62] hover:text-[#E8C987] flex items-center gap-1.5 transition-colors self-start md:self-auto"
+                    className="text-xs uppercase tracking-widest font-semibold text-[#C6A53A] hover:text-[#E3C866] flex items-center gap-1.5 transition-colors self-start md:self-auto"
                   >
                     <span>Voir l'ensemble du catalogue</span>
                     <ArrowRight className="w-4 h-4" />

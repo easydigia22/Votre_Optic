@@ -1,5 +1,5 @@
-const CACHE_NAME = 'votre-optic-v1';
-const APP_SHELL = ['/', '/manifest.webmanifest', '/icon.svg'];
+const CACHE_NAME = 'votre-optic-v2';
+const APP_SHELL = ['/', '/manifest.webmanifest', '/icon.svg', '/logo-votre-optique.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));

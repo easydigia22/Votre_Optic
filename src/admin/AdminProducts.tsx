@@ -197,20 +197,20 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#D6AE62]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C6A53A]">
             Catalogue & Fiches Modèles
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
             Gestion des Produits
           </h1>
-          <p className="text-xs text-[#A6A6A6]">
+          <p className="text-xs text-[#9F9A8E]">
             {products.length} montures enregistrées · Création ultra-rapide en moins de 60 secondes
           </p>
         </div>
 
         <button
           onClick={openNewProductModal}
-          className="px-5 py-3 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold text-xs uppercase tracking-widest flex items-center gap-2 transition-colors shadow-lg"
+          className="px-5 py-3 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-widest flex items-center gap-2 transition-colors shadow-lg"
         >
           <Plus className="w-4 h-4" />
           <span>+ Ajouter un produit</span>
@@ -218,15 +218,15 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="bg-[#151515] border border-white/5 p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="bg-[#1B1A15] border border-white/5 p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-[#D6AE62] absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-[#C6A53A] absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Filtrer par nom ou référence..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#0B0B0B] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#D6AE62]"
+            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#C6A53A]"
           />
         </div>
 
@@ -234,7 +234,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="bg-[#0B0B0B] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#D6AE62]"
+            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#C6A53A]"
           >
             <option value="all">Toutes les catégories</option>
             {categories.map((c) => (
@@ -247,7 +247,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-[#0B0B0B] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#D6AE62]"
+            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#C6A53A]"
           >
             <option value="all">Tous les statuts</option>
             <option value="active">Actif</option>
@@ -258,10 +258,10 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       </div>
 
       {/* Products Table */}
-      <div className="bg-[#151515] border border-white/5 overflow-x-auto">
+      <div className="bg-[#1B1A15] border border-white/5 overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-white/10 text-[#A6A6A6] uppercase tracking-wider text-[11px] bg-[#0D0D0D]">
+            <tr className="border-b border-white/10 text-[#9F9A8E] uppercase tracking-wider text-[11px] bg-[#0E0E0C]">
               <th className="py-3 px-4">Photo</th>
               <th className="py-3 px-4">Produit & Marque</th>
               <th className="py-3 px-4">Référence</th>
@@ -280,10 +280,10 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
               const isLow = p.stockQuantity > 0 && p.stockQuantity <= p.lowStockThreshold;
 
               return (
-                <tr key={p.id} className="hover:bg-[#1A1A1A] transition-colors">
+                <tr key={p.id} className="hover:bg-[#201F18] transition-colors">
                   {/* Photo */}
                   <td className="py-3 px-4">
-                    <div className="w-12 h-10 bg-[#0B0B0B] border border-white/10 flex items-center justify-center p-0.5 overflow-hidden">
+                    <div className="w-12 h-10 bg-[#11110F] border border-white/10 flex items-center justify-center p-0.5 overflow-hidden">
                       {p.images && p.images[0] ? (
                         <img
                           src={p.images[0]}
@@ -291,7 +291,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                           className="w-full h-full object-contain"
                         />
                       ) : (
-                        <Glasses className="w-4 h-4 text-[#A6A6A6]" />
+                        <Glasses className="w-4 h-4 text-[#9F9A8E]" />
                       )}
                     </div>
                   </td>
@@ -299,16 +299,16 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   {/* Product & Brand */}
                   <td className="py-3 px-4">
                     <div className="font-semibold text-white">{p.name}</div>
-                    <div className="text-[11px] text-[#D6AE62]">{brand?.name || 'Maison'}</div>
+                    <div className="text-[11px] text-[#C6A53A]">{brand?.name || 'Maison'}</div>
                   </td>
 
                   {/* Reference */}
-                  <td className="py-3 px-4 font-mono text-[11px] text-[#A6A6A6]">
+                  <td className="py-3 px-4 font-mono text-[11px] text-[#9F9A8E]">
                     {p.reference}
                   </td>
 
                   {/* Category */}
-                  <td className="py-3 px-4 text-[#CCCCCC]">
+                  <td className="py-3 px-4 text-[#D5D1C4]">
                     {category?.name || p.type}
                   </td>
 
@@ -316,7 +316,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   <td className="py-3 px-4 font-mono font-semibold tabular-nums text-white">
                     {p.price.toLocaleString('fr-FR')} DH
                     {p.inPromo && (
-                      <span className="block text-[10px] text-[#D6AE62]">Promo</span>
+                      <span className="block text-[10px] text-[#C6A53A]">Promo</span>
                     )}
                   </td>
 
@@ -360,7 +360,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       <button
                         onClick={() => openEditProductModal(p)}
                         title="Modifier le produit"
-                        className="p-1.5 text-[#A6A6A6] hover:text-[#D6AE62] transition-colors"
+                        className="p-1.5 text-[#9F9A8E] hover:text-[#C6A53A] transition-colors"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
@@ -368,7 +368,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       <button
                         onClick={() => onDuplicateProduct(p.id)}
                         title="Dupliquer la monture"
-                        className="p-1.5 text-[#A6A6A6] hover:text-white transition-colors"
+                        className="p-1.5 text-[#9F9A8E] hover:text-white transition-colors"
                       >
                         <Copy className="w-4 h-4" />
                       </button>
@@ -376,7 +376,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       <button
                         onClick={() => onArchiveProduct(p.id)}
                         title={p.status === 'archived' ? 'Désarchiver' : 'Archiver'}
-                        className="p-1.5 text-[#A6A6A6] hover:text-amber-400 transition-colors"
+                        className="p-1.5 text-[#9F9A8E] hover:text-amber-400 transition-colors"
                       >
                         <Archive className="w-4 h-4" />
                       </button>
@@ -388,7 +388,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                           }
                         }}
                         title="Supprimer"
-                        className="p-1.5 text-[#A6A6A6] hover:text-red-400 transition-colors"
+                        className="p-1.5 text-[#9F9A8E] hover:text-red-400 transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -404,16 +404,16 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       {/* ULTRA-FAST (<60s) PRODUCT FORM MODAL */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-          <div className="relative w-full max-w-3xl bg-[#151515] border border-[#D6AE62]/40 shadow-2xl p-6 sm:p-8 my-6">
+          <div className="relative w-full max-w-3xl bg-[#1B1A15] border border-[#C6A53A]/40 shadow-2xl p-6 sm:p-8 my-6">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-4 right-4 text-[#A6A6A6] hover:text-white p-2"
+              className="absolute top-4 right-4 text-[#9F9A8E] hover:text-white p-2"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="mb-6">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#D6AE62]">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#C6A53A]">
                 {editingProduct ? 'Édition Rapide' : 'Formulaire Express (< 60s)'}
               </span>
               <h2 className="font-serif-luxury text-2xl text-white font-medium">
@@ -425,7 +425,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
               {/* Row 1: Name & Reference */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Nom du modèle *
                   </label>
                   <input
@@ -434,12 +434,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Ex: Clubmaster Classic Or"
                     value={formState.name}
                     onChange={(e) => setFormState((p) => ({ ...p, name: e.target.value }))}
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Référence fabricant *
                   </label>
                   <input
@@ -448,7 +448,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Ex: RB-3016-W0365"
                     value={formState.reference}
                     onChange={(e) => setFormState((p) => ({ ...p, reference: e.target.value }))}
-                    className="w-full bg-[#0B0B0B] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C6A53A]"
                   />
                 </div>
               </div>
@@ -456,13 +456,13 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
               {/* Row 2: Brand, Category, Gender, Type */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Marque
                   </label>
                   <select
                     value={formState.brandId}
                     onChange={(e) => setFormState((p) => ({ ...p, brandId: e.target.value }))}
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   >
                     {brands.map((b) => (
                       <option key={b.id} value={b.id}>
@@ -473,13 +473,13 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Catégorie
                   </label>
                   <select
                     value={formState.categoryId}
                     onChange={(e) => setFormState((p) => ({ ...p, categoryId: e.target.value }))}
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   >
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>
@@ -490,7 +490,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Genre
                   </label>
                   <select
@@ -498,7 +498,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     onChange={(e) =>
                       setFormState((p) => ({ ...p, gender: e.target.value as Product['gender'] }))
                     }
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   >
                     <option value="femme">Femme</option>
                     <option value="homme">Homme</option>
@@ -508,7 +508,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Type
                   </label>
                   <select
@@ -516,7 +516,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     onChange={(e) =>
                       setFormState((p) => ({ ...p, type: e.target.value as Product['type'] }))
                     }
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   >
                     <option value="vue">Vue</option>
                     <option value="soleil">Soleil</option>
@@ -527,7 +527,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
               {/* Row 3: Price, Promo, Stock Quantity */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Prix (DH / MAD) *
                   </label>
                   <input
@@ -538,12 +538,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     onChange={(e) =>
                       setFormState((p) => ({ ...p, price: Number(e.target.value) }))
                     }
-                    className="w-full bg-[#0B0B0B] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C6A53A]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Ancien Prix / Promo
                   </label>
                   <input
@@ -558,12 +558,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                         inPromo: !!e.target.value,
                       }))
                     }
-                    className="w-full bg-[#0B0B0B] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C6A53A]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Quantité en Stock *
                   </label>
                   <input
@@ -574,7 +574,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     onChange={(e) =>
                       setFormState((p) => ({ ...p, stockQuantity: Number(e.target.value) }))
                     }
-                    className="w-full bg-[#0B0B0B] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C6A53A]"
                   />
                 </div>
               </div>
@@ -582,7 +582,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
               {/* Row 4: Frame Type, Material, Lens Type */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Forme de monture
                   </label>
                   <input
@@ -590,12 +590,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     value={formState.frameType}
                     onChange={(e) => setFormState((p) => ({ ...p, frameType: e.target.value }))}
                     placeholder="Ex: Aviateur, Papillon, Ovale"
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Matériau
                   </label>
                   <input
@@ -603,12 +603,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     value={formState.material}
                     onChange={(e) => setFormState((p) => ({ ...p, material: e.target.value }))}
                     placeholder="Ex: Titane Japonais, Acétate"
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                  <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                     Type de verres
                   </label>
                   <input
@@ -616,14 +616,14 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     value={formState.lensType}
                     onChange={(e) => setFormState((p) => ({ ...p, lensType: e.target.value }))}
                     placeholder="Ex: Polarisé, Anti-reflet"
-                    className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
                   />
                 </div>
               </div>
 
               {/* Photos Gallery Management */}
               <div>
-                <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                   Photos du modèle (URL ou visuels prédéfinis)
                 </label>
                 <div className="flex gap-2 mb-2">
@@ -632,12 +632,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Coller l'URL d'une photo..."
                     value={imageUrlInput}
                     onChange={(e) => setImageUrlInput(e.target.value)}
-                    className="flex-1 bg-[#0B0B0B] border border-white/10 text-white p-2 outline-none focus:border-[#D6AE62]"
+                    className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C6A53A]"
                   />
                   <button
                     type="button"
                     onClick={handleAddImage}
-                    className="px-4 py-2 bg-[#D6AE62] text-[#0B0B0B] font-bold uppercase"
+                    className="px-4 py-2 bg-[#C6A53A] text-[#11110F] font-bold uppercase"
                   >
                     Ajouter
                   </button>
@@ -647,7 +647,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   {formState.images?.map((url, idx) => (
                     <div
                       key={idx}
-                      className="relative w-16 h-14 bg-[#0B0B0B] border border-white/10 shrink-0 p-1 group"
+                      className="relative w-16 h-14 bg-[#11110F] border border-white/10 shrink-0 p-1 group"
                     >
                       <img
                         src={url}
@@ -668,7 +668,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
 
               {/* Colors */}
               <div>
-                <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                   Coloris
                 </label>
                 <div className="flex gap-2 mb-2">
@@ -677,12 +677,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Ex: Or Rose, Noir Brillant..."
                     value={colorInput}
                     onChange={(e) => setColorInput(e.target.value)}
-                    className="flex-1 bg-[#0B0B0B] border border-white/10 text-white p-2 outline-none focus:border-[#D6AE62]"
+                    className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C6A53A]"
                   />
                   <button
                     type="button"
                     onClick={handleAddColor}
-                    className="px-4 py-2 bg-[#1E1E1E] text-white hover:text-[#D6AE62] font-semibold"
+                    className="px-4 py-2 bg-[#29271F] text-white hover:text-[#C6A53A] font-semibold"
                   >
                     + Teinte
                   </button>
@@ -691,7 +691,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   {formState.colors?.map((col) => (
                     <span
                       key={col}
-                      className="px-2 py-0.5 bg-[#0B0B0B] border border-white/10 text-white text-[11px] flex items-center gap-1.5"
+                      className="px-2 py-0.5 bg-[#11110F] border border-white/10 text-white text-[11px] flex items-center gap-1.5"
                     >
                       {col}
                       <button
@@ -708,14 +708,14 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
 
               {/* Description */}
               <div>
-                <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                   Description
                 </label>
                 <textarea
                   rows={2}
                   value={formState.description}
                   onChange={(e) => setFormState((p) => ({ ...p, description: e.target.value }))}
-                  className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
                 />
               </div>
 
@@ -727,7 +727,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       type="checkbox"
                       checked={formState.isNew}
                       onChange={(e) => setFormState((p) => ({ ...p, isNew: e.target.checked }))}
-                      className="accent-[#D6AE62]"
+                      className="accent-[#C6A53A]"
                     />
                     <span>Nouveauté</span>
                   </label>
@@ -739,14 +739,14 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       onChange={(e) =>
                         setFormState((p) => ({ ...p, isFeatured: e.target.checked }))
                       }
-                      className="accent-[#D6AE62]"
+                      className="accent-[#C6A53A]"
                     />
                     <span>En vedette</span>
                   </label>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-[#A6A6A6]">Statut :</label>
+                  <label className="text-[#9F9A8E]">Statut :</label>
                   <select
                     value={formState.status}
                     onChange={(e) =>
@@ -755,7 +755,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                         status: e.target.value as Product['status'],
                       }))
                     }
-                    className="bg-[#0B0B0B] border border-white/10 text-white p-1.5"
+                    className="bg-[#11110F] border border-white/10 text-white p-1.5"
                   >
                     <option value="active">Actif</option>
                     <option value="draft">Brouillon</option>
@@ -769,14 +769,14 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2.5 border border-white/10 text-[#A6A6A6] hover:text-white"
+                  className="px-4 py-2.5 border border-white/10 text-[#9F9A8E] hover:text-white"
                 >
                   Annuler
                 </button>
 
                 <button
                   type="submit"
-                  className="px-6 py-2.5 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold uppercase tracking-wider transition-colors"
+                  className="px-6 py-2.5 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold uppercase tracking-wider transition-colors"
                 >
                   {editingProduct ? 'Enregistrer les modifications' : 'Créer la monture (<60s)'}
                 </button>

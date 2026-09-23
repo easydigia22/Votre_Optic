@@ -17,12 +17,12 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
   const cleanNumber = settings.whatsapp.replace(/[^0-9]/g, '') || '212770420663';
 
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-[#F8F5EF] pt-28 pb-20">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#151515] border border-[#D6AE62]/30 text-[#E8C987] text-xs font-serif-luxury italic tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#D6AE62]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1B1A15] border border-[#C6A53A]/30 text-[#E3C866] text-xs font-serif-luxury italic tracking-wider mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#C6A53A]" />
             <span>Privilèges & Offres Spéciales</span>
           </div>
 
@@ -30,7 +30,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
             Nos Offres Exclusives
           </h1>
 
-          <p className="text-sm text-[#A6A6A6] leading-relaxed">
+          <p className="text-sm text-[#9F9A8E] leading-relaxed">
             Profitez d'avantages uniques sur nos collections de montures de marques, vos verres
             correcteurs de haute technologie et des bilans de santé visuelle offerts à Casablanca.
           </p>
@@ -50,19 +50,19 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
               return (
                 <div
                   key={promo.id}
-                  className="bg-[#151515] border border-white/10 hover:border-[#D6AE62]/40 transition-all duration-300 overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xl"
+                  className="bg-[#1B1A15] border border-white/10 hover:border-[#C6A53A]/40 transition-all duration-300 overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xl"
                 >
                   {/* Left: Banner Image (lg:col-span-5) */}
-                  <div className="lg:col-span-5 relative min-h-[260px] bg-[#111111] overflow-hidden">
+                  <div className="lg:col-span-5 relative min-h-[260px] bg-[#171612] overflow-hidden">
                     <img
                       src={promo.bannerUrl}
                       alt={promo.title}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover filter brightness-90 hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#151515] via-transparent to-transparent lg:hidden" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B1A15] via-transparent to-transparent lg:hidden" />
                     {promo.discountPercentage > 0 && (
-                      <div className="absolute top-4 left-4 bg-[#D6AE62] text-[#0B0B0B] font-bold text-xs uppercase tracking-widest px-3 py-1">
+                      <div className="absolute top-4 left-4 bg-[#C6A53A] text-[#11110F] font-bold text-xs uppercase tracking-widest px-3 py-1">
                         Jusqu'à -{promo.discountPercentage}%
                       </div>
                     )}
@@ -71,15 +71,15 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
                   {/* Right: Details & Call To Action (lg:col-span-7) */}
                   <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
                     <div>
-                      <div className="flex flex-wrap items-center gap-4 text-xs text-[#A6A6A6] mb-3">
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-[#9F9A8E] mb-3">
                         {promo.code && (
-                          <span className="font-mono text-xs text-[#F0D8A5] bg-[#0B0B0B] border border-[#D6AE62]/40 px-2.5 py-0.5 flex items-center gap-1.5">
-                            <Tag className="w-3 h-3 text-[#D6AE62]" />
+                          <span className="font-mono text-xs text-[#F5E6A6] bg-[#11110F] border border-[#C6A53A]/40 px-2.5 py-0.5 flex items-center gap-1.5">
+                            <Tag className="w-3 h-3 text-[#C6A53A]" />
                             Code : <strong>{promo.code}</strong>
                           </span>
                         )}
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5 text-[#D6AE62]" />
+                          <Calendar className="w-3.5 h-3.5 text-[#C6A53A]" />
                           Valable jusqu'au {endFormatted}
                         </span>
                       </div>
@@ -88,7 +88,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
                         {promo.title}
                       </h2>
 
-                      <p className="text-xs sm:text-sm text-[#CCCCCC] leading-relaxed mb-6">
+                      <p className="text-xs sm:text-sm text-[#D5D1C4] leading-relaxed mb-6">
                         {promo.description}
                       </p>
                     </div>
@@ -99,7 +99,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
                           href={promo.ctaLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-6 py-3 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
+                          className="px-6 py-3 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
                         >
                           <MessageCircle className="w-4 h-4" />
                           <span>{promo.ctaText || 'Demander sur WhatsApp'}</span>
@@ -107,7 +107,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
                       ) : (
                         <button
                           onClick={() => onNavigate('catalogue')}
-                          className="px-6 py-3 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
+                          className="px-6 py-3 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
                         >
                           <span>{promo.ctaText || 'Profiter de l’offre'}</span>
                           <ArrowRight className="w-4 h-4" />
@@ -120,9 +120,9 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-3 border border-white/10 hover:border-[#D6AE62] text-xs text-[#A6A6A6] hover:text-white transition-colors flex items-center gap-2"
+                        className="px-4 py-3 border border-white/10 hover:border-[#C6A53A] text-xs text-[#9F9A8E] hover:text-white transition-colors flex items-center gap-2"
                       >
-                        <MessageCircle className="w-3.5 h-3.5 text-[#D6AE62]" />
+                        <MessageCircle className="w-3.5 h-3.5 text-[#C6A53A]" />
                         <span>Renseignements immédiats</span>
                       </a>
                     </div>
@@ -132,12 +132,12 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
             })}
           </div>
         ) : (
-          <div className="text-center py-16 bg-[#151515] border border-white/5 p-8">
-            <Tag className="w-12 h-12 text-[#D6AE62]/40 mx-auto mb-4" />
+          <div className="text-center py-16 bg-[#1B1A15] border border-white/5 p-8">
+            <Tag className="w-12 h-12 text-[#C6A53A]/40 mx-auto mb-4" />
             <h3 className="font-serif-luxury text-2xl text-white mb-2">
               Toutes nos offres du moment ont été attribuées
             </h3>
-            <p className="text-xs text-[#A6A6A6] max-w-md mx-auto mb-6">
+            <p className="text-xs text-[#9F9A8E] max-w-md mx-auto mb-6">
               Contactez directement notre magasin à Casablanca sur WhatsApp pour connaître les
               offres d'accueil et privilèges clients du jour.
             </p>
@@ -147,7 +147,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#D6AE62] text-[#0B0B0B] text-xs font-bold uppercase tracking-wider"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#C6A53A] text-[#11110F] text-xs font-bold uppercase tracking-wider"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Contacter l'équipe WhatsApp</span>

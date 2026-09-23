@@ -79,13 +79,13 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#D6AE62]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C6A53A]">
             Logistique & Inventaire Réel
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
             Gestion des Stocks & Alertes
           </h1>
-          <p className="text-xs text-[#A6A6A6]">
+          <p className="text-xs text-[#9F9A8E]">
             Suivi des quantités en rayon, seuils d'alerte configurables et journal d'audit complet
           </p>
         </div>
@@ -95,8 +95,8 @@ export const AdminStock: React.FC<AdminStockProps> = ({
             onClick={() => setFilterAlertsOnly(!filterAlertsOnly)}
             className={`px-3.5 py-2 text-xs font-semibold flex items-center gap-1.5 transition-colors ${
               filterAlertsOnly
-                ? 'bg-amber-500 text-[#0B0B0B]'
-                : 'bg-[#151515] border border-white/10 text-[#E5E5E5] hover:border-amber-400'
+                ? 'bg-amber-500 text-[#11110F]'
+                : 'bg-[#1B1A15] border border-white/10 text-[#E8E5DD] hover:border-amber-400'
             }`}
           >
             <AlertTriangle className="w-3.5 h-3.5" />
@@ -106,24 +106,24 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-[#151515] border border-white/5 p-4 flex items-center justify-between">
+      <div className="bg-[#1B1A15] border border-white/5 p-4 flex items-center justify-between">
         <div className="relative w-full max-w-sm">
-          <Search className="w-4 h-4 text-[#D6AE62] absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-[#C6A53A] absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Rechercher par modèle ou référence..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#0B0B0B] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#D6AE62]"
+            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#C6A53A]"
           />
         </div>
       </div>
 
       {/* Stock Management Table */}
-      <div className="bg-[#151515] border border-white/5 overflow-x-auto">
+      <div className="bg-[#1B1A15] border border-white/5 overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-white/10 text-[#A6A6A6] uppercase tracking-wider text-[11px] bg-[#0D0D0D]">
+            <tr className="border-b border-white/10 text-[#9F9A8E] uppercase tracking-wider text-[11px] bg-[#0E0E0C]">
               <th className="py-3 px-4">Monture</th>
               <th className="py-3 px-4">Référence</th>
               <th className="py-3 px-4">Seuil d'alerte</th>
@@ -140,13 +140,13 @@ export const AdminStock: React.FC<AdminStockProps> = ({
               const isLow = p.stockQuantity > 0 && p.stockQuantity <= p.lowStockThreshold;
 
               return (
-                <tr key={p.id} className="hover:bg-[#1A1A1A] transition-colors">
+                <tr key={p.id} className="hover:bg-[#201F18] transition-colors">
                   <td className="py-3 px-4">
                     <div className="font-semibold text-white">{p.name}</div>
-                    <div className="text-[11px] text-[#A6A6A6]">{brand?.name}</div>
+                    <div className="text-[11px] text-[#9F9A8E]">{brand?.name}</div>
                   </td>
 
-                  <td className="py-3 px-4 font-mono text-[11px] text-[#D6AE62]">
+                  <td className="py-3 px-4 font-mono text-[11px] text-[#C6A53A]">
                     {p.reference}
                   </td>
 
@@ -161,9 +161,9 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                         onChange={(e) =>
                           onUpdateThreshold(p.id, Math.max(1, Number(e.target.value)))
                         }
-                        className="w-14 bg-[#0B0B0B] border border-white/10 px-2 py-1 text-center font-mono text-xs text-white"
+                        className="w-14 bg-[#11110F] border border-white/10 px-2 py-1 text-center font-mono text-xs text-white"
                       />
-                      <span className="text-[10px] text-[#A6A6A6]">ex.</span>
+                      <span className="text-[10px] text-[#9F9A8E]">ex.</span>
                     </div>
                   </td>
 
@@ -204,19 +204,19 @@ export const AdminStock: React.FC<AdminStockProps> = ({
 
                   {/* Quick +1 / -1 Buttons */}
                   <td className="py-3 px-4 text-center">
-                    <div className="inline-flex items-center gap-1 bg-[#0B0B0B] border border-white/10 p-0.5">
+                    <div className="inline-flex items-center gap-1 bg-[#11110F] border border-white/10 p-0.5">
                       <button
                         onClick={() => onAdjustStock(p.id, -1, false, 'Sortie unitaire en magasin', 'vente')}
                         disabled={p.stockQuantity <= 0}
                         title="Retirer 1 exemplaire"
-                        className="w-7 h-7 flex items-center justify-center text-[#A6A6A6] hover:text-white hover:bg-white/10 disabled:opacity-30"
+                        className="w-7 h-7 flex items-center justify-center text-[#9F9A8E] hover:text-white hover:bg-white/10 disabled:opacity-30"
                       >
                         <Minus className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => onAdjustStock(p.id, 1, false, 'Entrée unitaire réassort', 'reassort')}
                         title="Ajouter 1 exemplaire"
-                        className="w-7 h-7 flex items-center justify-center text-[#D6AE62] hover:bg-[#D6AE62]/20"
+                        className="w-7 h-7 flex items-center justify-center text-[#C6A53A] hover:bg-[#C6A53A]/20"
                       >
                         <Plus className="w-3.5 h-3.5" />
                       </button>
@@ -227,7 +227,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                   <td className="py-3 px-4 text-right">
                     <button
                       onClick={() => handleOpenAdjustModal(p)}
-                      className="px-2.5 py-1.5 bg-[#0B0B0B] hover:bg-[#1E1E1E] border border-white/10 text-xs text-[#E5E5E5] hover:text-[#D6AE62] inline-flex items-center gap-1.5 transition-colors"
+                      className="px-2.5 py-1.5 bg-[#11110F] hover:bg-[#29271F] border border-white/10 text-xs text-[#E8E5DD] hover:text-[#C6A53A] inline-flex items-center gap-1.5 transition-colors"
                     >
                       <Sliders className="w-3.5 h-3.5" />
                       <span>Ajuster</span>
@@ -241,21 +241,21 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       </div>
 
       {/* Stock History Audit Log Table */}
-      <div className="bg-[#151515] border border-white/5 p-6 space-y-4">
+      <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-[#D6AE62]">
+          <div className="flex items-center gap-2 text-[#C6A53A]">
             <History className="w-4 h-4" />
             <h2 className="font-serif-luxury text-lg text-white font-medium">
               Journal d'Audit des Mouvements de Stock
             </h2>
           </div>
-          <span className="text-[11px] text-[#A6A6A6]">Derniers événements enregistrés</span>
+          <span className="text-[11px] text-[#9F9A8E]">Derniers événements enregistrés</span>
         </div>
 
         <div className="border border-white/5 overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-white/10 text-[#A6A6A6] bg-[#0D0D0D] text-[10px] uppercase tracking-wider">
+              <tr className="border-b border-white/10 text-[#9F9A8E] bg-[#0E0E0C] text-[10px] uppercase tracking-wider">
                 <th className="py-2.5 px-3">Date & Heure</th>
                 <th className="py-2.5 px-3">Produit</th>
                 <th className="py-2.5 px-3">Mouvement</th>
@@ -268,8 +268,8 @@ export const AdminStock: React.FC<AdminStockProps> = ({
               {movements.slice(0, 10).map((mov) => {
                 const isPositive = mov.change > 0;
                 return (
-                  <tr key={mov.id} className="hover:bg-[#1A1A1A]">
-                    <td className="py-2.5 px-3 text-[#A6A6A6] text-[11px]">
+                  <tr key={mov.id} className="hover:bg-[#201F18]">
+                    <td className="py-2.5 px-3 text-[#9F9A8E] text-[11px]">
                       {new Date(mov.createdAt).toLocaleDateString('fr-FR', {
                         day: '2-digit',
                         month: 'short',
@@ -279,7 +279,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                     </td>
                     <td className="py-2.5 px-3 font-sans text-white">
                       <strong>{mov.productName}</strong>
-                      <span className="block text-[10px] text-[#A6A6A6]">{mov.productRef}</span>
+                      <span className="block text-[10px] text-[#9F9A8E]">{mov.productRef}</span>
                     </td>
                     <td className="py-2.5 px-3 uppercase text-[10px] font-sans">
                       <span
@@ -307,7 +307,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                     <td className="py-2.5 px-3 font-bold text-white">
                       {mov.newQuantity} ex.
                     </td>
-                    <td className="py-2.5 px-3 font-sans text-xs text-[#A6A6A6]">
+                    <td className="py-2.5 px-3 font-sans text-xs text-[#9F9A8E]">
                       {mov.comment || '—'}
                     </td>
                   </tr>
@@ -321,17 +321,17 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       {/* Full Stock Adjustment Modal */}
       {adjustModalProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-[#151515] border border-[#D6AE62]/40 p-6 shadow-2xl">
+          <div className="w-full max-w-md bg-[#1B1A15] border border-[#C6A53A]/40 p-6 shadow-2xl">
             <h3 className="font-serif-luxury text-xl text-white mb-1">
               Ajuster le stock : {adjustModalProduct.name}
             </h3>
-            <p className="text-xs text-[#D6AE62] font-mono mb-4">
+            <p className="text-xs text-[#C6A53A] font-mono mb-4">
               Réf : {adjustModalProduct.reference} · Quantité actuelle : {adjustModalProduct.stockQuantity} unités
             </p>
 
             <form onSubmit={handleApplyAdjustment} className="space-y-4 text-xs">
               <div>
-                <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                   Type d'opération
                 </label>
                 <select
@@ -341,7 +341,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                       e.target.value as 'reassort' | 'vente' | 'ajustement' | 'retour'
                     )
                   }
-                  className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2"
                 >
                   <option value="reassort">Réassort fournisseur / Arrivage</option>
                   <option value="vente">Vente boutique ou réservation WhatsApp</option>
@@ -351,7 +351,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
               </div>
 
               <div>
-                <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                   Nouvelle quantité absolue
                 </label>
                 <input
@@ -360,12 +360,12 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                   required
                   value={newQuantityValue}
                   onChange={(e) => setNewQuantityValue(Number(e.target.value))}
-                  className="w-full bg-[#0B0B0B] border border-white/10 font-mono text-base text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                  className="w-full bg-[#11110F] border border-white/10 font-mono text-base text-white p-2.5 outline-none focus:border-[#C6A53A]"
                 />
               </div>
 
               <div>
-                <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+                <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                   Motif ou Commentaire d'audit
                 </label>
                 <input
@@ -373,7 +373,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                   placeholder="Ex: Facture BL #4920, inventaire mensuel..."
                   value={adjustmentComment}
                   onChange={(e) => setAdjustmentComment(e.target.value)}
-                  className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2 outline-none focus:border-[#D6AE62]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C6A53A]"
                 />
               </div>
 
@@ -381,13 +381,13 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                 <button
                   type="button"
                   onClick={() => setAdjustModalProduct(null)}
-                  className="px-4 py-2 border border-white/10 text-[#A6A6A6] hover:text-white"
+                  className="px-4 py-2 border border-white/10 text-[#9F9A8E] hover:text-white"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold uppercase tracking-wider"
+                  className="px-5 py-2 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold uppercase tracking-wider"
                 >
                   Valider le mouvement
                 </button>

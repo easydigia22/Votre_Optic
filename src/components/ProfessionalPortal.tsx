@@ -106,57 +106,57 @@ export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-[#0B0B0B] pt-32 text-center text-[#A6A6A6]">Chargement de votre espace…</div>;
+    return <div className="min-h-screen bg-[#11110F] pt-32 text-center text-[#9F9A8E]">Chargement de votre espace…</div>;
   }
 
   if (user) {
     const metadata = user.user_metadata ?? {};
     const whatsapp = settings.whatsapp.replace(/[^0-9]/g, '');
     return (
-      <div className="min-h-screen bg-[#0B0B0B] text-[#F8F5EF] pt-28 pb-20">
+      <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] pt-28 pb-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="border border-[#D6AE62]/30 bg-[#151515] p-6 sm:p-10">
+          <div className="border border-[#C6A53A]/30 bg-[#1B1A15] p-6 sm:p-10">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
               <div>
-                <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#D6AE62] mb-3">
+                <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C6A53A] mb-3">
                   <ShieldCheck className="w-4 h-4" />
                   Espace professionnel sécurisé
                 </div>
                 <h1 className="font-serif-luxury text-3xl sm:text-4xl text-white">
                   Bienvenue, {metadata.full_name || user.email}
                 </h1>
-                <p className="text-sm text-[#A6A6A6] mt-2">
+                <p className="text-sm text-[#9F9A8E] mt-2">
                   {metadata.company || 'Compte professionnel Votre Optique'}
                 </p>
               </div>
-              <button onClick={logout} className="flex items-center gap-2 text-xs text-[#A6A6A6] hover:text-white">
+              <button onClick={logout} className="flex items-center gap-2 text-xs text-[#9F9A8E] hover:text-white">
                 <LogOut className="w-4 h-4" /> Déconnexion
               </button>
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mt-10">
-              <div className="border border-white/10 bg-[#0B0B0B] p-5">
-                <Mail className="w-5 h-5 text-[#D6AE62] mb-3" />
-                <p className="text-[11px] uppercase tracking-wider text-[#A6A6A6]">Email</p>
+              <div className="border border-white/10 bg-[#11110F] p-5">
+                <Mail className="w-5 h-5 text-[#C6A53A] mb-3" />
+                <p className="text-[11px] uppercase tracking-wider text-[#9F9A8E]">Email</p>
                 <p className="text-sm mt-1 break-all">{user.email}</p>
               </div>
-              <div className="border border-white/10 bg-[#0B0B0B] p-5">
-                <BriefcaseBusiness className="w-5 h-5 text-[#D6AE62] mb-3" />
-                <p className="text-[11px] uppercase tracking-wider text-[#A6A6A6]">Entreprise</p>
+              <div className="border border-white/10 bg-[#11110F] p-5">
+                <BriefcaseBusiness className="w-5 h-5 text-[#C6A53A] mb-3" />
+                <p className="text-[11px] uppercase tracking-wider text-[#9F9A8E]">Entreprise</p>
                 <p className="text-sm mt-1">{metadata.company || 'À compléter'}</p>
               </div>
-              <div className="border border-white/10 bg-[#0B0B0B] p-5">
-                <Smartphone className="w-5 h-5 text-[#D6AE62] mb-3" />
-                <p className="text-[11px] uppercase tracking-wider text-[#A6A6A6]">Application</p>
+              <div className="border border-white/10 bg-[#11110F] p-5">
+                <Smartphone className="w-5 h-5 text-[#C6A53A] mb-3" />
+                <p className="text-[11px] uppercase tracking-wider text-[#9F9A8E]">Application</p>
                 <div className="mt-2"><PWAInstallButton compact /></div>
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4 mt-6">
-              <button onClick={() => onNavigate('catalogue')} className="p-5 bg-[#D6AE62] text-[#0B0B0B] text-left flex items-center justify-between font-semibold">
+              <button onClick={() => onNavigate('catalogue')} className="p-5 bg-[#C6A53A] text-[#11110F] text-left flex items-center justify-between font-semibold">
                 Découvrir le catalogue professionnel <ArrowRight className="w-5 h-5" />
               </button>
-              <a href={`https://wa.me/${whatsapp}?text=${encodeURIComponent('Bonjour Votre Optique, je vous contacte depuis mon espace professionnel.')}`} target="_blank" rel="noreferrer" className="p-5 border border-[#D6AE62]/40 text-[#F0D8A5] flex items-center justify-between font-semibold">
+              <a href={`https://wa.me/${whatsapp}?text=${encodeURIComponent('Bonjour Votre Optique, je vous contacte depuis mon espace professionnel.')}`} target="_blank" rel="noreferrer" className="p-5 border border-[#C6A53A]/40 text-[#F5E6A6] flex items-center justify-between font-semibold">
                 Conseiller WhatsApp <MessageCircle className="w-5 h-5" />
               </a>
             </div>
@@ -167,26 +167,26 @@ export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-[#F8F5EF] pt-28 pb-20">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] pt-28 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 items-stretch">
-        <section className="border border-[#D6AE62]/20 bg-[#151515] p-7 sm:p-10">
-          <span className="text-xs uppercase tracking-widest text-[#D6AE62]">Votre Optique Pro</span>
+        <section className="border border-[#C6A53A]/20 bg-[#1B1A15] p-7 sm:p-10">
+          <span className="text-xs uppercase tracking-widest text-[#C6A53A]">Votre Optique Pro</span>
           <h1 className="font-serif-luxury text-4xl text-white mt-3">Votre espace professionnel, partout avec vous.</h1>
-          <p className="text-sm text-[#A6A6A6] mt-5 leading-relaxed">
+          <p className="text-sm text-[#9F9A8E] mt-5 leading-relaxed">
             Créez votre compte, installez l’application sur votre téléphone et retrouvez votre catalogue ainsi que votre conseiller WhatsApp en quelques secondes.
           </p>
           <div className="space-y-4 mt-8 text-sm">
             {['Inscription autonome et sécurisée', 'Installation sur Android, iPhone ou ordinateur', 'Accès direct depuis votre écran d’accueil'].map((item) => (
-              <div key={item} className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-[#D6AE62]" />{item}</div>
+              <div key={item} className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-[#C6A53A]" />{item}</div>
             ))}
           </div>
           <div className="mt-8"><PWAInstallButton /></div>
         </section>
 
-        <section className="border border-white/10 bg-[#111111] p-7 sm:p-10">
+        <section className="border border-white/10 bg-[#171612] p-7 sm:p-10">
           <div className="flex gap-2 mb-8">
-            <button onClick={() => { setMode('register'); setError(''); }} className={`flex-1 py-2.5 text-xs uppercase tracking-wider ${mode === 'register' ? 'bg-[#D6AE62] text-black' : 'border border-white/10 text-[#A6A6A6]'}`}>Créer mon compte</button>
-            <button onClick={() => { setMode('login'); setError(''); }} className={`flex-1 py-2.5 text-xs uppercase tracking-wider ${mode === 'login' ? 'bg-[#D6AE62] text-black' : 'border border-white/10 text-[#A6A6A6]'}`}>Me connecter</button>
+            <button onClick={() => { setMode('register'); setError(''); }} className={`flex-1 py-2.5 text-xs uppercase tracking-wider ${mode === 'register' ? 'bg-[#C6A53A] text-black' : 'border border-white/10 text-[#9F9A8E]'}`}>Créer mon compte</button>
+            <button onClick={() => { setMode('login'); setError(''); }} className={`flex-1 py-2.5 text-xs uppercase tracking-wider ${mode === 'login' ? 'bg-[#C6A53A] text-black' : 'border border-white/10 text-[#9F9A8E]'}`}>Me connecter</button>
           </div>
 
           {message && <div className="mb-5 p-3 border border-green-700 bg-green-950/30 text-sm text-green-300">{message}</div>}
@@ -195,14 +195,14 @@ export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings
           <form onSubmit={submit} className="space-y-4">
             {mode === 'register' && (
               <>
-                <label className="block"><span className="text-xs text-[#A6A6A6]">Nom complet</span><div className="relative mt-1"><UserRound className="absolute left-3 top-3 w-4 h-4 text-[#D6AE62]" /><input required value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} className="w-full bg-[#0B0B0B] border border-white/10 py-2.5 pl-10 pr-3 outline-none focus:border-[#D6AE62]" /></div></label>
-                <label className="block"><span className="text-xs text-[#A6A6A6]">Entreprise / activité</span><input required value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="mt-1 w-full bg-[#0B0B0B] border border-white/10 p-2.5 outline-none focus:border-[#D6AE62]" /></label>
-                <label className="block"><span className="text-xs text-[#A6A6A6]">Téléphone / WhatsApp</span><input required type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-1 w-full bg-[#0B0B0B] border border-white/10 p-2.5 outline-none focus:border-[#D6AE62]" /></label>
+                <label className="block"><span className="text-xs text-[#9F9A8E]">Nom complet</span><div className="relative mt-1"><UserRound className="absolute left-3 top-3 w-4 h-4 text-[#C6A53A]" /><input required value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} className="w-full bg-[#11110F] border border-white/10 py-2.5 pl-10 pr-3 outline-none focus:border-[#C6A53A]" /></div></label>
+                <label className="block"><span className="text-xs text-[#9F9A8E]">Entreprise / activité</span><input required value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
+                <label className="block"><span className="text-xs text-[#9F9A8E]">Téléphone / WhatsApp</span><input required type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
               </>
             )}
-            <label className="block"><span className="text-xs text-[#A6A6A6]">Email professionnel</span><input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-1 w-full bg-[#0B0B0B] border border-white/10 p-2.5 outline-none focus:border-[#D6AE62]" /></label>
-            <label className="block"><span className="text-xs text-[#A6A6A6]">Mot de passe (8 caractères minimum)</span><input required minLength={8} type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="mt-1 w-full bg-[#0B0B0B] border border-white/10 p-2.5 outline-none focus:border-[#D6AE62]" /></label>
-            <button disabled={submitting} className="w-full py-3 bg-[#D6AE62] hover:bg-[#E8C987] disabled:opacity-60 text-[#0B0B0B] font-bold text-xs uppercase tracking-widest">
+            <label className="block"><span className="text-xs text-[#9F9A8E]">Email professionnel</span><input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
+            <label className="block"><span className="text-xs text-[#9F9A8E]">Mot de passe (8 caractères minimum)</span><input required minLength={8} type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
+            <button disabled={submitting} className="w-full py-3 bg-[#C6A53A] hover:bg-[#E3C866] disabled:opacity-60 text-[#11110F] font-bold text-xs uppercase tracking-widest">
               {submitting ? 'Veuillez patienter…' : mode === 'register' ? 'Créer mon espace professionnel' : 'Accéder à mon espace'}
             </button>
           </form>

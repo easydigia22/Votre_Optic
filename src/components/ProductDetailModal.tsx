@@ -80,12 +80,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       <div className="fixed inset-0" onClick={onClose} />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-5xl bg-[#121212] border border-[#D6AE62]/30 shadow-2xl z-10 overflow-hidden my-4 max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-5xl bg-[#15140F] border border-[#C6A53A]/30 shadow-2xl z-10 overflow-hidden my-4 max-h-[92vh] flex flex-col">
         {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Fermer"
-          className="absolute top-4 right-4 z-20 p-2 bg-[#0B0B0B]/80 text-[#A6A6A6] hover:text-white border border-white/10 hover:border-[#D6AE62] transition-colors"
+          className="absolute top-4 right-4 z-20 p-2 bg-[#11110F]/80 text-[#9F9A8E] hover:text-white border border-white/10 hover:border-[#C6A53A] transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
@@ -93,11 +93,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="overflow-y-auto p-0 flex-1">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             {/* Left: Photo Gallery (lg:col-span-7) */}
-            <div className="lg:col-span-7 bg-[#0B0B0B] p-6 lg:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10">
+            <div className="lg:col-span-7 bg-[#11110F] p-6 lg:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10">
               {/* Main Stage */}
-              <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-[#151515]/60 overflow-hidden border border-white/5">
+              <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-[#1B1A15]/60 overflow-hidden border border-white/5">
                 {product.inPromo && (
-                  <div className="absolute top-4 left-4 z-10 bg-[#D6AE62] text-[#0B0B0B] text-xs font-bold px-3 py-1 uppercase tracking-widest">
+                  <div className="absolute top-4 left-4 z-10 bg-[#C6A53A] text-[#11110F] text-xs font-bold px-3 py-1 uppercase tracking-widest">
                     Promotion {product.discountPercentage ? `-${product.discountPercentage}%` : ''}
                   </div>
                 )}
@@ -110,9 +110,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     className="w-full h-full object-contain p-4 transform hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="text-[#D6AE62]/50 flex flex-col items-center">
+                  <div className="text-[#C6A53A]/50 flex flex-col items-center">
                     <Eye className="w-16 h-16 stroke-1 mb-2" />
-                    <span className="text-xs uppercase tracking-widest text-[#A6A6A6]">
+                    <span className="text-xs uppercase tracking-widest text-[#9F9A8E]">
                       Haute Lunetterie
                     </span>
                   </div>
@@ -126,9 +126,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <button
                       key={idx}
                       onClick={() => setSelectedImageIndex(idx)}
-                      className={`relative w-16 h-16 shrink-0 bg-[#151515] border p-1 transition-all ${
+                      className={`relative w-16 h-16 shrink-0 bg-[#1B1A15] border p-1 transition-all ${
                         selectedImageIndex === idx
-                          ? 'border-[#D6AE62] shadow-md shadow-[#D6AE62]/20'
+                          ? 'border-[#C6A53A] shadow-md shadow-[#C6A53A]/20'
                           : 'border-white/10 opacity-70 hover:opacity-100'
                       }`}
                     >
@@ -139,43 +139,43 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               )}
 
               {/* Trust Badges */}
-              <div className="pt-6 mt-6 border-t border-white/5 grid grid-cols-3 gap-2 text-[11px] text-[#A6A6A6]">
+              <div className="pt-6 mt-6 border-t border-white/5 grid grid-cols-3 gap-2 text-[11px] text-[#9F9A8E]">
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-[#D6AE62] shrink-0" />
+                  <Shield className="w-4 h-4 text-[#C6A53A] shrink-0" />
                   <span>100% Authentique Certifié</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#D6AE62] shrink-0" />
+                  <Truck className="w-4 h-4 text-[#C6A53A] shrink-0" />
                   <span>Livraison partout au Maroc</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <RotateCcw className="w-4 h-4 text-[#D6AE62] shrink-0" />
+                  <RotateCcw className="w-4 h-4 text-[#C6A53A] shrink-0" />
                   <span>Ajustement & centrage offerts</span>
                 </div>
               </div>
             </div>
 
             {/* Right: Contiguous Purchase Module & Specifications (lg:col-span-5) */}
-            <div className="lg:col-span-5 p-6 lg:p-8 flex flex-col justify-between bg-[#151515]">
+            <div className="lg:col-span-5 p-6 lg:p-8 flex flex-col justify-between bg-[#1B1A15]">
               <div className="space-y-4">
                 {/* Brand & Reference */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-widest text-[#D6AE62] uppercase">
+                  <span className="text-xs font-bold tracking-widest text-[#C6A53A] uppercase">
                     {brand?.name || 'Maison Optique'}
                   </span>
-                  <span className="text-xs font-mono text-[#A6A6A6]">
+                  <span className="text-xs font-mono text-[#9F9A8E]">
                     Réf: {product.reference}
                   </span>
                 </div>
 
                 {/* Title */}
                 <div>
-                  <h2 className="text-xl lg:text-2xl font-semibold text-[#F8F5EF] leading-snug">
+                  <h2 className="text-xl lg:text-2xl font-semibold text-[#FFFDF7] leading-snug">
                     {product.name}
                   </h2>
                   {/* Rating Stars under Title */}
                   <div className="flex items-center gap-2 mt-1.5">
-                    <div className="flex items-center gap-0.5 text-[#D6AE62]">
+                    <div className="flex items-center gap-0.5 text-[#C6A53A]">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}
@@ -185,10 +185,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         />
                       ))}
                     </div>
-                    <span className="text-xs font-mono font-bold text-[#F0D8A5]">
+                    <span className="text-xs font-mono font-bold text-[#F5E6A6]">
                       {ratingSummary.average.toFixed(1)} / 5
                     </span>
-                    <span className="text-[11px] text-[#A6A6A6]">
+                    <span className="text-[11px] text-[#9F9A8E]">
                       ({ratingSummary.count} avis certifié{ratingSummary.count > 1 ? 's' : ''})
                     </span>
                   </div>
@@ -196,17 +196,17 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 {/* Price */}
                 <div className="flex items-baseline gap-3 pt-1 pb-2 border-b border-white/10">
-                  <span className="font-mono text-2xl font-bold text-[#F0D8A5] tabular-nums">
+                  <span className="font-mono text-2xl font-bold text-[#F5E6A6] tabular-nums">
                     {product.price.toLocaleString('fr-FR')}{' '}
-                    <span className="text-sm font-normal text-[#E8C987]">DH</span>
+                    <span className="text-sm font-normal text-[#E3C866]">DH</span>
                   </span>
                   {product.oldPrice && product.oldPrice > product.price && (
-                    <span className="font-mono text-sm text-[#A6A6A6] line-through tabular-nums">
+                    <span className="font-mono text-sm text-[#9F9A8E] line-through tabular-nums">
                       {product.oldPrice.toLocaleString('fr-FR')} DH
                     </span>
                   )}
                   {product.discountPercentage && (
-                    <span className="text-xs text-[#D6AE62] border border-[#D6AE62]/40 px-2 py-0.5">
+                    <span className="text-xs text-[#C6A53A] border border-[#C6A53A]/40 px-2 py-0.5">
                       Économisez {product.discountPercentage}%
                     </span>
                   )}
@@ -214,7 +214,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 {/* Stock Availability */}
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="text-[#A6A6A6]">Disponibilité :</span>
+                  <span className="text-[#9F9A8E]">Disponibilité :</span>
                   {isOutOfStock ? (
                     <span className="text-red-400 font-semibold flex items-center gap-1">
                       <AlertTriangle className="w-3.5 h-3.5" />
@@ -236,7 +236,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 {/* Colors */}
                 {product.colors && product.colors.length > 0 && (
                   <div>
-                    <span className="block text-xs text-[#A6A6A6] mb-1.5">
+                    <span className="block text-xs text-[#9F9A8E] mb-1.5">
                       Coloris disponibles : <strong className="text-white">{selectedColor}</strong>
                     </span>
                     <div className="flex items-center gap-2">
@@ -246,8 +246,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           onClick={() => setSelectedColor(c)}
                           className={`text-xs px-2.5 py-1 border transition-all ${
                             selectedColor === c
-                              ? 'border-[#D6AE62] text-[#F0D8A5] bg-[#D6AE62]/10'
-                              : 'border-white/10 text-[#A6A6A6] hover:text-white'
+                              ? 'border-[#C6A53A] text-[#F5E6A6] bg-[#C6A53A]/10'
+                              : 'border-white/10 text-[#9F9A8E] hover:text-white'
                           }`}
                         >
                           {c}
@@ -259,30 +259,30 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 {/* Description */}
                 <div>
-                  <span className="block text-xs uppercase tracking-wider text-[#A6A6A6] mb-1">
+                  <span className="block text-xs uppercase tracking-wider text-[#9F9A8E] mb-1">
                     Description
                   </span>
-                  <p className="text-xs text-[#E5E5E5] leading-relaxed">
+                  <p className="text-xs text-[#E8E5DD] leading-relaxed">
                     {product.description}
                   </p>
                 </div>
 
                 {/* Characteristics Table */}
-                <div className="border border-white/10 bg-[#0B0B0B]/50 p-3 text-xs space-y-2">
+                <div className="border border-white/10 bg-[#11110F]/50 p-3 text-xs space-y-2">
                   <div className="flex justify-between border-b border-white/5 pb-1.5">
-                    <span className="text-[#A6A6A6]">Forme de monture</span>
+                    <span className="text-[#9F9A8E]">Forme de monture</span>
                     <span className="text-white font-medium">{product.frameType}</span>
                   </div>
                   <div className="flex justify-between border-b border-white/5 pb-1.5">
-                    <span className="text-[#A6A6A6]">Matériau</span>
+                    <span className="text-[#9F9A8E]">Matériau</span>
                     <span className="text-white font-medium">{product.material}</span>
                   </div>
                   <div className="flex justify-between border-b border-white/5 pb-1.5">
-                    <span className="text-[#A6A6A6]">Type de verres</span>
+                    <span className="text-[#9F9A8E]">Type de verres</span>
                     <span className="text-white font-medium">{product.lensType}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[#A6A6A6]">Genre & Catégorie</span>
+                    <span className="text-[#9F9A8E]">Genre & Catégorie</span>
                     <span className="text-white font-medium capitalize">
                       {product.gender} · {category?.name || product.type}
                     </span>
@@ -297,7 +297,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sm:col-span-3 py-3.5 px-4 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold text-xs uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-[#D6AE62]/20"
+                    className="sm:col-span-3 py-3.5 px-4 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-[#C6A53A]/20"
                   >
                     <MessageCircle className="w-4 h-4 fill-current" />
                     <span>Commander sur WhatsApp</span>
@@ -309,20 +309,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     title={wishlistState ? 'Retirer de la liste de souhaits' : 'Ajouter à la liste de souhaits'}
                     className={`py-3.5 px-3 border transition-colors flex items-center justify-center gap-1.5 text-xs font-semibold ${
                       wishlistState
-                        ? 'border-[#D6AE62] bg-[#D6AE62]/15 text-[#D6AE62]'
-                        : 'border-white/15 text-white hover:border-[#D6AE62] hover:text-[#D6AE62]'
+                        ? 'border-[#C6A53A] bg-[#C6A53A]/15 text-[#C6A53A]'
+                        : 'border-white/15 text-white hover:border-[#C6A53A] hover:text-[#C6A53A]'
                     }`}
                   >
-                    <Heart className={`w-4 h-4 ${wishlistState ? 'fill-current text-[#D6AE62]' : ''}`} />
+                    <Heart className={`w-4 h-4 ${wishlistState ? 'fill-current text-[#C6A53A]' : ''}`} />
                     <span className="sm:hidden">{wishlistState ? 'Enregistré' : 'Favori'}</span>
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-[#A6A6A6] px-1">
+                <div className="flex items-center justify-between text-xs text-[#9F9A8E] px-1">
                   <span>Numéro officiel : <strong>+212 770 420 663</strong></span>
                   <button
                     onClick={handleShare}
-                    className="hover:text-[#D6AE62] flex items-center gap-1 transition-colors"
+                    className="hover:text-[#C6A53A] flex items-center gap-1 transition-colors"
                   >
                     <Share2 className="w-3.5 h-3.5" />
                     <span>{copiedLink ? 'Lien copié !' : 'Partager'}</span>
@@ -333,7 +333,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Full-width Product Reviews Section */}
-          <div className="p-6 lg:p-8 bg-[#0E0E0E] border-t border-white/10">
+          <div className="p-6 lg:p-8 bg-[#11110F] border-t border-white/10">
             <ProductReviewsSection product={product} />
           </div>
         </div>

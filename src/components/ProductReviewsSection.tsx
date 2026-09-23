@@ -74,7 +74,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       {/* Header & Overall Rating Summary */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#D6AE62]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C6A53A]">
             Retours d'expérience
           </span>
           <h3 className="font-serif-luxury text-2xl text-white font-medium mt-0.5">
@@ -87,7 +87,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             setShowForm(!showForm);
             setSubmittedSuccess(false);
           }}
-          className="px-4 py-2.5 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 self-start sm:self-auto"
+          className="px-4 py-2.5 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 self-start sm:self-auto"
         >
           <MessageSquare className="w-3.5 h-3.5" />
           <span>{showForm ? 'Masquer le formulaire' : 'Rédiger un avis'}</span>
@@ -115,10 +115,10 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             <span className="font-mono text-5xl font-bold text-white tabular-nums">
               {ratingSummary.count > 0 ? ratingSummary.average.toFixed(1) : '5.0'}
             </span>
-            <span className="text-sm font-mono text-[#A6A6A6]">/ 5</span>
+            <span className="text-sm font-mono text-[#9F9A8E]">/ 5</span>
           </div>
 
-          <div className="flex items-center justify-center md:justify-start gap-1 text-[#D6AE62] my-2">
+          <div className="flex items-center justify-center md:justify-start gap-1 text-[#C6A53A] my-2">
             {[1, 2, 3, 4, 5].map((s) => (
               <Star
                 key={s}
@@ -129,7 +129,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             ))}
           </div>
 
-          <p className="text-xs text-[#A6A6A6]">
+          <p className="text-xs text-[#9F9A8E]">
             Basé sur {reviews.length} avis certifié{reviews.length > 1 ? 's' : ''} en boutique
           </p>
         </div>
@@ -141,17 +141,17 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             const percentage = reviews.length > 0 ? Math.round((count / reviews.length) * 100) : s === 5 ? 100 : 0;
             return (
               <div key={s} className="flex items-center gap-3">
-                <span className="w-12 font-mono text-[#A6A6A6] text-right flex items-center justify-end gap-1">
+                <span className="w-12 font-mono text-[#9F9A8E] text-right flex items-center justify-end gap-1">
                   <span>{s}</span>
-                  <Star className="w-3 h-3 text-[#D6AE62] fill-current" />
+                  <Star className="w-3 h-3 text-[#C6A53A] fill-current" />
                 </span>
-                <div className="flex-1 h-2 bg-[#1A1A1A] overflow-hidden">
+                <div className="flex-1 h-2 bg-[#201F18] overflow-hidden">
                   <div
-                    className="h-full bg-[#D6AE62] transition-all duration-500"
+                    className="h-full bg-[#C6A53A] transition-all duration-500"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
-                <span className="w-8 font-mono text-[#A6A6A6] text-right text-[11px]">
+                <span className="w-8 font-mono text-[#9F9A8E] text-right text-[11px]">
                   {count}
                 </span>
               </div>
@@ -164,18 +164,18 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       {showForm && (
         <form
           onSubmit={handleSubmitReview}
-          className="bg-[#151515] border border-[#D6AE62]/40 p-6 sm:p-8 space-y-4 text-xs animate-in fade-in duration-300"
+          className="bg-[#1B1A15] border border-[#C6A53A]/40 p-6 sm:p-8 space-y-4 text-xs animate-in fade-in duration-300"
         >
           <h4 className="font-serif-luxury text-xl text-white font-medium mb-1">
             Partagez votre expérience sur {product.name}
           </h4>
-          <p className="text-[#A6A6A6] text-[11px] mb-4">
+          <p className="text-[#9F9A8E] text-[11px] mb-4">
             Votre évaluation aide les autres clients de Casablanca et du Maroc à choisir leur monture.
           </p>
 
           {/* Star selector */}
           <div>
-            <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1.5 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1.5 font-semibold">
               Votre note globale *
             </label>
             <div className="flex items-center gap-2">
@@ -192,13 +192,13 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                   >
                     <Star
                       className={`w-6 h-6 ${
-                        active ? 'text-[#D6AE62] fill-current' : 'text-neutral-600'
+                        active ? 'text-[#C6A53A] fill-current' : 'text-neutral-600'
                       }`}
                     />
                   </button>
                 );
               })}
-              <span className="font-mono text-[#E8C987] font-bold text-sm ml-2">
+              <span className="font-mono text-[#E3C866] font-bold text-sm ml-2">
                 {hoverRating || rating} / 5
               </span>
             </div>
@@ -206,7 +206,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                 Votre Nom ou Prénom *
               </label>
               <input
@@ -215,12 +215,12 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                 placeholder="Ex: Yassine E."
                 value={authorName}
                 onChange={(e) => setAuthorName(e.target.value)}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
               />
             </div>
 
             <div>
-              <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+              <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
                 Ville au Maroc
               </label>
               <input
@@ -228,13 +228,13 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                 placeholder="Ex: Casablanca, Rabat, Marrakech..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
               Titre de l'avis
             </label>
             <input
@@ -242,12 +242,12 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               placeholder="Ex: Confort exceptionnel et design somptueux"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
             />
           </div>
 
           <div>
-            <label className="block text-[#A6A6A6] uppercase tracking-wider mb-1 font-semibold">
+            <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
               Votre commentaire détaillé *
             </label>
             <textarea
@@ -256,24 +256,24 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               placeholder="Décrivez le confort, la tenue sur le nez, la clarté des verres ou l'accueil en boutique..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className="w-full bg-[#0B0B0B] border border-white/10 text-white p-2.5 outline-none focus:border-[#D6AE62]"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
             />
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <label className="flex items-center gap-2 cursor-pointer text-[#CCCCCC]">
+            <label className="flex items-center gap-2 cursor-pointer text-[#D5D1C4]">
               <input
                 type="checkbox"
                 checked={verifiedPurchase}
                 onChange={(e) => setVerifiedPurchase(e.target.checked)}
-                className="accent-[#D6AE62]"
+                className="accent-[#C6A53A]"
               />
               <span>J'ai essayé ou acheté cette monture chez Votre Optique</span>
             </label>
 
             <button
               type="submit"
-              className="px-6 py-2.5 bg-[#D6AE62] hover:bg-[#E8C987] text-[#0B0B0B] font-bold uppercase tracking-wider flex items-center gap-2 transition-colors"
+              className="px-6 py-2.5 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold uppercase tracking-wider flex items-center gap-2 transition-colors"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Publier mon avis</span>
@@ -288,13 +288,13 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
           reviews.map((rev) => (
             <div
               key={rev.id}
-              className="p-5 bg-[#121212] border border-white/5 hover:border-white/10 transition-colors"
+              className="p-5 bg-[#15140F] border border-white/5 hover:border-white/10 transition-colors"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-3">
                   <span className="font-semibold text-white">{rev.authorName}</span>
                   {rev.city && (
-                    <span className="text-[11px] text-[#A6A6A6]">· {rev.city}</span>
+                    <span className="text-[11px] text-[#9F9A8E]">· {rev.city}</span>
                   )}
                   {rev.verifiedPurchase && (
                     <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2 py-0.5 flex items-center gap-1">
@@ -304,8 +304,8 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 text-[#A6A6A6] text-[11px]">
-                  <div className="flex items-center gap-0.5 text-[#D6AE62]">
+                <div className="flex items-center gap-2 text-[#9F9A8E] text-[11px]">
+                  <div className="flex items-center gap-0.5 text-[#C6A53A]">
                     {[1, 2, 3, 4, 5].map((s) => (
                       <Star
                         key={s}
@@ -326,18 +326,18 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               </div>
 
               {rev.title && (
-                <h5 className="font-semibold text-xs text-[#F0D8A5] mb-1">
+                <h5 className="font-semibold text-xs text-[#F5E6A6] mb-1">
                   {rev.title}
                 </h5>
               )}
 
-              <p className="text-xs text-[#CCCCCC] leading-relaxed">
+              <p className="text-xs text-[#D5D1C4] leading-relaxed">
                 {rev.comment}
               </p>
             </div>
           ))
         ) : (
-          <div className="p-8 text-center bg-[#121212] border border-white/5 text-xs text-[#A6A6A6]">
+          <div className="p-8 text-center bg-[#15140F] border border-white/5 text-xs text-[#9F9A8E]">
             Soyez le premier à donner votre avis sur cette monture d'exception.
           </div>
         )}
