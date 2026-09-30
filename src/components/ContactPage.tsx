@@ -234,7 +234,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
             {/* Google Maps / Location preview */}
             <div className="bg-[#1B1A15] border border-white/10 p-4">
               <div className="flex items-center justify-between mb-3 text-xs">
-                <span className="text-white font-medium">Localisation Casablanca</span>
+                <span className="text-white font-medium">Localisation Marrakech</span>
                 <a
                   href={settings.mapsUrl}
                   target="_blank"
@@ -249,7 +249,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                 <div className="relative text-center z-10 p-4">
                   <MapPin className="w-8 h-8 text-[#C6A53A] mx-auto mb-1 animate-bounce" />
                   <p className="text-xs font-semibold text-white">{settings.address}</p>
-                  <p className="text-[11px] text-[#9F9A8E]">Quartier Racine · Casablanca</p>
+                  <p className="text-[11px] text-[#9F9A8E]">Dyour Marjane · Marrakech 40000</p>
                 </div>
               </div>
             </div>

@@ -34,7 +34,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
           Paramètres du Magasin & SEO
         </h1>
         <p className="text-xs text-[#9F9A8E]">
-          Gérez l'identité de l'établissement, les coordonnées de contact à Casablanca et le référencement naturel
+          Gérez l'identité de l'établissement, les coordonnées de contact à Marrakech et le référencement naturel
         </p>
       </div>
 
@@ -165,13 +165,25 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
 
             <div>
               <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
-                Ville & Pays
+                Ville (& code postal)
               </label>
               <input
                 type="text"
-                value={`${form.city}, ${form.country}`}
-                disabled
-                className="w-full bg-[#11110F] border border-white/5 text-[#9F9A8E] p-2.5"
+                value={form.city}
+                onChange={(e) => setForm((p) => ({ ...p, city: e.target.value }))}
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">
+                Pays
+              </label>
+              <input
+                type="text"
+                value={form.country}
+                onChange={(e) => setForm((p) => ({ ...p, country: e.target.value }))}
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
               />
             </div>
           </div>

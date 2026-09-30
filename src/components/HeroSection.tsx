@@ -143,7 +143,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               +212 770 420 663
             </a>
             <span className="text-[#9F9A8E] text-[11px] uppercase tracking-wider">
-              Casablanca, Maroc
+              Marrakech, Maroc
             </span>
           </div>
         </div>

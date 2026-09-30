@@ -35,10 +35,10 @@ export const DEFAULT_SETTINGS: StoreSettings = {
   phone: '+212 770 420 663',
   whatsapp: '+212770420663',
   email: 'contact@votreoptique.ma',
-  address: "Angle Boulevard d'Anfa & Rue Jean Jaurès, Quartier Racine",
-  city: 'Casablanca',
+  address: 'Dyour Marjane, Imm.2, Mag N 3',
+  city: 'Marrakech 40000',
   country: 'Maroc',
-  mapsUrl: 'https://maps.google.com/?q=Boulevard+d+Anfa+Casablanca',
+  mapsUrl: 'https://maps.google.com/?q=Dyour+Marjane+Imm+2+Mag+N+3+Marrakech+40000+Maroc',
   hours: 'Lundi au Samedi : 09h30 – 20h00 (Fermé le Dimanche)',
   socialLinks: {
     instagram: 'https://instagram.com/votreoptique_maroc',
@@ -49,7 +49,7 @@ export const DEFAULT_SETTINGS: StoreSettings = {
   seo: {
     metaTitle: "Votre Optique Maroc | L'Élégance & la Précision du Regard",
     metaDescription:
-      "Boutique d'optique haut de gamme à Casablanca, Maroc. Montures de créateurs, verres progressifs haute précision, et commande directe sur WhatsApp au +212 770 420 663.",
+      "Boutique d'optique haut de gamme à Marrakech, Maroc. Montures de créateurs, verres progressifs haute précision, et commande directe sur WhatsApp au +212 770 420 663.",
   },
 };
 
