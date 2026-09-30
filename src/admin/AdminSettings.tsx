@@ -242,6 +242,22 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
           </div>
         </div>
 
+        {/* Mentions légales */}
+        <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
+          <h2 className="font-serif-luxury text-lg text-[#F5E6A6]">Mentions légales (facture)</h2>
+          {(['ice','if','rc','patente','capital'] as const).map((k) => (
+            <div key={k}>
+              <label className="block text-[#9F9A8E] uppercase mb-1 font-semibold">{k.toUpperCase()}</label>
+              <input
+                type="text"
+                value={form.legal?.[k] ?? ''}
+                onChange={(e) => setForm((p) => ({ ...p, legal: { ...(p.legal ?? {}), [k]: e.target.value } }))}
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5"
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Save CTA */}
         <div className="flex justify-end">
           <button
