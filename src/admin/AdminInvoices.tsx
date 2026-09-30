@@ -308,30 +308,36 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
       {/* Edit / Create modal */}
       {editing && (
         <div className="fixed inset-0 z-40 bg-black/70 overflow-auto p-4">
-          <div className="mx-auto max-w-2xl bg-[#18170F] border border-white/10 p-6 relative">
-            <button
-              type="button"
-              onClick={() => setEditing(null)}
-              aria-label="Fermer"
-              title="Fermer"
-              className="absolute top-3 right-3 flex items-center justify-center w-8 h-8 text-white/50 hover:text-white hover:bg-white/10 rounded transition-colors"
-            >
-              <X size={18} />
-            </button>
-            <h2 className="text-sm font-semibold text-[#C6A53A] uppercase tracking-widest mb-5 pr-10">
-              {editing.number
-                ? `Modifier ${editing.docType} ${editing.number}`
-                : editing.docType === 'facture'
-                ? 'Nouvelle facture'
-                : 'Nouveau devis'}
-            </h2>
-            <InvoiceForm
-              clients={clients}
-              initial={editing}
-              onEnsureClient={onEnsureClient}
-              onSubmit={handleSave}
-              onCancel={() => setEditing(null)}
-            />
+          <div className="mx-auto max-w-2xl bg-[#18170F] border border-white/10">
+            {/* En-tête collant avec bouton Fermer bien visible */}
+            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-[#18170F] border-b border-white/10 px-6 py-4">
+              <h2 className="text-sm font-semibold text-[#C6A53A] uppercase tracking-widest">
+                {editing.number
+                  ? `Modifier ${editing.docType} ${editing.number}`
+                  : editing.docType === 'facture'
+                  ? 'Nouvelle facture'
+                  : 'Nouveau devis'}
+              </h2>
+              <button
+                type="button"
+                onClick={() => setEditing(null)}
+                aria-label="Fermer sans enregistrer"
+                title="Fermer sans enregistrer"
+                className="flex items-center gap-1.5 border border-white/25 text-white/80 hover:text-white hover:border-white/50 hover:bg-white/5 px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                <X size={14} />
+                Fermer
+              </button>
+            </div>
+            <div className="p-6">
+              <InvoiceForm
+                clients={clients}
+                initial={editing}
+                onEnsureClient={onEnsureClient}
+                onSubmit={handleSave}
+                onCancel={() => setEditing(null)}
+              />
+            </div>
           </div>
         </div>
       )}
