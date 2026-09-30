@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Client, Prescription, Invoice } from '../types';
 import { ClientForm } from './ClientForm';
 import { PrescriptionForm } from './PrescriptionForm';
@@ -32,6 +32,16 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
   const [addingNew, setAddingNew] = useState(false);
   const [addingPrescription, setAddingPrescription] = useState(false);
   const [editingPrescription, setEditingPrescription] = useState<Prescription | null>(null);
+  const prescriptionRef = useRef<HTMLDivElement>(null);
+
+  // Ouvre le formulaire de mesures de vue et fait défiler jusqu'à lui
+  const openPrescriptionForm = () => {
+    setEditingPrescription(null);
+    setAddingPrescription(true);
+    setTimeout(() => {
+      prescriptionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
+  };
 
   const filtered = clients.filter((c) =>
     [c.fullName, c.phone, c.clientCode]
@@ -170,6 +180,13 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                   </div>
                   <div className="flex gap-2">
                     <button
+                      onClick={openPrescriptionForm}
+                      className="flex items-center gap-1.5 bg-[#C6A53A] text-[#11110F] font-bold px-3 py-1.5 text-xs uppercase tracking-wide hover:bg-[#E3C866] transition-colors"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      Mesures de vue
+                    </button>
+                    <button
                       onClick={() => setEditing((v) => !v)}
                       className="flex items-center gap-1.5 border border-white/20 text-white px-3 py-1.5 text-xs hover:bg-white/5 transition-colors"
                     >
@@ -210,19 +227,20 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                 )}
               </div>
 
-              {/* ── Ordonnances ── */}
-              <div className="bg-[#1B1A15] border border-white/5 p-5 space-y-3">
+              {/* ── Ordonnances — mesures de vue ── */}
+              <div ref={prescriptionRef} className="bg-[#1B1A15] border border-[#C6A53A]/20 p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
                     <Eye className="w-4 h-4 text-[#C6A53A]" />
-                    Ordonnances
+                    Ordonnances — mesures de vue
                   </h3>
                   {!addingPrescription && !editingPrescription && (
                     <button
-                      onClick={() => { setAddingPrescription(true); setEditingPrescription(null); }}
-                      className="flex items-center gap-1.5 border border-[#C6A53A]/40 text-[#C6A53A] px-3 py-1.5 text-xs hover:bg-[#C6A53A]/10 transition-colors"
+                      onClick={openPrescriptionForm}
+                      className="flex items-center gap-1.5 bg-[#C6A53A] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-wide hover:bg-[#E3C866] transition-colors"
                     >
-                      + Nouvelle ordonnance
+                      <Eye className="w-3.5 h-3.5" />
+                      Saisir les mesures de vue
                     </button>
                   )}
                 </div>
@@ -249,7 +267,20 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                 )}
 
                 {clientPrescriptions.length === 0 ? (
-                  <p className="text-xs text-[#9F9A8E]">Aucune ordonnance enregistrée.</p>
+                  !addingPrescription && !editingPrescription && (
+                    <div className="border border-dashed border-[#C6A53A]/30 bg-[#11110F] px-4 py-6 text-center space-y-3">
+                      <p className="text-xs text-[#9F9A8E]">
+                        Aucune mesure de vue enregistrée pour ce client.
+                      </p>
+                      <button
+                        onClick={openPrescriptionForm}
+                        className="inline-flex items-center gap-1.5 bg-[#C6A53A] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-wide hover:bg-[#E3C866] transition-colors"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        Saisir les mesures de vue
+                      </button>
+                    </div>
+                  )
                 ) : (
                   <ul className="space-y-2">
                     {clientPrescriptions.map((p) => (
