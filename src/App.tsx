@@ -76,6 +76,7 @@ import { AdminMessages } from './admin/AdminMessages';
 import { AdminSocial } from './admin/AdminSocial';
 import { AdminSettings } from './admin/AdminSettings';
 import { AdminReviews } from './admin/AdminReviews';
+import { AdminClients } from './admin/AdminClients';
 
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -123,6 +124,7 @@ export default function App() {
   const [adminUser, setAdminUser] = useState<AdminUser | null>(null);
   const [adminActiveTab, setAdminActiveTab] = useState<string>('dashboard');
   const [adminOpenProductModal, setAdminOpenProductModal] = useState<boolean>(false);
+  const [billingClientFilter, setBillingClientFilter] = useState<string | null>(null);
 
   const applyPublicData = (data: Awaited<ReturnType<typeof loadPublicStoreData>>) => {
     storage.hydratePublicData(data);
@@ -709,7 +711,21 @@ export default function App() {
           />
         )}
 
-        {adminActiveTab === 'clients' && <div className="text-white">Clients (à venir)</div>}
+        {adminActiveTab === 'clients' && (
+          <AdminClients
+            clients={clients}
+            prescriptions={prescriptions}
+            invoices={invoices}
+            onSaveClient={handleSaveClient}
+            onDeleteClient={handleDeleteClient}
+            onSavePrescription={handleSavePrescription}
+            onDeletePrescription={handleDeletePrescription}
+            onNavigateToInvoice={(clientId) => {
+              setBillingClientFilter(clientId);
+              setAdminActiveTab('billing');
+            }}
+          />
+        )}
 
         {adminActiveTab === 'billing' && <div className="text-white">Facturation (à venir)</div>}
         </AdminLayout>
