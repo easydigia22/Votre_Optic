@@ -293,9 +293,10 @@ export default function App() {
 
   const handleDeletePrescription = async (id: string): Promise<void> => {
     const nextList = prescriptions.filter((p) => p.id !== id);
-    setPrescriptions(nextList);
-    if (isSupabaseConfigured) await deleteAdminRow('prescriptions', id);
-    else storage.setPrescriptions(nextList);
+    void runAdminMutation(
+      () => deleteAdminRow('prescriptions', id),
+      () => { storage.setPrescriptions(nextList); },
+    );
   };
 
   // Invoice handlers
