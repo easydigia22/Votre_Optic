@@ -10,6 +10,9 @@ import {
   AdminUser,
   ProductReview,
   ReviewStatus,
+  Client,
+  Prescription,
+  Invoice,
 } from '../types';
 
 const STORAGE_KEYS = {
@@ -25,6 +28,9 @@ const STORAGE_KEYS = {
   WISHLIST: 'vo_wishlist_v1',
   REVIEWS: 'vo_reviews_v1',
   INITIALIZED: 'vo_initialized_v1',
+  CLIENTS: 'vo_clients_v1',
+  PRESCRIPTIONS: 'vo_prescriptions_v1',
+  INVOICES: 'vo_invoices_v1',
 };
 
 // Initial Moroccan Luxury Optic Demo Data
@@ -723,6 +729,55 @@ export const DEFAULT_REVIEWS: ProductReview[] = [
   },
 ];
 
+export const DEFAULT_CLIENTS: Client[] = [
+  {
+    id: 'client-demo-1',
+    clientCode: 'CLI-2026-0001',
+    fullName: 'Sofia Bennani',
+    phone: '+212 661 22 33 44',
+    email: 'sofia.bennani@example.ma',
+    address: 'Avenue Mohammed VI',
+    city: 'Marrakech',
+    birthDate: '1990-04-12',
+    notes: 'Préfère les montures acétate.',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];
+
+export const DEFAULT_PRESCRIPTIONS: Prescription[] = [
+  {
+    id: 'presc-demo-1',
+    clientId: 'client-demo-1',
+    prescriptionDate: '2026-09-01',
+    prescriber: 'Dr. Alami',
+    right: { sphere: -1.25, cylinder: -0.5, axis: 90, addition: 1.0 },
+    left: { sphere: -1.0, cylinder: -0.25, axis: 85, addition: 1.0 },
+    pd: 62, pdRight: 31, pdLeft: 31,
+    notes: '',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];
+
+export const DEFAULT_INVOICES: Invoice[] = [
+  {
+    id: 'inv-demo-1',
+    clientId: 'client-demo-1',
+    docType: 'facture',
+    number: 'FAC-2026-0001',
+    docDate: '2026-09-02',
+    status: 'payee',
+    items: [
+      { label: 'Monture acétate + verres unifocaux', qty: 1, unitPriceHt: 1500 },
+    ],
+    totalHt: 1500, tvaRate: 20, tvaAmount: 300, totalTtc: 1800,
+    notes: '', sourceDevisId: null,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];
+
 // Helper to safely read and write to LocalStorage
 function getFromStorage<T>(key: string, defaultValue: T): T {
   try {
@@ -760,6 +815,9 @@ class StorageService {
       setToStorage(STORAGE_KEYS.MESSAGES, DEFAULT_MESSAGES);
       setToStorage(STORAGE_KEYS.REVIEWS, DEFAULT_REVIEWS);
       setToStorage(STORAGE_KEYS.WISHLIST, []);
+      setToStorage(STORAGE_KEYS.CLIENTS, DEFAULT_CLIENTS);
+      setToStorage(STORAGE_KEYS.PRESCRIPTIONS, DEFAULT_PRESCRIPTIONS);
+      setToStorage(STORAGE_KEYS.INVOICES, DEFAULT_INVOICES);
       localStorage.setItem(STORAGE_KEYS.INITIALIZED, 'true');
     }
   }
@@ -775,6 +833,9 @@ class StorageService {
     setToStorage(STORAGE_KEYS.MESSAGES, DEFAULT_MESSAGES);
     setToStorage(STORAGE_KEYS.REVIEWS, DEFAULT_REVIEWS);
     setToStorage(STORAGE_KEYS.WISHLIST, []);
+    setToStorage(STORAGE_KEYS.CLIENTS, DEFAULT_CLIENTS);
+    setToStorage(STORAGE_KEYS.PRESCRIPTIONS, DEFAULT_PRESCRIPTIONS);
+    setToStorage(STORAGE_KEYS.INVOICES, DEFAULT_INVOICES);
     localStorage.removeItem(STORAGE_KEYS.ADMIN_SESSION);
     localStorage.setItem(STORAGE_KEYS.INITIALIZED, 'true');
   }
@@ -1189,6 +1250,33 @@ class StorageService {
   public deleteReview(id: string): void {
     const list = this.getReviews().filter((r) => r.id !== id);
     setToStorage(STORAGE_KEYS.REVIEWS, list);
+  }
+
+  // --- CLIENTS ---
+  public getClients(): Client[] {
+    return getFromStorage<Client[]>(STORAGE_KEYS.CLIENTS, DEFAULT_CLIENTS);
+  }
+
+  public setClients(list: Client[]): void {
+    setToStorage(STORAGE_KEYS.CLIENTS, list);
+  }
+
+  // --- PRESCRIPTIONS ---
+  public getPrescriptions(): Prescription[] {
+    return getFromStorage<Prescription[]>(STORAGE_KEYS.PRESCRIPTIONS, DEFAULT_PRESCRIPTIONS);
+  }
+
+  public setPrescriptions(list: Prescription[]): void {
+    setToStorage(STORAGE_KEYS.PRESCRIPTIONS, list);
+  }
+
+  // --- INVOICES ---
+  public getInvoices(): Invoice[] {
+    return getFromStorage<Invoice[]>(STORAGE_KEYS.INVOICES, DEFAULT_INVOICES);
+  }
+
+  public setInvoices(list: Invoice[]): void {
+    setToStorage(STORAGE_KEYS.INVOICES, list);
   }
 
   // --- AUTHENTICATION & SESSIONS ---
