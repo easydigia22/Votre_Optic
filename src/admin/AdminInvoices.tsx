@@ -13,6 +13,7 @@ interface AdminInvoicesProps {
   onSaveInvoice: (i: Invoice) => Promise<Invoice> | void;
   onDeleteInvoice: (id: string) => Promise<void>;
   onConvertDevisToFacture: (devis: Invoice) => Promise<Invoice> | void;
+  onEnsureClient: (name: string) => Promise<string>;
 }
 
 const STATUS_LABELS: Record<InvoiceStatus, string> = {
@@ -59,6 +60,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
   onSaveInvoice,
   onDeleteInvoice,
   onConvertDevisToFacture,
+  onEnsureClient,
 }) => {
   const [query, setQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState<'all' | 'devis' | 'facture'>('all');
@@ -306,8 +308,17 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
       {/* Edit / Create modal */}
       {editing && (
         <div className="fixed inset-0 z-40 bg-black/70 overflow-auto p-4">
-          <div className="mx-auto max-w-2xl bg-[#18170F] border border-white/10 p-6">
-            <h2 className="text-sm font-semibold text-[#C6A53A] uppercase tracking-widest mb-5">
+          <div className="mx-auto max-w-2xl bg-[#18170F] border border-white/10 p-6 relative">
+            <button
+              type="button"
+              onClick={() => setEditing(null)}
+              aria-label="Fermer"
+              title="Fermer"
+              className="absolute top-3 right-3 flex items-center justify-center w-8 h-8 text-white/50 hover:text-white hover:bg-white/10 rounded transition-colors"
+            >
+              <X size={18} />
+            </button>
+            <h2 className="text-sm font-semibold text-[#C6A53A] uppercase tracking-widest mb-5 pr-10">
               {editing.number
                 ? `Modifier ${editing.docType} ${editing.number}`
                 : editing.docType === 'facture'
@@ -317,6 +328,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
             <InvoiceForm
               clients={clients}
               initial={editing}
+              onEnsureClient={onEnsureClient}
               onSubmit={handleSave}
               onCancel={() => setEditing(null)}
             />
