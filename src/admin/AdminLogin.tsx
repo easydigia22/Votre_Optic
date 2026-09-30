@@ -13,7 +13,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
   onLoginSuccess,
   onBackToStore,
 }) => {
-  const [email, setEmail] = useState('admin@votreoptique.ma');
+  const [email, setEmail] = useState('Votre.optique3@gmail.com');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -83,7 +83,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@votreoptique.ma"
+                placeholder="Votre.optique3@gmail.com"
                 className="w-full bg-[#11110F] border border-white/10 focus:border-[#C6A53A] text-xs sm:text-sm text-white pl-9 pr-3 py-2.5 outline-none transition-colors"
               />
             </div>
