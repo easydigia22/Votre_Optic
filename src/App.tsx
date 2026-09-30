@@ -561,6 +561,7 @@ export default function App() {
   const unreadMessagesCount = messages.filter((m) => m.status === 'unread').length;
   const activePromosCount = promotions.filter((p) => p.isActive).length;
   const pendingReviewsCount = reviews.filter((r) => r.status === 'pending').length;
+  const unpaidInvoicesCount = invoices.filter((i) => i.docType === 'facture' && i.status === 'impayee').length;
 
   // ----------------------------------------------------
   // RENDER ADMIN PORTAL IF VIEW IS ADMIN
@@ -600,6 +601,7 @@ export default function App() {
             unreadMessages: unreadMessagesCount,
             activePromos: activePromosCount,
             pendingReviews: pendingReviewsCount,
+            unpaidInvoices: unpaidInvoicesCount,
           }}
         >
         {adminActiveTab === 'dashboard' && (
@@ -706,6 +708,10 @@ export default function App() {
             onResetAllData={handleResetAllData}
           />
         )}
+
+        {adminActiveTab === 'clients' && <div className="text-white">Clients (à venir)</div>}
+
+        {adminActiveTab === 'billing' && <div className="text-white">Facturation (à venir)</div>}
         </AdminLayout>
       </div>
     );

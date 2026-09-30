@@ -18,6 +18,8 @@ import {
   X,
   ShieldCheck,
   Star,
+  Users,
+  Receipt,
 } from 'lucide-react';
 
 interface AdminLayoutProps {
@@ -31,6 +33,7 @@ interface AdminLayoutProps {
     unreadMessages: number;
     activePromos: number;
     pendingReviews?: number;
+    unpaidInvoices?: number;
   };
   children: React.ReactNode;
 }
@@ -56,6 +59,14 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       label: 'Stocks & Alertes',
       icon: Boxes,
       badge: badgeCounts?.lowStock && badgeCounts.lowStock > 0 ? `${badgeCounts.lowStock}` : undefined,
+      badgeColor: 'bg-red-500 text-white',
+    },
+    { id: 'clients', label: 'Clients', icon: Users },
+    {
+      id: 'billing',
+      label: 'Facturation',
+      icon: Receipt,
+      badge: badgeCounts?.unpaidInvoices && badgeCounts.unpaidInvoices > 0 ? `${badgeCounts.unpaidInvoices}` : undefined,
       badgeColor: 'bg-red-500 text-white',
     },
     {
