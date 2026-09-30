@@ -77,6 +77,7 @@ import { AdminSocial } from './admin/AdminSocial';
 import { AdminSettings } from './admin/AdminSettings';
 import { AdminReviews } from './admin/AdminReviews';
 import { AdminClients } from './admin/AdminClients';
+import { AdminInvoices } from './admin/AdminInvoices';
 
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -595,6 +596,7 @@ export default function App() {
           onSelectTab={(tab) => {
             setAdminActiveTab(tab);
             setAdminOpenProductModal(false);
+            if (tab !== 'billing') setBillingClientFilter(null);
           }}
           onLogout={handleAdminLogout}
           onBackToStore={() => handleNavigate('home')}
@@ -727,7 +729,17 @@ export default function App() {
           />
         )}
 
-        {adminActiveTab === 'billing' && <div className="text-white">Facturation (à venir)</div>}
+        {adminActiveTab === 'billing' && (
+          <AdminInvoices
+            invoices={invoices}
+            clients={clients}
+            settings={settings}
+            initialClientFilter={billingClientFilter}
+            onSaveInvoice={handleSaveInvoice}
+            onDeleteInvoice={handleDeleteInvoice}
+            onConvertDevisToFacture={handleConvertDevisToFacture}
+          />
+        )}
         </AdminLayout>
       </div>
     );
