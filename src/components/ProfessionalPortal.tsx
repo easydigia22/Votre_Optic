@@ -3,13 +3,11 @@ import type { User } from '@supabase/supabase-js';
 import {
   ArrowRight,
   BriefcaseBusiness,
-  CheckCircle2,
   LogOut,
   Mail,
   MessageCircle,
   ShieldCheck,
   Smartphone,
-  UserRound,
 } from 'lucide-react';
 import { supabase } from '../services/supabase';
 import type { StoreSettings } from '../types';
@@ -20,22 +18,12 @@ interface ProfessionalPortalProps {
   onNavigate: (view: string) => void;
 }
 
-type Mode = 'login' | 'register';
-
 export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings, onNavigate }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [mode, setMode] = useState<Mode>('register');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  const [form, setForm] = useState({
-    fullName: '',
-    company: '',
-    phone: '',
-    email: '',
-    password: '',
-  });
+  const [form, setForm] = useState({ email: '', password: '' });
 
   useEffect(() => {
     if (!supabase) {
@@ -59,38 +47,14 @@ export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings
     if (!supabase) return;
     setSubmitting(true);
     setError('');
-    setMessage('');
 
     try {
-      if (mode === 'register') {
-        const { data, error: signUpError } = await supabase.auth.signUp({
-          email: form.email.trim(),
-          password: form.password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/?view=professional`,
-            data: {
-              full_name: form.fullName.trim(),
-              company: form.company.trim(),
-              phone: form.phone.trim(),
-              account_type: 'professional',
-            },
-          },
-        });
-        if (signUpError) throw signUpError;
-        if (data.session) {
-          setUser(data.user);
-          setMessage('Votre espace professionnel est prêt.');
-        } else {
-          setMessage('Compte créé. Consultez votre email pour confirmer votre inscription.');
-        }
-      } else {
-        const { data, error: signInError } = await supabase.auth.signInWithPassword({
-          email: form.email.trim(),
-          password: form.password,
-        });
-        if (signInError) throw signInError;
-        setUser(data.user);
-      }
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: form.email.trim(),
+        password: form.password,
+      });
+      if (signInError) throw signInError;
+      setUser(data.user);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Impossible de continuer.');
     } finally {
@@ -102,7 +66,6 @@ export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings
     if (!supabase) return;
     await supabase.auth.signOut();
     setUser(null);
-    setMode('login');
   };
 
   if (loading) {
@@ -168,42 +131,28 @@ export const ProfessionalPortal: React.FC<ProfessionalPortalProps> = ({ settings
 
   return (
     <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] pt-28 pb-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 items-stretch">
-        <section className="border border-[#C6A53A]/20 bg-[#1B1A15] p-7 sm:p-10">
-          <span className="text-xs uppercase tracking-widest text-[#C6A53A]">Votre Optique Pro</span>
-          <h1 className="font-serif-luxury text-4xl text-white mt-3">Votre espace professionnel, partout avec vous.</h1>
-          <p className="text-sm text-[#9F9A8E] mt-5 leading-relaxed">
-            Créez votre compte, installez l’application sur votre téléphone et retrouvez votre catalogue ainsi que votre conseiller WhatsApp en quelques secondes.
-          </p>
-          <div className="space-y-4 mt-8 text-sm">
-            {['Inscription autonome et sécurisée', 'Installation sur Android, iPhone ou ordinateur', 'Accès direct depuis votre écran d’accueil'].map((item) => (
-              <div key={item} className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-[#C6A53A]" />{item}</div>
-            ))}
-          </div>
-          <div className="mt-8"><PWAInstallButton /></div>
-        </section>
-
+      <div className="max-w-md mx-auto px-4 sm:px-6">
         <section className="border border-white/10 bg-[#171612] p-7 sm:p-10">
-          <div className="flex gap-2 mb-8">
-            <button onClick={() => { setMode('register'); setError(''); }} className={`flex-1 py-2.5 text-xs uppercase tracking-wider ${mode === 'register' ? 'bg-[#C6A53A] text-black' : 'border border-white/10 text-[#9F9A8E]'}`}>Créer mon compte</button>
-            <button onClick={() => { setMode('login'); setError(''); }} className={`flex-1 py-2.5 text-xs uppercase tracking-wider ${mode === 'login' ? 'bg-[#C6A53A] text-black' : 'border border-white/10 text-[#9F9A8E]'}`}>Me connecter</button>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C6A53A]">
+              <ShieldCheck className="w-4 h-4" /> Espace Professionnel
+            </div>
+            <h1 className="font-serif-luxury text-3xl text-white mt-3">Connexion</h1>
           </div>
 
-          {message && <div className="mb-5 p-3 border border-green-700 bg-green-950/30 text-sm text-green-300">{message}</div>}
           {error && <div className="mb-5 p-3 border border-red-800 bg-red-950/30 text-sm text-red-300">{error}</div>}
 
           <form onSubmit={submit} className="space-y-4">
-            {mode === 'register' && (
-              <>
-                <label className="block"><span className="text-xs text-[#9F9A8E]">Nom complet</span><div className="relative mt-1"><UserRound className="absolute left-3 top-3 w-4 h-4 text-[#C6A53A]" /><input required value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} className="w-full bg-[#11110F] border border-white/10 py-2.5 pl-10 pr-3 outline-none focus:border-[#C6A53A]" /></div></label>
-                <label className="block"><span className="text-xs text-[#9F9A8E]">Entreprise / activité</span><input required value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
-                <label className="block"><span className="text-xs text-[#9F9A8E]">Téléphone / WhatsApp</span><input required type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
-              </>
-            )}
-            <label className="block"><span className="text-xs text-[#9F9A8E]">Email professionnel</span><input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
-            <label className="block"><span className="text-xs text-[#9F9A8E]">Mot de passe (8 caractères minimum)</span><input required minLength={8} type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" /></label>
+            <label className="block">
+              <span className="text-xs text-[#9F9A8E]">Email</span>
+              <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" />
+            </label>
+            <label className="block">
+              <span className="text-xs text-[#9F9A8E]">Mot de passe</span>
+              <input required type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="mt-1 w-full bg-[#11110F] border border-white/10 p-2.5 outline-none focus:border-[#C6A53A]" />
+            </label>
             <button disabled={submitting} className="w-full py-3 bg-[#C6A53A] hover:bg-[#E3C866] disabled:opacity-60 text-[#11110F] font-bold text-xs uppercase tracking-widest">
-              {submitting ? 'Veuillez patienter…' : mode === 'register' ? 'Créer mon espace professionnel' : 'Accéder à mon espace'}
+              {submitting ? 'Veuillez patienter…' : 'Se connecter'}
             </button>
           </form>
         </section>
