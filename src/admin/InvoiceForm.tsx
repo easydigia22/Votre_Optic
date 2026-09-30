@@ -22,6 +22,13 @@ const inputCls =
 
 const labelCls = 'block text-[10px] uppercase tracking-widest text-[#9F9A8E] mb-1';
 
+/** Parse a number input value safely; returns 0 for empty/NaN intermediate strings. */
+const safeNum = (raw: string): number => {
+  if (raw === '' || raw === '-') return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) ? n : 0;
+};
+
 // ─── Module-scope component — must NOT be defined inside InvoiceForm ───
 interface ItemRowProps {
   idx: number;
@@ -45,7 +52,7 @@ const ItemRow: React.FC<ItemRowProps> = ({ idx, item, canRemove, onChange, onRem
       min="1"
       step="1"
       value={item.qty === 0 ? '' : item.qty}
-      onChange={(e) => onChange(idx, 'qty', e.target.value === '' ? 0 : Number(e.target.value))}
+      onChange={(e) => onChange(idx, 'qty', safeNum(e.target.value))}
       placeholder="Qté"
       className={inputCls + ' text-center'}
     />
@@ -54,9 +61,7 @@ const ItemRow: React.FC<ItemRowProps> = ({ idx, item, canRemove, onChange, onRem
       min="0"
       step="0.01"
       value={item.unitPriceHt === 0 ? '' : item.unitPriceHt}
-      onChange={(e) =>
-        onChange(idx, 'unitPriceHt', e.target.value === '' ? 0 : Number(e.target.value))
-      }
+      onChange={(e) => onChange(idx, 'unitPriceHt', safeNum(e.target.value))}
       placeholder="PU HT"
       className={inputCls + ' text-right'}
     />
@@ -87,6 +92,7 @@ export const InvoiceForm: React.FC<Props> = ({
   onSubmit,
   onCancel,
 }) => {
+  const initialItems = initial?.items ?? [{ label: '', qty: 1, unitPriceHt: 0 }];
   const [form, setForm] = useState<Invoice>(
     initial ?? {
       id: crypto.randomUUID(),
@@ -95,7 +101,7 @@ export const InvoiceForm: React.FC<Props> = ({
       number: '',
       docDate: new Date().toISOString().slice(0, 10),
       status: 'brouillon',
-      items: [{ label: '', qty: 1, unitPriceHt: 0 }],
+      items: initialItems,
       totalHt: 0,
       tvaRate: 20,
       tvaAmount: 0,
@@ -105,6 +111,10 @@ export const InvoiceForm: React.FC<Props> = ({
       createdAt: '',
       updatedAt: '',
     },
+  );
+  // Stable UI-only row ids — never persisted; keeps input focus across add/remove
+  const [rowIds, setRowIds] = useState<string[]>(() =>
+    initialItems.map(() => crypto.randomUUID()),
   );
 
   const totals = useMemo(
@@ -127,11 +137,15 @@ export const InvoiceForm: React.FC<Props> = ({
     }));
   };
 
-  const addItem = () =>
+  const addItem = () => {
     setForm((p) => ({ ...p, items: [...p.items, { label: '', qty: 1, unitPriceHt: 0 }] }));
+    setRowIds((ids) => [...ids, crypto.randomUUID()]);
+  };
 
-  const removeItem = (idx: number) =>
+  const removeItem = (idx: number) => {
     setForm((p) => ({ ...p, items: p.items.filter((_, i) => i !== idx) }));
+    setRowIds((ids) => ids.filter((_, i) => i !== idx));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -237,7 +251,7 @@ export const InvoiceForm: React.FC<Props> = ({
         <div className="space-y-2">
           {form.items.map((item, idx) => (
             <ItemRow
-              key={idx}
+              key={rowIds[idx]}
               idx={idx}
               item={item}
               canRemove={form.items.length > 1}
@@ -268,10 +282,7 @@ export const InvoiceForm: React.FC<Props> = ({
             step="1"
             value={form.tvaRate === 0 ? '' : form.tvaRate}
             onChange={(e) =>
-              setForm((p) => ({
-                ...p,
-                tvaRate: e.target.value === '' ? 0 : Number(e.target.value),
-              }))
+              setForm((p) => ({ ...p, tvaRate: safeNum(e.target.value) }))
             }
             className={inputCls}
           />
