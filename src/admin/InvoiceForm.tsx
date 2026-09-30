@@ -81,6 +81,8 @@ interface Props {
   clients: Client[];
   initial?: Invoice | null;
   defaultClientId?: string | null;
+  /** Résout un nom saisi en clientId : relie un client existant ou en crée un. */
+  onEnsureClient: (name: string) => Promise<string>;
   onSubmit: (i: Invoice) => void;
   onCancel: () => void;
 }
@@ -89,6 +91,7 @@ export const InvoiceForm: React.FC<Props> = ({
   clients,
   initial,
   defaultClientId,
+  onEnsureClient,
   onSubmit,
   onCancel,
 }) => {
@@ -116,6 +119,13 @@ export const InvoiceForm: React.FC<Props> = ({
   const [rowIds, setRowIds] = useState<string[]>(() =>
     initialItems.map(() => crypto.randomUUID()),
   );
+
+  // Nom du client saisi librement (autocomplétion sur les clients existants)
+  const [clientNameInput, setClientNameInput] = useState<string>(() => {
+    const linkedId = initial?.clientId ?? defaultClientId ?? '';
+    return clients.find((c) => c.id === linkedId)?.fullName ?? '';
+  });
+  const [saving, setSaving] = useState(false);
 
   const totals = useMemo(
     () => computeInvoiceTotals(form.items, form.tvaRate),
@@ -147,31 +157,44 @@ export const InvoiceForm: React.FC<Props> = ({
     setRowIds((ids) => ids.filter((_, i) => i !== idx));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ ...form, ...totals });
+    const name = clientNameInput.trim();
+    if (!name || saving) return;
+    setSaving(true);
+    try {
+      const clientId = await onEnsureClient(name);
+      onSubmit({ ...form, clientId, ...totals });
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* Client + docType + date + statut */}
       <div className="grid grid-cols-2 gap-4">
-        {/* Client */}
+        {/* Client — saisie libre avec autocomplétion ; créé automatiquement si nouveau */}
         <div className="col-span-2">
           <label className={labelCls}>Client *</label>
-          <select
+          <input
+            type="text"
             required
-            value={form.clientId}
-            onChange={(e) => setForm((p) => ({ ...p, clientId: e.target.value }))}
+            list="invoice-client-suggestions"
+            value={clientNameInput}
+            onChange={(e) => setClientNameInput(e.target.value)}
+            placeholder="Nom du client"
+            autoComplete="off"
             className={inputCls}
-          >
-            <option value="">— Sélectionner un client —</option>
+          />
+          <datalist id="invoice-client-suggestions">
             {clients.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.fullName}
-              </option>
+              <option key={c.id} value={c.fullName} />
             ))}
-          </select>
+          </datalist>
+          <p className="mt-1 text-[10px] text-[#9F9A8E]">
+            Un nouveau client est créé automatiquement si le nom n'existe pas encore.
+          </p>
         </div>
 
         {/* Type de document */}
@@ -329,9 +352,10 @@ export const InvoiceForm: React.FC<Props> = ({
         </button>
         <button
           type="submit"
-          className="px-5 py-2 text-xs bg-[#C6A53A] text-[#0D0C0B] font-semibold hover:bg-[#F5E6A6] transition-colors"
+          disabled={saving}
+          className="px-5 py-2 text-xs bg-[#C6A53A] text-[#0D0C0B] font-semibold hover:bg-[#F5E6A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Enregistrer
+          {saving ? 'Enregistrement…' : 'Enregistrer'}
         </button>
       </div>
     </form>

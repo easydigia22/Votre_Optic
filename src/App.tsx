@@ -278,6 +278,36 @@ export default function App() {
     );
   };
 
+  // Résout un nom saisi sur une facture en clientId : relie un client existant
+  // (nom identique, insensible à la casse) ou en crée un nouveau automatiquement.
+  // Attend la persistance complète pour que la contrainte FK de la facture tienne.
+  const ensureClientByName = async (name: string): Promise<string> => {
+    const trimmed = name.trim();
+    const existing = clients.find(
+      (c) => c.fullName.trim().toLowerCase() === trimmed.toLowerCase(),
+    );
+    if (existing) return existing.id;
+    const now = new Date().toISOString();
+    const newClient: Client = {
+      id: crypto.randomUUID(),
+      clientCode: nextSequentialNumber('CLI', clients.map((c) => c.clientCode)),
+      fullName: trimmed,
+      phone: '',
+      email: '',
+      address: '',
+      city: '',
+      birthDate: null,
+      notes: '',
+      createdAt: now,
+      updatedAt: now,
+    };
+    await runAdminMutation(
+      () => saveAdminClient(newClient),
+      () => { storage.setClients([newClient, ...clients]); },
+    );
+    return newClient.id;
+  };
+
   // Prescription handlers
   const handleSavePrescription = async (draft: Prescription): Promise<void> => {
     const now = new Date().toISOString();
@@ -745,6 +775,7 @@ export default function App() {
             onSaveInvoice={handleSaveInvoice}
             onDeleteInvoice={handleDeleteInvoice}
             onConvertDevisToFacture={handleConvertDevisToFacture}
+            onEnsureClient={ensureClientByName}
           />
         )}
         </AdminLayout>
