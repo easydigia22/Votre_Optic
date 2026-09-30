@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   ChevronRight,
   Heart,
-  BriefcaseBusiness,
 } from 'lucide-react';
 import { StoreSettings } from '../types';
 
@@ -97,11 +96,11 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             ) : (
               <button
-                onClick={() => onNavigate('professional')}
+                onClick={() => onNavigate('admin')}
                 className="flex items-center gap-1 text-xs text-[#9F9A8E] hover:text-[#C6A53A] transition-colors"
               >
-                <BriefcaseBusiness className="w-3 h-3" />
-                Espace Pro
+                <ShieldCheck className="w-3 h-3" />
+                Espace Admin
               </button>
             )}
           </div>
@@ -241,14 +240,14 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="space-y-1">
               <button
                 onClick={() => {
-                  onNavigate('professional');
+                  onNavigate('admin');
                   setMobileMenuOpen(false);
                 }}
                 className="w-full flex items-center justify-between py-3.5 text-left border-b border-white/5 text-base font-medium text-[#E3C866] hover:text-[#C6A53A]"
               >
                 <div className="flex items-center gap-2">
-                  <BriefcaseBusiness className="w-4 h-4" />
-                  <span>Espace Professionnel</span>
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Espace Administrateur</span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-[#C6A53A]" />
               </button>
@@ -309,18 +308,6 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="text-center space-y-1">
               <p className="text-[#FFFDF7]">{settings.address}</p>
               <p>{settings.city}, {settings.country} · {settings.hours}</p>
-            </div>
-
-            <div className="text-center pt-2">
-              <button
-                onClick={() => {
-                  onNavigate('admin');
-                  setMobileMenuOpen(false);
-                }}
-                className="text-[#C6A53A] underline text-xs"
-              >
-                Accès Espace Administrateur
-              </button>
             </div>
           </div>
         </div>

@@ -52,7 +52,6 @@ import { BrandShowcase } from './components/BrandShowcase';
 import { OpticalExpertiseSection } from './components/OpticalExpertiseSection';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 import { WishlistPage } from './components/WishlistPage';
-import { ProfessionalPortal } from './components/ProfessionalPortal';
 import { PWAInstallButton } from './components/PWAInstallButton';
 
 // Admin Components
@@ -76,7 +75,7 @@ export default function App() {
   // Navigation View State
   const [currentView, setCurrentView] = useState<string>(() => {
     const requestedView = new URLSearchParams(window.location.search).get('view');
-    const publicViews = ['home', 'catalogue', 'promotions', 'about', 'contact', 'wishlist', 'professional'];
+    const publicViews = ['home', 'catalogue', 'promotions', 'about', 'contact', 'wishlist'];
     return requestedView && publicViews.includes(requestedView) ? requestedView : 'home';
   });
   const [catalogFilters, setCatalogFilters] = useState<Record<string, string>>({});
@@ -99,7 +98,7 @@ export default function App() {
   useEffect(() => {
     const handlePopState = () => {
       const requestedView = new URLSearchParams(window.location.search).get('view');
-      const publicViews = ['home', 'catalogue', 'promotions', 'about', 'contact', 'wishlist', 'professional'];
+      const publicViews = ['home', 'catalogue', 'promotions', 'about', 'contact', 'wishlist'];
       setCurrentView(requestedView && publicViews.includes(requestedView) ? requestedView : 'home');
       setSelectedProduct(null);
       window.scrollTo({ top: 0 });
@@ -740,9 +739,6 @@ export default function App() {
 
         {currentView === 'contact' && <ContactPage settings={settings} />}
 
-        {currentView === 'professional' && (
-          <ProfessionalPortal settings={settings} onNavigate={handleNavigate} />
-        )}
       </main>
 
       {/* Footer */}
