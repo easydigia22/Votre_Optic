@@ -131,8 +131,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <span>Lunettes de soleil</span>
             <span className="text-white/20">·</span>
             <span>Lentilles de contact</span>
-            <span className="text-white/20">·</span>
-            <span>Contrôle de la vue</span>
           </div>
 
           {/* Moroccan Direct Line */}

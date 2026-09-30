@@ -87,8 +87,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
             Contact & Rendez-vous
           </h1>
           <p className="text-xs sm:text-sm text-[#9F9A8E] leading-relaxed">
-            Notre équipe d'opticiens diplômés vous accueille pour vos examens de la vue,
-            le choix de vos montures de luxe et le centrage précis de vos verres.
+            Notre équipe d'opticiens diplômés vous accueille pour le choix de vos montures
+            de luxe et le centrage précis de vos verres.
           </p>
         </div>
 
@@ -368,7 +368,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                       >
                         <option value="Renseignement monture">Renseignement monture</option>
                         <option value="Devis verres optiques">Devis verres optiques / ordonnance</option>
-                        <option value="Prise de rendez-vous">Prise de rendez-vous examen</option>
+                        <option value="Prise de rendez-vous">Prise de rendez-vous en boutique</option>
                         <option value="Disponibilité en magasin">Disponibilité en magasin</option>
                         <option value="Autre demande">Autre demande</option>
                       </select>

@@ -31,8 +31,8 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
           </h1>
 
           <p className="text-sm text-[#9F9A8E] leading-relaxed">
-            Profitez d'avantages uniques sur nos collections de montures de marques, vos verres
-            correcteurs de haute technologie et des bilans de santé visuelle offerts à Casablanca.
+            Profitez d'avantages uniques sur nos collections de montures de marques et vos verres
+            correcteurs de haute technologie à Casablanca.
           </p>
         </div>
 

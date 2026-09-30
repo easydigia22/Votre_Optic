@@ -23,7 +23,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
           </h1>
           <p className="text-sm sm:text-base text-[#D5D1C4] leading-relaxed font-light">
             « Votre optique, votre Élégance entre nos mains » n’est pas seulement notre devise, c’est
-            l'engagement quotidien d’une équipe passionnée par l'art lunetier et la santé visuelle à
+            l'engagement quotidien d’une équipe passionnée par l'art lunetier et le confort visuel à
             Casablanca.
           </p>
         </div>
@@ -49,7 +49,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
 
           <div className="space-y-6">
             <h2 className="font-serif-luxury text-3xl text-white font-medium">
-              L’alliance rare de l’expertise médicale et de l’élégance intemporelle
+              L’alliance rare de l’expertise optique et de l’élégance intemporelle
             </h2>
             <p className="text-xs sm:text-sm text-[#9F9A8E] leading-relaxed">
               Fondée avec la volonté d’élever l’expérience optique au Maroc, <strong>Votre Optique</strong>{' '}
@@ -57,8 +57,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
               de l'acétate façonné à la main en Italie au titane pur forgé à Sabae au Japon.
             </p>
             <p className="text-xs sm:text-sm text-[#9F9A8E] leading-relaxed">
-              Nos opticiens diplômés réalisent des examens de réfraction approfondis avec des équipements
-              de dernière génération, vous garantissant un confort visuel optimal sans compromis sur votre style.
+              Nos opticiens diplômés montent et ajustent vos verres avec des équipements de dernière
+              génération, vous garantissant un confort visuel optimal sans compromis sur votre style.
             </p>
 
             <div className="pt-4 grid grid-cols-2 gap-4 text-xs">
