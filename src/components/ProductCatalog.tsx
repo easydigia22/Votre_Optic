@@ -177,7 +177,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#C6A53A]">
-                Haute Lunetterie · Casablanca
+                Haute Lunetterie · Marrakech
               </span>
               <h1 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl text-white font-medium mt-1">
                 Catalogue de Lunettes
@@ -519,7 +519,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 </h3>
                 <p className="text-xs text-[#9F9A8E] max-w-sm mb-6">
                   Modifiez votre recherche ou contactez notre opticien directement sur WhatsApp
-                  pour vérifier les disponibilités en réserve à Casablanca.
+                  pour vérifier les disponibilités en réserve à Marrakech.
                 </p>
                 <button
                   onClick={resetFilters}

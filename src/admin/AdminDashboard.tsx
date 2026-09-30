@@ -60,7 +60,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             Supervision du Magasin & Stock
           </h1>
           <p className="text-xs text-[#9F9A8E]">
-            Votre Optique Casablanca · Suivi en direct du stock, des collections et des demandes
+            Votre Optique Marrakech · Suivi en direct du stock, des collections et des demandes
           </p>
         </div>
 

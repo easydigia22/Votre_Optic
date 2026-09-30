@@ -23,11 +23,11 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
             Haute Précision & Savoir-Faire Lunetier
           </span>
           <h2 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl text-white font-medium mt-1 mb-4">
-            L'Excellence Lunetière à Casablanca
+            L'Excellence Lunetière à Marrakech
           </h2>
           <p className="text-xs sm:text-sm text-[#9F9A8E] leading-relaxed">
             Plus qu'un accessoire d'élégance, vos lunettes méritent une exécution parfaite.
-            Notre espace à Casablanca combine taillage numérique des verres et savoir-faire lunetier.
+            Notre espace à Marrakech combine taillage numérique des verres et savoir-faire lunetier.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
             « Votre optique, votre Élégance entre nos mains »
           </blockquote>
           <p className="text-xs sm:text-sm text-[#D5D1C4] max-w-xl mx-auto mb-6">
-            Rendez-vous dans notre magasin au Quartier Racine à Casablanca pour l'essayage
+            Rendez-vous dans notre magasin à Marrakech (Dyour Marjane) pour l'essayage
             de vos montures préférées et le conseil personnalisé de nos opticiens.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -91,7 +91,7 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
             </button>
             <a
               href={`https://wa.me/${cleanNumber}?text=${encodeURIComponent(
-                'Bonjour, je souhaite un rendez-vous en boutique à Casablanca pour l\'essayage de montures.'
+                'Bonjour, je souhaite un rendez-vous en boutique à Marrakech pour l\'essayage de montures.'
               )}`}
               target="_blank"
               rel="noopener noreferrer"

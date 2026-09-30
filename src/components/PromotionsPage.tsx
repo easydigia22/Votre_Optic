@@ -32,7 +32,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
 
           <p className="text-sm text-[#9F9A8E] leading-relaxed">
             Profitez d'avantages uniques sur nos collections de montures de marques et vos verres
-            correcteurs de haute technologie à Casablanca.
+            correcteurs de haute technologie à Marrakech.
           </p>
         </div>
 
@@ -138,7 +138,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
               Toutes nos offres du moment ont été attribuées
             </h3>
             <p className="text-xs text-[#9F9A8E] max-w-md mx-auto mb-6">
-              Contactez directement notre magasin à Casablanca sur WhatsApp pour connaître les
+              Contactez directement notre magasin à Marrakech sur WhatsApp pour connaître les
               offres d'accueil et privilèges clients du jour.
             </p>
             <a

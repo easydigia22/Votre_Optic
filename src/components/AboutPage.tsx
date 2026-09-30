@@ -24,7 +24,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
           <p className="text-sm sm:text-base text-[#D5D1C4] leading-relaxed font-light">
             « Votre optique, votre Élégance entre nos mains » n’est pas seulement notre devise, c’est
             l'engagement quotidien d’une équipe passionnée par l'art lunetier et le confort visuel à
-            Casablanca.
+            Marrakech.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
           <div className="relative aspect-[4/3] bg-[#1B1A15] overflow-hidden border border-[#C6A53A]/30">
             <img
               src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1200&q=80"
-              alt="Atelier Optique Casablanca"
+              alt="Atelier Optique Marrakech"
               className="w-full h-full object-cover filter brightness-90"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#11110F]/80 via-transparent to-transparent" />
@@ -115,7 +115,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
         {/* CTA Footer */}
         <div className="bg-[#1B1A15] border border-[#C6A53A]/30 p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-6">
           <h3 className="font-serif-luxury text-3xl text-white">
-            Venez essayer vos futures lunettes à Casablanca
+            Venez essayer vos futures lunettes à Marrakech
           </h3>
           <p className="text-xs sm:text-sm text-[#9F9A8E] max-w-xl mx-auto">
             {settings.address}, {settings.city} · Du Lundi au Samedi de 09h30 à 20h00

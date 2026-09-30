@@ -81,7 +81,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs uppercase tracking-widest text-[#C6A53A] font-semibold">
-            Boutique & Espace Conseil · Casablanca
+            Boutique & Espace Conseil · Marrakech
           </span>
           <h1 className="font-serif-luxury text-4xl sm:text-5xl text-white font-medium mt-1 mb-4">
             Contact & Rendez-vous

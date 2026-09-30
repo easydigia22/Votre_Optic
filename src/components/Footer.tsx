@@ -185,7 +185,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
           {/* Col 4: Store & Hours (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3 text-xs">
             <span className="block font-semibold uppercase tracking-wider text-white text-[11px]">
-              Boutique Casablanca
+              Boutique Marrakech
             </span>
             <div className="space-y-2.5">
               <div className="flex items-start gap-2">
@@ -223,7 +223,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#817D73]">
           <p>© {new Date().getFullYear()} Votre Optique Maroc. Tous droits réservés.</p>
           <div className="flex items-center gap-6">
-            <span>Casablanca · Rabat · Marrakech · Tanger</span>
+            <span>Marrakech · Casablanca · Rabat · Tanger</span>
             <button
               onClick={() => onNavigate('admin')}
               className="flex items-center gap-1.5 text-[#9F9A8E] hover:text-[#C6A53A] transition-colors"

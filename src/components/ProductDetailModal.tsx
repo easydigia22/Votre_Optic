@@ -228,7 +228,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   ) : (
                     <span className="text-emerald-400 font-semibold flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      En stock au magasin de Casablanca
+                      En stock au magasin de Marrakech
                     </span>
                   )}
                 </div>

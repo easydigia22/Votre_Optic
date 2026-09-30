@@ -33,7 +33,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
       .map((p, idx) => `${idx + 1}. ${p.name} (Réf: ${p.reference}) - ${p.price} DH`)
       .join('\n');
 
-    const message = `Bonjour Votre Optique, j'ai sélectionné ces montures dans ma liste de souhaits :\n\n${itemsList}\n\nSont-elles disponibles pour un essayage en magasin ou une commande à Casablanca ? Merci.`;
+    const message = `Bonjour Votre Optique, j'ai sélectionné ces montures dans ma liste de souhaits :\n\n${itemsList}\n\nSont-elles disponibles pour un essayage en magasin ou une commande à Marrakech ? Merci.`;
     window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`, '_blank');
   };
 

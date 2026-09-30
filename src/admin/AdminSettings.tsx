@@ -95,7 +95,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
         {/* Contact & Location */}
         <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
           <h2 className="font-serif-luxury text-lg text-[#F5E6A6]">
-            Coordonnées Casablanca & WhatsApp
+            Coordonnées Marrakech & WhatsApp
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

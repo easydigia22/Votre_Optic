@@ -23,7 +23,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [authorName, setAuthorName] = useState('');
-  const [city, setCity] = useState('Casablanca');
+  const [city, setCity] = useState('Marrakech');
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
   const [verifiedPurchase, setVerifiedPurchase] = useState(true);
@@ -45,7 +45,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       productName: product.name,
       productRef: product.reference,
       authorName: authorName.trim(),
-      city: city.trim() || 'Casablanca',
+      city: city.trim() || 'Marrakech',
       rating,
       title: title.trim() || 'Avis sur ' + product.name,
       comment: comment.trim(),
@@ -170,7 +170,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             Partagez votre expérience sur {product.name}
           </h4>
           <p className="text-[#9F9A8E] text-[11px] mb-4">
-            Votre évaluation aide les autres clients de Casablanca et du Maroc à choisir leur monture.
+            Votre évaluation aide les autres clients de Marrakech et du Maroc à choisir leur monture.
           </p>
 
           {/* Star selector */}
@@ -225,7 +225,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               </label>
               <input
                 type="text"
-                placeholder="Ex: Casablanca, Rabat, Marrakech..."
+                placeholder="Ex: Marrakech, Casablanca, Rabat..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
