@@ -200,6 +200,9 @@ export default function App() {
     setStockMovements(storage.getStockMovements());
     setWishlistIds(storage.getWishlist());
     setReviews(storage.getReviews());
+    setClients(storage.getClients());
+    setPrescriptions(storage.getPrescriptions());
+    setInvoices(storage.getInvoices());
   };
 
   const runAdminMutation = async (remoteAction: () => Promise<void>, localAction: () => void) => {
@@ -253,9 +256,10 @@ export default function App() {
     const nextList = clients.some((c) => c.id === next.id)
       ? clients.map((c) => (c.id === next.id ? next : c))
       : [next, ...clients];
-    setClients(nextList);
-    if (isSupabaseConfigured) await saveAdminClient(next);
-    else storage.setClients(nextList);
+    void runAdminMutation(
+      () => saveAdminClient(next),
+      () => { storage.setClients(nextList); },
+    );
   };
 
   const handleDeleteClient = async (id: string): Promise<void> => {
@@ -265,14 +269,13 @@ export default function App() {
     }
     const nextClients = clients.filter((c) => c.id !== id);
     const nextPrescriptions = prescriptions.filter((p) => p.clientId !== id);
-    setClients(nextClients);
-    setPrescriptions(nextPrescriptions);
-    if (isSupabaseConfigured) {
-      await deleteAdminRow('clients', id);
-    } else {
-      storage.setClients(nextClients);
-      storage.setPrescriptions(nextPrescriptions);
-    }
+    void runAdminMutation(
+      () => deleteAdminRow('clients', id),
+      () => {
+        storage.setClients(nextClients);
+        storage.setPrescriptions(nextPrescriptions);
+      },
+    );
   };
 
   // Prescription handlers
@@ -282,9 +285,10 @@ export default function App() {
     const nextList = prescriptions.some((p) => p.id === next.id)
       ? prescriptions.map((p) => (p.id === next.id ? next : p))
       : [next, ...prescriptions];
-    setPrescriptions(nextList);
-    if (isSupabaseConfigured) await saveAdminPrescription(next);
-    else storage.setPrescriptions(nextList);
+    void runAdminMutation(
+      () => saveAdminPrescription(next),
+      () => { storage.setPrescriptions(nextList); },
+    );
   };
 
   const handleDeletePrescription = async (id: string): Promise<void> => {
@@ -308,17 +312,19 @@ export default function App() {
     const nextList = invoices.some((i) => i.id === next.id)
       ? invoices.map((i) => (i.id === next.id ? next : i))
       : [next, ...invoices];
-    setInvoices(nextList);
-    if (isSupabaseConfigured) await saveAdminInvoice(next);
-    else storage.setInvoices(nextList);
+    void runAdminMutation(
+      () => saveAdminInvoice(next),
+      () => { storage.setInvoices(nextList); },
+    );
     return next;
   };
 
   const handleDeleteInvoice = async (id: string): Promise<void> => {
     const nextList = invoices.filter((i) => i.id !== id);
-    setInvoices(nextList);
-    if (isSupabaseConfigured) await deleteAdminRow('invoices', id);
-    else storage.setInvoices(nextList);
+    void runAdminMutation(
+      () => deleteAdminRow('invoices', id),
+      () => { storage.setInvoices(nextList); },
+    );
   };
 
   const handleConvertDevisToFacture = async (devis: Invoice): Promise<Invoice> => {
