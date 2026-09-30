@@ -90,12 +90,8 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
     .reduce((s, i) => s + i.totalTtc, 0);
 
   const handleSave = async (draft: Invoice) => {
-    const saved = await onSaveInvoice(draft);
-    if (saved) {
-      setEditing(null);
-    } else {
-      setEditing(null);
-    }
+    await onSaveInvoice(draft);
+    setEditing(null);
   };
 
   const handleDelete = async (id: string) => {
@@ -269,7 +265,14 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
                         <Pencil size={14} />
                       </button>
                       <button
-                        onClick={() => setPrinting(row)}
+                        onClick={() => {
+                          const c = clients.find((cl) => cl.id === row.clientId);
+                          if (!c) {
+                            alert("Client introuvable — impossible d'imprimer.");
+                            return;
+                          }
+                          setPrinting(row);
+                        }}
                         title="Imprimer"
                         className="p-1.5 text-white/40 hover:text-white transition-colors"
                       >
