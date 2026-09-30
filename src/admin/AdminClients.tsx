@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Client, Prescription, Invoice } from '../types';
 import { ClientForm } from './ClientForm';
+import { PrescriptionForm } from './PrescriptionForm';
 import { formatMad } from '../services/billing';
 import { UserPlus, Search, Trash2, Pencil, FileText, Eye } from 'lucide-react';
 
@@ -22,12 +23,15 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
   invoices,
   onSaveClient,
   onDeleteClient,
+  onSavePrescription,
   onNavigateToInvoice,
 }) => {
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [editing, setEditing] = useState(false);
   const [addingNew, setAddingNew] = useState(false);
+  const [addingPrescription, setAddingPrescription] = useState(false);
+  const [editingPrescription, setEditingPrescription] = useState<Prescription | null>(null);
 
   const filtered = clients.filter((c) =>
     [c.fullName, c.phone, c.clientCode]
@@ -206,21 +210,43 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                 )}
               </div>
 
-              {/* ── Ordonnances (read-only — P2 ruling) ── */}
+              {/* ── Ordonnances ── */}
               <div className="bg-[#1B1A15] border border-white/5 p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
                     <Eye className="w-4 h-4 text-[#C6A53A]" />
                     Ordonnances
                   </h3>
-                  <button
-                    disabled
-                    title="Bientôt disponible (Task 8)"
-                    className="flex items-center gap-1.5 border border-white/10 text-[#9F9A8E] px-3 py-1.5 text-xs opacity-50 cursor-not-allowed"
-                  >
-                    + Nouvelle ordonnance
-                  </button>
+                  {!addingPrescription && !editingPrescription && (
+                    <button
+                      onClick={() => { setAddingPrescription(true); setEditingPrescription(null); }}
+                      className="flex items-center gap-1.5 border border-[#C6A53A]/40 text-[#C6A53A] px-3 py-1.5 text-xs hover:bg-[#C6A53A]/10 transition-colors"
+                    >
+                      + Nouvelle ordonnance
+                    </button>
+                  )}
                 </div>
+
+                {(addingPrescription || editingPrescription) && (
+                  <div className="border border-white/5 bg-[#11110F] p-4">
+                    <h4 className="text-xs font-semibold text-[#F5E6A6] mb-3">
+                      {editingPrescription ? 'Modifier l\'ordonnance' : 'Nouvelle ordonnance'}
+                    </h4>
+                    <PrescriptionForm
+                      clientId={selected.id}
+                      initial={editingPrescription ?? null}
+                      onSubmit={(p) => {
+                        void onSavePrescription(p);
+                        setAddingPrescription(false);
+                        setEditingPrescription(null);
+                      }}
+                      onCancel={() => {
+                        setAddingPrescription(false);
+                        setEditingPrescription(null);
+                      }}
+                    />
+                  </div>
+                )}
 
                 {clientPrescriptions.length === 0 ? (
                   <p className="text-xs text-[#9F9A8E]">Aucune ordonnance enregistrée.</p>
@@ -231,9 +257,18 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                         key={p.id}
                         className="bg-[#11110F] border border-white/5 px-3 py-2 text-xs space-y-1"
                       >
-                        <div className="flex justify-between text-[#9F9A8E]">
-                          <span>{p.prescriptionDate}</span>
-                          <span>{p.prescriber || '—'}</span>
+                        <div className="flex justify-between items-center">
+                          <div className="text-[#9F9A8E] flex gap-3">
+                            <span>{p.prescriptionDate}</span>
+                            <span>{p.prescriber || '—'}</span>
+                          </div>
+                          <button
+                            onClick={() => { setEditingPrescription(p); setAddingPrescription(false); }}
+                            className="text-[#9F9A8E] hover:text-[#C6A53A] transition-colors"
+                            title="Modifier"
+                          >
+                            <Pencil className="w-3 h-3" />
+                          </button>
                         </div>
                         <div className="text-white font-mono text-[10px]">
                           OD : S {p.right.sphere ?? '—'} / C {p.right.cylinder ?? '—'} / A {p.right.axis ?? '—'}
