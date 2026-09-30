@@ -68,8 +68,11 @@ alter table public.clients enable row level security;
 alter table public.prescriptions enable row level security;
 alter table public.invoices enable row level security;
 
+drop policy if exists "Admins manage clients" on public.clients;
 create policy "Admins manage clients" on public.clients for all using (public.is_admin()) with check (public.is_admin());
+drop policy if exists "Admins manage prescriptions" on public.prescriptions;
 create policy "Admins manage prescriptions" on public.prescriptions for all using (public.is_admin()) with check (public.is_admin());
+drop policy if exists "Admins manage invoices" on public.invoices;
 create policy "Admins manage invoices" on public.invoices for all using (public.is_admin()) with check (public.is_admin());
 
 grant all on public.clients, public.prescriptions, public.invoices to authenticated;
