@@ -130,6 +130,9 @@ Respecte le pattern existant (aucune rupture) :
 - `DEFAULT_CLIENTS` : 1–2 clients de démo + 1 ordonnance + 1 devis, pour un premier rendu non vide.
 - Helpers de numérotation `nextClientCode`, `nextInvoiceNumber(type)`.
 
+### Paramètres — mentions légales
+- `store_settings` gagne une colonne `legal jsonb` (migration : `alter table ... add column if not exists legal jsonb not null default '{}'`), mappée dans `supabase.ts` et éditable dans `AdminSettings.tsx` (ICE, IF, RC, Patente, capital).
+
 ### Seed — `scripts/seed-supabase.ts`
 - Upsert des données de démo clients/prescriptions/invoices (optionnel, aligné sur les autres seeds).
 
@@ -157,9 +160,12 @@ Chaque composant suit le style admin existant (palette `#11110F`/`#C6A53A`, clas
 
 ## 7. Impression / PDF
 
-- `InvoiceDocument` rend un document A4 : logo + nom boutique + adresse (depuis `settings`, donc Marrakech) + coordonnées client + tableau des lignes + récap HT/TVA/TTC + mentions.
+- `InvoiceDocument` rend un document A4 : logo + nom boutique + adresse (depuis `settings`, donc Marrakech) + **mentions légales** + coordonnées client + tableau des lignes + récap HT/TVA/TTC + mentions.
 - Bouton « Imprimer / Enregistrer PDF » → `window.print()`.
 - CSS `@media print` : masque l'app (`.no-print`), n'affiche que `.print-document`. Aucune dépendance ajoutée.
+
+### 7.1 Mentions légales (facture marocaine)
+Ajout de champs **optionnels** dans `store_settings` (colonne `legal jsonb` + section admin Paramètres) : **ICE, Identifiant Fiscal (IF), RC (Registre du Commerce), Patente, capital** (optionnel). Affichés en pied du document `InvoiceDocument` quand renseignés. N'apparaissent pas si vides (le devis n'en a pas besoin, la facture oui).
 
 ## 8. Sécurité & conformité
 
