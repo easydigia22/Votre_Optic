@@ -11,7 +11,6 @@ interface AdminClientsProps {
   invoices: Invoice[];
   onSaveClient: (c: Client) => Promise<void>;
   onDeleteClient: (id: string) => Promise<void>;
-  // Task 8 will use these; accepted but unused in this task (P2 ruling)
   onSavePrescription: (p: Prescription) => Promise<void>;
   onDeletePrescription: (id: string) => Promise<void>;
   onNavigateToInvoice: (clientId: string) => void;
@@ -24,6 +23,7 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
   onSaveClient,
   onDeleteClient,
   onSavePrescription,
+  onDeletePrescription,
   onNavigateToInvoice,
 }) => {
   const [query, setQuery] = useState('');
@@ -262,13 +262,26 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                             <span>{p.prescriptionDate}</span>
                             <span>{p.prescriber || '—'}</span>
                           </div>
-                          <button
-                            onClick={() => { setEditingPrescription(p); setAddingPrescription(false); }}
-                            className="text-[#9F9A8E] hover:text-[#C6A53A] transition-colors"
-                            title="Modifier"
-                          >
-                            <Pencil className="w-3 h-3" />
-                          </button>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => { setEditingPrescription(p); setAddingPrescription(false); }}
+                              className="text-[#9F9A8E] hover:text-[#C6A53A] transition-colors"
+                              title="Modifier"
+                            >
+                              <Pencil className="w-3 h-3" />
+                            </button>
+                            <button
+                              onClick={() => {
+                                if (window.confirm('Supprimer cette ordonnance ? Cette action est irréversible.')) {
+                                  void onDeletePrescription(p.id);
+                                }
+                              }}
+                              className="text-[#9F9A8E] hover:text-red-400 transition-colors"
+                              title="Supprimer"
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
                         </div>
                         <div className="text-white font-mono text-[10px]">
                           OD : S {p.right.sphere ?? '—'} / C {p.right.cylinder ?? '—'} / A {p.right.axis ?? '—'}

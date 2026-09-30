@@ -16,6 +16,65 @@ interface Props {
 const inputCls =
   'w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C6A53A] text-center';
 
+// ─── Module-scope component — must NOT be defined inside PrescriptionForm ───
+interface EyeRowProps {
+  label: string;
+  eye: EyePrescription;
+  vp: string;
+  onChange: (k: keyof EyePrescription, v: number | null) => void;
+}
+
+const EyeRow: React.FC<EyeRowProps> = ({ label, eye, vp, onChange }) => (
+  <tr className="border-b border-white/5">
+    <td className="py-2 pr-3 text-xs font-semibold text-[#C6A53A] whitespace-nowrap">{label}</td>
+    <td className="py-1.5 px-1">
+      <input
+        type="number"
+        step="0.25"
+        value={eye.sphere ?? ''}
+        onChange={(e) => onChange('sphere', num(e.target.value))}
+        className={inputCls}
+        placeholder="—"
+      />
+    </td>
+    <td className="py-1.5 px-1">
+      <input
+        type="number"
+        step="0.25"
+        value={eye.cylinder ?? ''}
+        onChange={(e) => onChange('cylinder', num(e.target.value))}
+        className={inputCls}
+        placeholder="—"
+      />
+    </td>
+    <td className="py-1.5 px-1">
+      <input
+        type="number"
+        step="1"
+        min="0"
+        max="180"
+        value={eye.axis ?? ''}
+        onChange={(e) => onChange('axis', num(e.target.value))}
+        className={inputCls}
+        placeholder="—"
+      />
+    </td>
+    <td className="py-1.5 px-1">
+      <input
+        type="number"
+        step="0.25"
+        value={eye.addition ?? ''}
+        onChange={(e) => onChange('addition', num(e.target.value))}
+        className={inputCls}
+        placeholder="—"
+      />
+    </td>
+    <td className="py-1.5 pl-3 text-xs font-mono text-[#F5E6A6] whitespace-nowrap">
+      {vp || '—'}
+    </td>
+  </tr>
+);
+
 export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit, onCancel }) => {
   const [form, setForm] = useState<Prescription>(
     initial ?? {
@@ -44,70 +103,6 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
 
   const vpRight = formatDiopter(computeNear(form.right.sphere, form.right.addition));
   const vpLeft = formatDiopter(computeNear(form.left.sphere, form.left.addition));
-
-  const EyeRow = ({
-    label,
-    side,
-    vp,
-  }: {
-    label: string;
-    side: 'right' | 'left';
-    vp: string;
-  }) => {
-    const eye = form[side];
-    return (
-      <>
-        <tr className="border-b border-white/5">
-          <td className="py-2 pr-3 text-xs font-semibold text-[#C6A53A] whitespace-nowrap">{label}</td>
-          <td className="py-1.5 px-1">
-            <input
-              type="number"
-              step="0.25"
-              value={eye.sphere ?? ''}
-              onChange={(e) => setEye(side, 'sphere', num(e.target.value))}
-              className={inputCls}
-              placeholder="—"
-            />
-          </td>
-          <td className="py-1.5 px-1">
-            <input
-              type="number"
-              step="0.25"
-              value={eye.cylinder ?? ''}
-              onChange={(e) => setEye(side, 'cylinder', num(e.target.value))}
-              className={inputCls}
-              placeholder="—"
-            />
-          </td>
-          <td className="py-1.5 px-1">
-            <input
-              type="number"
-              step="1"
-              min="0"
-              max="180"
-              value={eye.axis ?? ''}
-              onChange={(e) => setEye(side, 'axis', num(e.target.value))}
-              className={inputCls}
-              placeholder="—"
-            />
-          </td>
-          <td className="py-1.5 px-1">
-            <input
-              type="number"
-              step="0.25"
-              value={eye.addition ?? ''}
-              onChange={(e) => setEye(side, 'addition', num(e.target.value))}
-              className={inputCls}
-              placeholder="—"
-            />
-          </td>
-          <td className="py-1.5 pl-3 text-xs font-mono text-[#F5E6A6] whitespace-nowrap">
-            {vp || '—'}
-          </td>
-        </tr>
-      </>
-    );
-  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -153,8 +148,18 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
             </tr>
           </thead>
           <tbody>
-            <EyeRow label="OD" side="right" vp={vpRight} />
-            <EyeRow label="OG" side="left" vp={vpLeft} />
+            <EyeRow
+              label="OD"
+              eye={form.right}
+              vp={vpRight}
+              onChange={(k, v) => setEye('right', k, v)}
+            />
+            <EyeRow
+              label="OG"
+              eye={form.left}
+              vp={vpLeft}
+              onChange={(k, v) => setEye('left', k, v)}
+            />
           </tbody>
         </table>
       </div>
