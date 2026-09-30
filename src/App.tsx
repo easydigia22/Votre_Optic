@@ -8,6 +8,7 @@ import {
   deleteAdminProduct,
   deleteAdminPromotion,
   deleteAdminReview,
+  deleteAdminRow,
   getCurrentAdmin,
   isSupabaseConfigured,
   loadAdminPrivateData,
@@ -15,6 +16,9 @@ import {
   saveAdminBanner,
   saveAdminBrand,
   saveAdminCategory,
+  saveAdminClient,
+  saveAdminInvoice,
+  saveAdminPrescription,
   saveAdminProduct,
   saveAdminPromotion,
   saveAdminSettings,
@@ -23,6 +27,7 @@ import {
   updateAdminMessageStatus,
   updateAdminReviewStatus,
 } from './services/supabase';
+import { nextSequentialNumber, computeInvoiceTotals } from './services/billing';
 import {
   Product,
   Category,
@@ -35,6 +40,9 @@ import {
   AdminUser,
   ProductReview,
   ReviewStatus,
+  Client,
+  Prescription,
+  Invoice,
 } from './types';
 
 // Client Components
@@ -94,6 +102,9 @@ export default function App() {
   );
   const [wishlistIds, setWishlistIds] = useState<string[]>(() => storage.getWishlist());
   const [reviews, setReviews] = useState<ProductReview[]>(() => storage.getReviews());
+  const [clients, setClients] = useState<Client[]>(() => storage.getClients());
+  const [prescriptions, setPrescriptions] = useState<Prescription[]>(() => storage.getPrescriptions());
+  const [invoices, setInvoices] = useState<Invoice[]>(() => storage.getInvoices());
 
   useEffect(() => {
     const handlePopState = () => {
@@ -133,6 +144,9 @@ export default function App() {
     storage.hydrateAdminData(privateData);
     setMessages(privateData.messages);
     setStockMovements(privateData.stockMovements);
+    setClients(privateData.clients?.length ? privateData.clients : storage.getClients());
+    setPrescriptions(privateData.prescriptions?.length ? privateData.prescriptions : storage.getPrescriptions());
+    setInvoices(privateData.invoices?.length ? privateData.invoices : storage.getInvoices());
   };
 
   useEffect(() => {
@@ -150,6 +164,9 @@ export default function App() {
           storage.hydrateAdminData(privateData);
           setMessages(privateData.messages);
           setStockMovements(privateData.stockMovements);
+          setClients(privateData.clients?.length ? privateData.clients : storage.getClients());
+          setPrescriptions(privateData.prescriptions?.length ? privateData.prescriptions : storage.getPrescriptions());
+          setInvoices(privateData.invoices?.length ? privateData.invoices : storage.getInvoices());
         }
       })
       .catch((error) => {
@@ -222,6 +239,98 @@ export default function App() {
       () => deleteAdminReview(id),
       () => storage.deleteReview(id),
     );
+  };
+
+  // Client handlers
+  const handleSaveClient = async (draft: Client): Promise<void> => {
+    const clientCode =
+      draft.clientCode || nextSequentialNumber('CLI', clients.map((c) => c.clientCode));
+    const now = new Date().toISOString();
+    const next: Client = { ...draft, clientCode, createdAt: draft.createdAt || now, updatedAt: now };
+    const nextList = clients.some((c) => c.id === next.id)
+      ? clients.map((c) => (c.id === next.id ? next : c))
+      : [next, ...clients];
+    setClients(nextList);
+    if (isSupabaseConfigured) await saveAdminClient(next);
+    else storage.setClients(nextList);
+  };
+
+  const handleDeleteClient = async (id: string): Promise<void> => {
+    if (invoices.some((i) => i.clientId === id)) {
+      alert("Impossible de supprimer : ce client possède des devis/factures. Archivez-les d'abord.");
+      return;
+    }
+    const nextClients = clients.filter((c) => c.id !== id);
+    const nextPrescriptions = prescriptions.filter((p) => p.clientId !== id);
+    setClients(nextClients);
+    setPrescriptions(nextPrescriptions);
+    if (isSupabaseConfigured) {
+      await deleteAdminRow('clients', id);
+    } else {
+      storage.setClients(nextClients);
+      storage.setPrescriptions(nextPrescriptions);
+    }
+  };
+
+  // Prescription handlers
+  const handleSavePrescription = async (draft: Prescription): Promise<void> => {
+    const now = new Date().toISOString();
+    const next: Prescription = { ...draft, createdAt: draft.createdAt || now, updatedAt: now };
+    const nextList = prescriptions.some((p) => p.id === next.id)
+      ? prescriptions.map((p) => (p.id === next.id ? next : p))
+      : [next, ...prescriptions];
+    setPrescriptions(nextList);
+    if (isSupabaseConfigured) await saveAdminPrescription(next);
+    else storage.setPrescriptions(nextList);
+  };
+
+  const handleDeletePrescription = async (id: string): Promise<void> => {
+    const nextList = prescriptions.filter((p) => p.id !== id);
+    setPrescriptions(nextList);
+    if (isSupabaseConfigured) await deleteAdminRow('prescriptions', id);
+    else storage.setPrescriptions(nextList);
+  };
+
+  // Invoice handlers
+  const handleSaveInvoice = async (draft: Invoice): Promise<Invoice> => {
+    const now = new Date().toISOString();
+    const totals = computeInvoiceTotals(draft.items, draft.tvaRate);
+    const number =
+      draft.number ||
+      nextSequentialNumber(
+        draft.docType === 'facture' ? 'FAC' : 'DEV',
+        invoices.map((i) => i.number),
+      );
+    const next: Invoice = { ...draft, ...totals, number, createdAt: draft.createdAt || now, updatedAt: now };
+    const nextList = invoices.some((i) => i.id === next.id)
+      ? invoices.map((i) => (i.id === next.id ? next : i))
+      : [next, ...invoices];
+    setInvoices(nextList);
+    if (isSupabaseConfigured) await saveAdminInvoice(next);
+    else storage.setInvoices(nextList);
+    return next;
+  };
+
+  const handleDeleteInvoice = async (id: string): Promise<void> => {
+    const nextList = invoices.filter((i) => i.id !== id);
+    setInvoices(nextList);
+    if (isSupabaseConfigured) await deleteAdminRow('invoices', id);
+    else storage.setInvoices(nextList);
+  };
+
+  const handleConvertDevisToFacture = async (devis: Invoice): Promise<Invoice> => {
+    const facture: Invoice = {
+      ...devis,
+      id: crypto.randomUUID(),
+      docType: 'facture',
+      number: '',
+      status: 'impayee',
+      sourceDevisId: devis.id,
+      docDate: new Date().toISOString().slice(0, 10),
+      createdAt: '',
+      updatedAt: '',
+    };
+    return handleSaveInvoice(facture);
   };
 
   // Navigation Handler
