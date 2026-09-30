@@ -112,3 +112,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@media print {
+  body * { visibility: hidden; }
+  .print-document, .print-document * { visibility: visible; }
+  .print-document { position: absolute; inset: 0; margin: 0; padding: 24px; background: #fff; color: #000; }
+  .no-print { display: none !important; }
+}

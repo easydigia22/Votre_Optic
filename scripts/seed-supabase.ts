@@ -22,8 +22,11 @@ const {
   DEFAULT_BANNERS,
   DEFAULT_BRANDS,
   DEFAULT_CATEGORIES,
+  DEFAULT_CLIENTS,
+  DEFAULT_INVOICES,
   DEFAULT_MESSAGES,
   DEFAULT_MOVEMENTS,
+  DEFAULT_PRESCRIPTIONS,
   DEFAULT_PRODUCTS,
   DEFAULT_PROMOTIONS,
   DEFAULT_REVIEWS,
@@ -196,6 +199,53 @@ await upsert('product_reviews', DEFAULT_REVIEWS.map((item, index) => ({
   status: item.status,
   verified_purchase: item.verifiedPurchase,
   created_at: item.createdAt,
+})));
+
+await upsert('clients', DEFAULT_CLIENTS.map((c) => ({
+  id: c.id,
+  client_code: c.clientCode,
+  full_name: c.fullName,
+  phone: c.phone,
+  email: c.email,
+  address: c.address,
+  city: c.city,
+  birth_date: c.birthDate,
+  notes: c.notes,
+})));
+
+await upsert('prescriptions', DEFAULT_PRESCRIPTIONS.map((p) => ({
+  id: p.id,
+  client_id: p.clientId,
+  prescription_date: p.prescriptionDate,
+  prescriber: p.prescriber,
+  od_sphere: p.right.sphere,
+  od_cylinder: p.right.cylinder,
+  od_axis: p.right.axis,
+  od_addition: p.right.addition,
+  og_sphere: p.left.sphere,
+  og_cylinder: p.left.cylinder,
+  og_axis: p.left.axis,
+  og_addition: p.left.addition,
+  pd: p.pd,
+  pd_right: p.pdRight,
+  pd_left: p.pdLeft,
+  notes: p.notes,
+})));
+
+await upsert('invoices', DEFAULT_INVOICES.map((i) => ({
+  id: i.id,
+  client_id: i.clientId,
+  doc_type: i.docType,
+  number: i.number,
+  doc_date: i.docDate,
+  status: i.status,
+  items: i.items,
+  total_ht: i.totalHt,
+  tva_rate: i.tvaRate,
+  tva_amount: i.tvaAmount,
+  total_ttc: i.totalTtc,
+  notes: i.notes,
+  source_devis_id: i.sourceDevisId,
 })));
 
 console.log('Supabase seed completed.');

@@ -4,7 +4,10 @@ import type {
   AdminUser,
   Brand,
   Category,
+  Client,
   CustomerMessage,
+  Invoice,
+  Prescription,
   Product,
   ProductReview,
   Promotion,
@@ -135,6 +138,91 @@ const settingsFromRow = (row: any): StoreSettings => ({
   hours: row.hours,
   socialLinks: row.social_links,
   seo: row.seo,
+  legal: row.legal ?? {},
+});
+
+const clientFromRow = (row: any): Client => ({
+  id: row.id,
+  clientCode: row.client_code,
+  fullName: row.full_name,
+  phone: row.phone,
+  email: row.email,
+  address: row.address,
+  city: row.city,
+  birthDate: row.birth_date,
+  notes: row.notes,
+  createdAt: row.created_at,
+  updatedAt: row.updated_at,
+});
+
+const clientToRow = (c: Client) => ({
+  id: c.id,
+  client_code: c.clientCode,
+  full_name: c.fullName,
+  phone: c.phone,
+  email: c.email,
+  address: c.address,
+  city: c.city,
+  birth_date: c.birthDate,
+  notes: c.notes,
+});
+
+const prescriptionFromRow = (row: any): Prescription => ({
+  id: row.id,
+  clientId: row.client_id,
+  prescriptionDate: row.prescription_date,
+  prescriber: row.prescriber,
+  right: { sphere: row.od_sphere, cylinder: row.od_cylinder, axis: row.od_axis, addition: row.od_addition },
+  left: { sphere: row.og_sphere, cylinder: row.og_cylinder, axis: row.og_axis, addition: row.og_addition },
+  pd: row.pd, pdRight: row.pd_right, pdLeft: row.pd_left,
+  notes: row.notes,
+  createdAt: row.created_at,
+  updatedAt: row.updated_at,
+});
+
+const prescriptionToRow = (p: Prescription) => ({
+  id: p.id,
+  client_id: p.clientId,
+  prescription_date: p.prescriptionDate,
+  prescriber: p.prescriber,
+  od_sphere: p.right.sphere, od_cylinder: p.right.cylinder, od_axis: p.right.axis, od_addition: p.right.addition,
+  og_sphere: p.left.sphere, og_cylinder: p.left.cylinder, og_axis: p.left.axis, og_addition: p.left.addition,
+  pd: p.pd, pd_right: p.pdRight, pd_left: p.pdLeft,
+  notes: p.notes,
+});
+
+const invoiceFromRow = (row: any): Invoice => ({
+  id: row.id,
+  clientId: row.client_id,
+  docType: row.doc_type,
+  number: row.number,
+  docDate: row.doc_date,
+  status: row.status,
+  items: Array.isArray(row.items) ? row.items : [],
+  totalHt: Number(row.total_ht),
+  tvaRate: Number(row.tva_rate),
+  tvaAmount: Number(row.tva_amount),
+  totalTtc: Number(row.total_ttc),
+  notes: row.notes,
+  sourceDevisId: row.source_devis_id,
+  createdAt: row.created_at,
+  updatedAt: row.updated_at,
+});
+
+const invoiceToRow = (i: Invoice) => ({
+  id: i.id,
+  client_id: i.clientId,
+  doc_type: i.docType,
+  number: i.number,
+  doc_date: i.docDate,
+  status: i.status,
+  items: i.items,
+  total_ht: i.totalHt,
+  tva_rate: i.tvaRate,
+  tva_amount: i.tvaAmount,
+  total_ttc: i.totalTtc,
+  notes: i.notes,
+  source_devis_id: i.sourceDevisId,
 });
 
 export interface PublicStoreData {
@@ -295,14 +383,23 @@ export async function signOutAdmin(): Promise<void> {
 export async function loadAdminPrivateData(): Promise<{
   messages: CustomerMessage[];
   stockMovements: StockMovement[];
+  clients: Client[];
+  prescriptions: Prescription[];
+  invoices: Invoice[];
 }> {
   const client = requireClient();
-  const [messages, movements] = await Promise.all([
+  const [messages, movements, clientsRes, prescriptionsRes, invoicesRes] = await Promise.all([
     client.from('customer_messages').select('*').order('created_at', { ascending: false }),
     client.from('stock_movements').select('*').order('created_at', { ascending: false }),
+    client.from('clients').select('*').order('created_at', { ascending: false }),
+    client.from('prescriptions').select('*').order('prescription_date', { ascending: false }),
+    client.from('invoices').select('*').order('doc_date', { ascending: false }),
   ]);
   if (messages.error) throw messages.error;
   if (movements.error) throw movements.error;
+  if (clientsRes.error) throw clientsRes.error;
+  if (prescriptionsRes.error) throw prescriptionsRes.error;
+  if (invoicesRes.error) throw invoicesRes.error;
   return {
     messages: (messages.data ?? []).map((row: any) => ({
       id: row.id,
@@ -328,6 +425,9 @@ export async function loadAdminPrivateData(): Promise<{
       comment: row.comment,
       createdAt: row.created_at,
     })),
+    clients: (clientsRes.data ?? []).map(clientFromRow),
+    prescriptions: (prescriptionsRes.data ?? []).map(prescriptionFromRow),
+    invoices: (invoicesRes.data ?? []).map(invoiceFromRow),
   };
 }
 
@@ -336,7 +436,7 @@ async function upsertAdminRow(table: string, row: Record<string, unknown>): Prom
   if (error) throw error;
 }
 
-async function deleteAdminRow(table: string, id: string): Promise<void> {
+export async function deleteAdminRow(table: string, id: string): Promise<void> {
   const { error } = await requireClient().from(table).delete().eq('id', id);
   if (error) throw error;
 }
@@ -412,7 +512,12 @@ export const saveAdminSettings = (item: StoreSettings) => upsertAdminRow('store_
   hours: item.hours,
   social_links: item.socialLinks,
   seo: item.seo,
+  legal: item.legal ?? {},
 });
+
+export const saveAdminClient = (item: Client) => upsertAdminRow('clients', clientToRow(item) as Record<string, unknown>);
+export const saveAdminPrescription = (item: Prescription) => upsertAdminRow('prescriptions', prescriptionToRow(item) as Record<string, unknown>);
+export const saveAdminInvoice = (item: Invoice) => upsertAdminRow('invoices', invoiceToRow(item) as Record<string, unknown>);
 
 export async function saveAdminStockMovement(item: StockMovement): Promise<void> {
   await upsertAdminRow('stock_movements', {

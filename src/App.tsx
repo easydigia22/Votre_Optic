@@ -8,6 +8,7 @@ import {
   deleteAdminProduct,
   deleteAdminPromotion,
   deleteAdminReview,
+  deleteAdminRow,
   getCurrentAdmin,
   isSupabaseConfigured,
   loadAdminPrivateData,
@@ -15,6 +16,9 @@ import {
   saveAdminBanner,
   saveAdminBrand,
   saveAdminCategory,
+  saveAdminClient,
+  saveAdminInvoice,
+  saveAdminPrescription,
   saveAdminProduct,
   saveAdminPromotion,
   saveAdminSettings,
@@ -23,6 +27,7 @@ import {
   updateAdminMessageStatus,
   updateAdminReviewStatus,
 } from './services/supabase';
+import { nextSequentialNumber, computeInvoiceTotals } from './services/billing';
 import {
   Product,
   Category,
@@ -35,6 +40,9 @@ import {
   AdminUser,
   ProductReview,
   ReviewStatus,
+  Client,
+  Prescription,
+  Invoice,
 } from './types';
 
 // Client Components
@@ -68,6 +76,8 @@ import { AdminMessages } from './admin/AdminMessages';
 import { AdminSocial } from './admin/AdminSocial';
 import { AdminSettings } from './admin/AdminSettings';
 import { AdminReviews } from './admin/AdminReviews';
+import { AdminClients } from './admin/AdminClients';
+import { AdminInvoices } from './admin/AdminInvoices';
 
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -94,6 +104,9 @@ export default function App() {
   );
   const [wishlistIds, setWishlistIds] = useState<string[]>(() => storage.getWishlist());
   const [reviews, setReviews] = useState<ProductReview[]>(() => storage.getReviews());
+  const [clients, setClients] = useState<Client[]>(() => storage.getClients());
+  const [prescriptions, setPrescriptions] = useState<Prescription[]>(() => storage.getPrescriptions());
+  const [invoices, setInvoices] = useState<Invoice[]>(() => storage.getInvoices());
 
   useEffect(() => {
     const handlePopState = () => {
@@ -112,6 +125,7 @@ export default function App() {
   const [adminUser, setAdminUser] = useState<AdminUser | null>(null);
   const [adminActiveTab, setAdminActiveTab] = useState<string>('dashboard');
   const [adminOpenProductModal, setAdminOpenProductModal] = useState<boolean>(false);
+  const [billingClientFilter, setBillingClientFilter] = useState<string | null>(null);
 
   const applyPublicData = (data: Awaited<ReturnType<typeof loadPublicStoreData>>) => {
     storage.hydratePublicData(data);
@@ -133,6 +147,9 @@ export default function App() {
     storage.hydrateAdminData(privateData);
     setMessages(privateData.messages);
     setStockMovements(privateData.stockMovements);
+    setClients(privateData.clients?.length ? privateData.clients : storage.getClients());
+    setPrescriptions(privateData.prescriptions?.length ? privateData.prescriptions : storage.getPrescriptions());
+    setInvoices(privateData.invoices?.length ? privateData.invoices : storage.getInvoices());
   };
 
   useEffect(() => {
@@ -150,6 +167,9 @@ export default function App() {
           storage.hydrateAdminData(privateData);
           setMessages(privateData.messages);
           setStockMovements(privateData.stockMovements);
+          setClients(privateData.clients?.length ? privateData.clients : storage.getClients());
+          setPrescriptions(privateData.prescriptions?.length ? privateData.prescriptions : storage.getPrescriptions());
+          setInvoices(privateData.invoices?.length ? privateData.invoices : storage.getInvoices());
         }
       })
       .catch((error) => {
@@ -180,6 +200,9 @@ export default function App() {
     setStockMovements(storage.getStockMovements());
     setWishlistIds(storage.getWishlist());
     setReviews(storage.getReviews());
+    setClients(storage.getClients());
+    setPrescriptions(storage.getPrescriptions());
+    setInvoices(storage.getInvoices());
   };
 
   const runAdminMutation = async (remoteAction: () => Promise<void>, localAction: () => void) => {
@@ -222,6 +245,102 @@ export default function App() {
       () => deleteAdminReview(id),
       () => storage.deleteReview(id),
     );
+  };
+
+  // Client handlers
+  const handleSaveClient = async (draft: Client): Promise<void> => {
+    const clientCode =
+      draft.clientCode || nextSequentialNumber('CLI', clients.map((c) => c.clientCode));
+    const now = new Date().toISOString();
+    const next: Client = { ...draft, clientCode, createdAt: draft.createdAt || now, updatedAt: now };
+    const nextList = clients.some((c) => c.id === next.id)
+      ? clients.map((c) => (c.id === next.id ? next : c))
+      : [next, ...clients];
+    void runAdminMutation(
+      () => saveAdminClient(next),
+      () => { storage.setClients(nextList); },
+    );
+  };
+
+  const handleDeleteClient = async (id: string): Promise<void> => {
+    if (invoices.some((i) => i.clientId === id)) {
+      alert("Impossible de supprimer : ce client possède des devis/factures. Archivez-les d'abord.");
+      return;
+    }
+    const nextClients = clients.filter((c) => c.id !== id);
+    const nextPrescriptions = prescriptions.filter((p) => p.clientId !== id);
+    void runAdminMutation(
+      () => deleteAdminRow('clients', id),
+      () => {
+        storage.setClients(nextClients);
+        storage.setPrescriptions(nextPrescriptions);
+      },
+    );
+  };
+
+  // Prescription handlers
+  const handleSavePrescription = async (draft: Prescription): Promise<void> => {
+    const now = new Date().toISOString();
+    const next: Prescription = { ...draft, createdAt: draft.createdAt || now, updatedAt: now };
+    const nextList = prescriptions.some((p) => p.id === next.id)
+      ? prescriptions.map((p) => (p.id === next.id ? next : p))
+      : [next, ...prescriptions];
+    void runAdminMutation(
+      () => saveAdminPrescription(next),
+      () => { storage.setPrescriptions(nextList); },
+    );
+  };
+
+  const handleDeletePrescription = async (id: string): Promise<void> => {
+    const nextList = prescriptions.filter((p) => p.id !== id);
+    void runAdminMutation(
+      () => deleteAdminRow('prescriptions', id),
+      () => { storage.setPrescriptions(nextList); },
+    );
+  };
+
+  // Invoice handlers
+  const handleSaveInvoice = async (draft: Invoice): Promise<Invoice> => {
+    const now = new Date().toISOString();
+    const totals = computeInvoiceTotals(draft.items, draft.tvaRate);
+    const number =
+      draft.number ||
+      nextSequentialNumber(
+        draft.docType === 'facture' ? 'FAC' : 'DEV',
+        invoices.map((i) => i.number),
+      );
+    const next: Invoice = { ...draft, ...totals, number, createdAt: draft.createdAt || now, updatedAt: now };
+    const nextList = invoices.some((i) => i.id === next.id)
+      ? invoices.map((i) => (i.id === next.id ? next : i))
+      : [next, ...invoices];
+    void runAdminMutation(
+      () => saveAdminInvoice(next),
+      () => { storage.setInvoices(nextList); },
+    );
+    return next;
+  };
+
+  const handleDeleteInvoice = async (id: string): Promise<void> => {
+    const nextList = invoices.filter((i) => i.id !== id);
+    void runAdminMutation(
+      () => deleteAdminRow('invoices', id),
+      () => { storage.setInvoices(nextList); },
+    );
+  };
+
+  const handleConvertDevisToFacture = async (devis: Invoice): Promise<Invoice> => {
+    const facture: Invoice = {
+      ...devis,
+      id: crypto.randomUUID(),
+      docType: 'facture',
+      number: '',
+      status: 'impayee',
+      sourceDevisId: devis.id,
+      docDate: new Date().toISOString().slice(0, 10),
+      createdAt: '',
+      updatedAt: '',
+    };
+    return handleSaveInvoice(facture);
   };
 
   // Navigation Handler
@@ -452,6 +571,7 @@ export default function App() {
   const unreadMessagesCount = messages.filter((m) => m.status === 'unread').length;
   const activePromosCount = promotions.filter((p) => p.isActive).length;
   const pendingReviewsCount = reviews.filter((r) => r.status === 'pending').length;
+  const unpaidInvoicesCount = invoices.filter((i) => i.docType === 'facture' && i.status === 'impayee').length;
 
   // ----------------------------------------------------
   // RENDER ADMIN PORTAL IF VIEW IS ADMIN
@@ -483,6 +603,7 @@ export default function App() {
           onSelectTab={(tab) => {
             setAdminActiveTab(tab);
             setAdminOpenProductModal(false);
+            if (tab !== 'billing') setBillingClientFilter(null);
           }}
           onLogout={handleAdminLogout}
           onBackToStore={() => handleNavigate('home')}
@@ -491,6 +612,7 @@ export default function App() {
             unreadMessages: unreadMessagesCount,
             activePromos: activePromosCount,
             pendingReviews: pendingReviewsCount,
+            unpaidInvoices: unpaidInvoicesCount,
           }}
         >
         {adminActiveTab === 'dashboard' && (
@@ -595,6 +717,34 @@ export default function App() {
             settings={settings}
             onUpdateSettings={handleUpdateSettings}
             onResetAllData={handleResetAllData}
+          />
+        )}
+
+        {adminActiveTab === 'clients' && (
+          <AdminClients
+            clients={clients}
+            prescriptions={prescriptions}
+            invoices={invoices}
+            onSaveClient={handleSaveClient}
+            onDeleteClient={handleDeleteClient}
+            onSavePrescription={handleSavePrescription}
+            onDeletePrescription={handleDeletePrescription}
+            onNavigateToInvoice={(clientId) => {
+              setBillingClientFilter(clientId);
+              setAdminActiveTab('billing');
+            }}
+          />
+        )}
+
+        {adminActiveTab === 'billing' && (
+          <AdminInvoices
+            invoices={invoices}
+            clients={clients}
+            settings={settings}
+            initialClientFilter={billingClientFilter}
+            onSaveInvoice={handleSaveInvoice}
+            onDeleteInvoice={handleDeleteInvoice}
+            onConvertDevisToFacture={handleConvertDevisToFacture}
           />
         )}
         </AdminLayout>
