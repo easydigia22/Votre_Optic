@@ -132,6 +132,7 @@ export interface StoreSettings {
     metaTitle: string;
     metaDescription: string;
   };
+  legal?: LegalInfo;
 }
 
 export interface AdminUser {
@@ -155,6 +156,81 @@ export interface ProductReview {
   status: ReviewStatus;
   verifiedPurchase: boolean;
   createdAt: string;
+}
+
+// ---- Clients & Facturation ----
+export interface Client {
+  id: string;
+  clientCode: string; // CLI-YYYY-NNNN
+  fullName: string;
+  phone: string;
+  email: string;
+  address: string;
+  city: string;
+  birthDate: string | null; // ISO yyyy-mm-dd
+  notes: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface EyePrescription {
+  sphere: number | null;
+  cylinder: number | null;
+  axis: number | null;      // 0..180
+  addition: number | null;
+}
+
+export interface Prescription {
+  id: string;
+  clientId: string;
+  prescriptionDate: string; // ISO yyyy-mm-dd
+  prescriber: string;
+  right: EyePrescription;   // OD
+  left: EyePrescription;    // OG
+  pd: number | null;        // écart pupillaire total (mm)
+  pdRight: number | null;
+  pdLeft: number | null;
+  notes: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface InvoiceItem {
+  label: string;
+  qty: number;
+  unitPriceHt: number;
+}
+
+export type InvoiceDocType = 'devis' | 'facture';
+// devis: brouillon | accepte | refuse ; facture: impayee | payee | annulee
+export type InvoiceStatus =
+  | 'brouillon' | 'accepte' | 'refuse'
+  | 'impayee' | 'payee' | 'annulee';
+
+export interface Invoice {
+  id: string;
+  clientId: string;
+  docType: InvoiceDocType;
+  number: string; // DEV-YYYY-NNNN | FAC-YYYY-NNNN
+  docDate: string; // ISO yyyy-mm-dd
+  status: InvoiceStatus;
+  items: InvoiceItem[];
+  totalHt: number;
+  tvaRate: number;
+  tvaAmount: number;
+  totalTtc: number;
+  notes: string;
+  sourceDevisId: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface LegalInfo {
+  ice?: string;
+  if?: string;
+  rc?: string;
+  patente?: string;
+  capital?: string;
 }
 
 export interface FilterState {
