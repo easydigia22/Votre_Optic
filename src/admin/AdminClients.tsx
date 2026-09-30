@@ -54,11 +54,19 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
   const clientPrescriptions = prescriptions.filter((p) => p.clientId === selectedId);
   const clientInvoices = invoices.filter((i) => i.clientId === selectedId);
 
-  const handleSave = async (c: Client) => {
+  const handleSave = async (c: Client, openMeasures = false) => {
     await onSaveClient(c);
     setSelectedId(c.id);
     setEditing(false);
     setAddingNew(false);
+    // Après la création d'un nouveau client, ouvrir directement la saisie des mesures
+    if (openMeasures) {
+      setEditingPrescription(null);
+      setAddingPrescription(true);
+      setTimeout(() => {
+        prescriptionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }
   };
 
   const handleDelete = async (id: string) => {
@@ -112,9 +120,12 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
       {/* New client form (full-width when open) */}
       {addingNew && (
         <div className="bg-[#1B1A15] border border-white/5 p-6">
-          <h2 className="font-serif-luxury text-lg text-[#F5E6A6] mb-4">Nouveau client</h2>
+          <h2 className="font-serif-luxury text-lg text-[#F5E6A6] mb-1">Nouveau client</h2>
+          <p className="text-xs text-[#9F9A8E] mb-4">
+            Après l'enregistrement, la saisie des mesures de vue s'ouvre automatiquement.
+          </p>
           <ClientForm
-            onSubmit={(c) => void handleSave(c)}
+            onSubmit={(c) => void handleSave(c, true)}
             onCancel={() => setAddingNew(false)}
           />
         </div>
