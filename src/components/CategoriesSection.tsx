@@ -19,7 +19,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#E3A72A] font-semibold">
+            <span className="text-xs uppercase tracking-widest text-[#C9A42C] font-semibold">
               Collections d'exception
             </span>
             <h2 className="font-serif-luxury text-3xl sm:text-4xl text-white font-medium mt-1">
@@ -38,7 +38,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
             <div
               key={cat.id}
               onClick={() => onSelectCategory(cat)}
-              className="group relative h-80 overflow-hidden cursor-pointer bg-[#1B1A15] border border-white/5 hover:border-[#E3A72A]/50 transition-all duration-300"
+              className="group relative h-80 overflow-hidden cursor-pointer bg-[#1B1A15] border border-white/5 hover:border-[#C9A42C]/50 transition-all duration-300"
             >
               {/* Category Background Image */}
               <img
@@ -54,10 +54,10 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
               {/* Inner Content */}
               <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
                 <div className="flex justify-between items-start">
-                  <span className="text-[11px] font-mono text-[#E3A72A] uppercase tracking-widest">
+                  <span className="text-[11px] font-mono text-[#C9A42C] uppercase tracking-widest">
                     {cat.itemCount !== undefined ? `${cat.itemCount} modèles` : 'Sélection'}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-[#11110F]/80 border border-[#E3A72A]/30 flex items-center justify-center text-[#F0C24A] group-hover:bg-[#E3A72A] group-hover:text-[#11110F] transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-[#11110F]/80 border border-[#C9A42C]/30 flex items-center justify-center text-[#E2BE54] group-hover:bg-[#C9A42C] group-hover:text-[#11110F] transition-colors">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>

@@ -17,7 +17,7 @@ export const AdminMessages: React.FC<AdminMessagesProps> = ({
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
             Relation Clientèle & Devis
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -40,7 +40,7 @@ export const AdminMessages: React.FC<AdminMessagesProps> = ({
                 key={msg.id}
                 className={`p-6 border transition-colors ${
                   isUnread
-                    ? 'bg-[#1A1914] border-[#E3A72A]/50'
+                    ? 'bg-[#1A1914] border-[#C9A42C]/50'
                     : 'bg-[#1B1A15] border-white/5'
                 }`}
               >
@@ -48,16 +48,16 @@ export const AdminMessages: React.FC<AdminMessagesProps> = ({
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-2.5 h-2.5 rounded-full ${
-                        isUnread ? 'bg-[#E3A72A]' : 'bg-transparent border border-white/30'
+                        isUnread ? 'bg-[#C9A42C]' : 'bg-transparent border border-white/30'
                       }`}
                     />
                     <h3 className="font-serif-luxury text-lg text-white font-semibold">{msg.name}</h3>
-                    <span className="text-xs font-mono text-[#E3A72A]">{msg.phone}</span>
+                    <span className="text-xs font-mono text-[#C9A42C]">{msg.phone}</span>
                     {msg.email && <span className="text-xs text-[#9F9A8E]">{msg.email}</span>}
                   </div>
 
                   <div className="flex items-center gap-2 text-xs text-[#9F9A8E]">
-                    <Clock className="w-3.5 h-3.5 text-[#E3A72A]" />
+                    <Clock className="w-3.5 h-3.5 text-[#C9A42C]" />
                     <span>
                       {new Date(msg.createdAt).toLocaleDateString('fr-FR', {
                         day: 'numeric',
@@ -73,7 +73,7 @@ export const AdminMessages: React.FC<AdminMessagesProps> = ({
                   <span className="text-[11px] font-mono uppercase text-[#9F9A8E] block mb-1">
                     Objet : <strong className="text-white">{msg.subject}</strong>
                     {msg.productName && (
-                      <span> · Monture concernée : <strong className="text-[#E3A72A]">{msg.productName}</strong></span>
+                      <span> · Monture concernée : <strong className="text-[#C9A42C]">{msg.productName}</strong></span>
                     )}
                   </span>
                   <p className="text-xs sm:text-sm text-[#E8E5DD] leading-relaxed bg-[#11110F] p-4 border border-white/5">
@@ -90,7 +90,7 @@ export const AdminMessages: React.FC<AdminMessagesProps> = ({
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => onUpdateStatus(msg.id, 'replied')}
-                      className="px-3 py-1.5 bg-[#E3A72A] text-[#11110F] font-bold text-xs flex items-center gap-1.5 uppercase tracking-wider"
+                      className="px-3 py-1.5 bg-[#C9A42C] text-[#11110F] font-bold text-xs flex items-center gap-1.5 uppercase tracking-wider"
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
                       <span>Répondre sur WhatsApp</span>
@@ -102,7 +102,7 @@ export const AdminMessages: React.FC<AdminMessagesProps> = ({
                           `Votre Optique Maroc - Réponse à votre demande`
                         )}`}
                         onClick={() => onUpdateStatus(msg.id, 'replied')}
-                        className="px-3 py-1.5 bg-[#11110F] border border-white/10 text-white hover:text-[#E3A72A] flex items-center gap-1.5"
+                        className="px-3 py-1.5 bg-[#11110F] border border-white/10 text-white hover:text-[#C9A42C] flex items-center gap-1.5"
                       >
                         <Mail className="w-3.5 h-3.5" />
                         <span>Email</span>

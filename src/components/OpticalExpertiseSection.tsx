@@ -15,11 +15,11 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
   return (
     <section className="py-20 bg-[#11110F] text-[#FFFDF7] border-b border-white/5 relative overflow-hidden">
       {/* Decorative gradient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E3A72A]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C9A42C]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#E3A72A] font-semibold">
+          <span className="text-xs uppercase tracking-widest text-[#C9A42C] font-semibold">
             Haute Précision & Savoir-Faire Lunetier
           </span>
           <h2 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl text-white font-medium mt-1 mb-4">
@@ -33,8 +33,8 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
 
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-3 hover:border-[#E3A72A]/40 transition-colors">
-            <div className="w-10 h-10 rounded-full bg-[#11110F] border border-[#E3A72A]/40 flex items-center justify-center text-[#E3A72A]">
+          <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-3 hover:border-[#C9A42C]/40 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C]">
               <Sparkles className="w-5 h-5" />
             </div>
             <h3 className="font-serif-luxury text-xl text-white font-medium">
@@ -45,8 +45,8 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
             </p>
           </div>
 
-          <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-3 hover:border-[#E3A72A]/40 transition-colors">
-            <div className="w-10 h-10 rounded-full bg-[#11110F] border border-[#E3A72A]/40 flex items-center justify-center text-[#E3A72A]">
+          <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-3 hover:border-[#C9A42C]/40 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C]">
               <Award className="w-5 h-5" />
             </div>
             <h3 className="font-serif-luxury text-xl text-white font-medium">
@@ -57,8 +57,8 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
             </p>
           </div>
 
-          <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-3 hover:border-[#E3A72A]/40 transition-colors">
-            <div className="w-10 h-10 rounded-full bg-[#11110F] border border-[#E3A72A]/40 flex items-center justify-center text-[#E3A72A]">
+          <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-3 hover:border-[#C9A42C]/40 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C]">
               <HeartHandshake className="w-5 h-5" />
             </div>
             <h3 className="font-serif-luxury text-xl text-white font-medium">
@@ -71,8 +71,8 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
         </div>
 
         {/* Banner quote inspired by reference poster */}
-        <div className="bg-gradient-to-r from-[#15140F] via-[#201F18] to-[#15140F] border border-[#E3A72A]/30 p-8 sm:p-12 text-center max-w-4xl mx-auto">
-          <span className="font-mono text-xs text-[#E3A72A] tracking-widest uppercase block mb-2">
+        <div className="bg-gradient-to-r from-[#15140F] via-[#201F18] to-[#15140F] border border-[#C9A42C]/30 p-8 sm:p-12 text-center max-w-4xl mx-auto">
+          <span className="font-mono text-xs text-[#C9A42C] tracking-widest uppercase block mb-2">
             Notre Signature
           </span>
           <blockquote className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium italic mb-6">
@@ -85,7 +85,7 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={onContactClick}
-              className="px-6 py-3 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors"
+              className="px-6 py-3 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors"
             >
               Planifier une visite
             </button>
@@ -95,7 +95,7 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-[#E3A72A]/40 text-[#F5E6A6] hover:bg-[#1B1A15] font-semibold text-xs uppercase tracking-wider transition-colors"
+              className="px-6 py-3 border border-[#C9A42C]/40 text-[#F5E6A6] hover:bg-[#1B1A15] font-semibold text-xs uppercase tracking-wider transition-colors"
             >
               Prendre RDV sur WhatsApp
             </a>

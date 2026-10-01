@@ -15,7 +15,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero About */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#E3A72A] font-semibold">
+          <span className="text-xs uppercase tracking-widest text-[#C9A42C] font-semibold">
             Maison de Haute Optique · Maroc
           </span>
           <h1 className="font-serif-luxury text-4xl sm:text-5xl text-white font-medium mt-2 mb-6">
@@ -30,15 +30,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
 
         {/* Narrative Split */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 border-b border-white/10 pb-16">
-          <div className="relative aspect-[4/3] bg-[#1B1A15] overflow-hidden border border-[#E3A72A]/30">
+          <div className="relative aspect-[4/3] bg-[#1B1A15] overflow-hidden border border-[#C9A42C]/30">
             <img
               src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1200&q=80"
               alt="Atelier Optique Marrakech"
               className="w-full h-full object-cover filter brightness-90"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#11110F]/80 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 p-4 bg-[#11110F]/90 border border-[#E3A72A]/30 backdrop-blur-sm">
-              <span className="text-[11px] font-mono text-[#E3A72A] uppercase tracking-wider block">
+            <div className="absolute bottom-6 left-6 right-6 p-4 bg-[#11110F]/90 border border-[#C9A42C]/30 backdrop-blur-sm">
+              <span className="text-[11px] font-mono text-[#C9A42C] uppercase tracking-wider block">
                 Atelier & Précision
               </span>
               <p className="text-xs text-white mt-1">
@@ -63,12 +63,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
 
             <div className="pt-4 grid grid-cols-2 gap-4 text-xs">
               <div className="p-4 bg-[#1B1A15] border border-white/5">
-                <span className="font-mono text-2xl font-bold text-[#E3A72A] block mb-1">100%</span>
+                <span className="font-mono text-2xl font-bold text-[#C9A42C] block mb-1">100%</span>
                 <span className="text-white font-medium block">Origine Certifiée</span>
                 <span className="text-[11px] text-[#9F9A8E]">Montures officielles avec certificats d'authenticité</span>
               </div>
               <div className="p-4 bg-[#1B1A15] border border-white/5">
-                <span className="font-mono text-2xl font-bold text-[#E3A72A] block mb-1">+500</span>
+                <span className="font-mono text-2xl font-bold text-[#C9A42C] block mb-1">+500</span>
                 <span className="text-white font-medium block">Clients Fidèles</span>
                 <span className="text-[11px] text-[#9F9A8E]">À travers tout le Royaume du Maroc</span>
               </div>
@@ -79,7 +79,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
         {/* 3 Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="bg-[#1B1A15] border border-white/5 p-8 text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-[#11110F] border border-[#E3A72A]/40 text-[#E3A72A] flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 rounded-full bg-[#11110F] border border-[#C9A42C]/40 text-[#C9A42C] flex items-center justify-center mx-auto">
               <Sparkles className="w-5 h-5" />
             </div>
             <h3 className="font-serif-luxury text-xl text-white">Conseil Visagisme</h3>
@@ -90,7 +90,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
           </div>
 
           <div className="bg-[#1B1A15] border border-white/5 p-8 text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-[#11110F] border border-[#E3A72A]/40 text-[#E3A72A] flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 rounded-full bg-[#11110F] border border-[#C9A42C]/40 text-[#C9A42C] flex items-center justify-center mx-auto">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="font-serif-luxury text-xl text-white">Verres Haute Précision</h3>
@@ -101,7 +101,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
           </div>
 
           <div className="bg-[#1B1A15] border border-white/5 p-8 text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-[#11110F] border border-[#E3A72A]/40 text-[#E3A72A] flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 rounded-full bg-[#11110F] border border-[#C9A42C]/40 text-[#C9A42C] flex items-center justify-center mx-auto">
               <Award className="w-5 h-5" />
             </div>
             <h3 className="font-serif-luxury text-xl text-white">Garantie Adaptation</h3>
@@ -113,7 +113,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
         </div>
 
         {/* CTA Footer */}
-        <div className="bg-[#1B1A15] border border-[#E3A72A]/30 p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-6">
+        <div className="bg-[#1B1A15] border border-[#C9A42C]/30 p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-6">
           <h3 className="font-serif-luxury text-3xl text-white">
             Venez essayer vos futures lunettes à Marrakech
           </h3>
@@ -123,7 +123,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <button
               onClick={() => onNavigate('catalogue')}
-              className="px-6 py-3 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-wider"
+              className="px-6 py-3 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider"
             >
               Découvrir le catalogue
             </button>
@@ -133,9 +133,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-[#11110F] border border-[#E3A72A]/40 text-[#F5E6A6] font-semibold text-xs uppercase tracking-wider flex items-center gap-2"
+              className="px-6 py-3 bg-[#11110F] border border-[#C9A42C]/40 text-[#F5E6A6] font-semibold text-xs uppercase tracking-wider flex items-center gap-2"
             >
-              <MessageCircle className="w-4 h-4 text-[#E3A72A]" />
+              <MessageCircle className="w-4 h-4 text-[#C9A42C]" />
               <span>Prendre RDV sur WhatsApp</span>
             </a>
           </div>
