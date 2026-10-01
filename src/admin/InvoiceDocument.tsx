@@ -16,6 +16,17 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
   const noTva = !invoice.tvaRate || invoice.tvaAmount === 0;
   const htSuffix = noTva ? '' : ' HT';
 
+  // Adresse propre : fusionne adresse + ville + pays en supprimant les doublons
+  const locationLine = Array.from(
+    new Map(
+      [settings.address, settings.city, settings.country]
+        .flatMap((part) => (part ?? '').split(','))
+        .map((t) => t.trim())
+        .filter(Boolean)
+        .map((t) => [t.toLowerCase(), t]),
+    ).values(),
+  ).join(', ');
+
   return (
     <div className="fixed inset-0 z-50 bg-black/70 overflow-auto p-4">
       {/* Printable document */}
@@ -31,24 +42,15 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
             />
             <h1 className="text-2xl font-bold text-gray-900">{settings.storeName}</h1>
             {settings.tagline && (
-              <p className="text-xs italic text-[#C6900F] mb-1">{settings.tagline}</p>
-            )}
-            <p className="text-sm text-gray-600 mt-1">
-              {settings.address}
-              {settings.city ? `, ${settings.city}` : ''}
-              {settings.country ? `, ${settings.country}` : ''}
-            </p>
-            {settings.phone && (
-              <p className="text-sm text-gray-600">Tél : {settings.phone}</p>
-            )}
-            {settings.email && (
-              <p className="text-sm text-gray-600">Email : {settings.email}</p>
+              <p className="text-xs italic text-[#C6900F]">{settings.tagline}</p>
             )}
           </div>
-          <div className="text-right">
+          <div className="text-right shrink-0">
             <div className="text-3xl font-extrabold text-[#C6900F] tracking-wide">{title}</div>
-            <div className="text-lg font-semibold text-gray-800 mt-1">{invoice.number}</div>
-            <div className="text-sm text-gray-600 mt-1">Date : {invoice.docDate}</div>
+            <div className="text-sm font-semibold text-gray-800 mt-1 whitespace-nowrap">
+              N° {invoice.number}
+            </div>
+            <div className="text-sm text-gray-600 mt-1 whitespace-nowrap">Date : {invoice.docDate}</div>
             <div className="mt-2">
               <span className="inline-block px-2 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-700 border border-gray-300">
                 {invoice.status.toUpperCase()}
@@ -126,16 +128,29 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
           </div>
         )}
 
-        {/* Legal footer */}
-        {(legal.ice || legal.if || legal.rc || legal.patente || legal.capital) && (
-          <div className="mt-8 pt-4 border-t border-gray-200 text-xs text-gray-500 flex flex-wrap gap-x-4 gap-y-1">
-            {legal.ice && <div>ICE : {legal.ice}</div>}
-            {legal.if && <div>IF : {legal.if}</div>}
-            {legal.rc && <div>RC : {legal.rc}</div>}
-            {legal.patente && <div>Patente : {legal.patente}</div>}
-            {legal.capital && <div>Capital : {legal.capital}</div>}
-          </div>
-        )}
+        {/* Pied de page — coordonnées du magasin + mentions légales */}
+        <div className="mt-10 pt-4 border-t-2 border-[#EDB21B] text-xs text-gray-600 space-y-1 text-center">
+          <p className="font-bold text-gray-800">{settings.storeName}</p>
+          {locationLine && <p>{locationLine}</p>}
+          <p>
+            {settings.phone && <span>Tél : {settings.phone}</span>}
+            {settings.phone && settings.email && <span className="mx-2">·</span>}
+            {settings.email && <span>Email : {settings.email}</span>}
+          </p>
+          {(legal.ice || legal.if || legal.rc || legal.patente || legal.capital) && (
+            <p className="text-gray-500 pt-1">
+              {[
+                legal.ice && `ICE : ${legal.ice}`,
+                legal.if && `IF : ${legal.if}`,
+                legal.rc && `RC : ${legal.rc}`,
+                legal.patente && `Patente : ${legal.patente}`,
+                legal.capital && `Capital : ${legal.capital}`,
+              ]
+                .filter(Boolean)
+                .join('  ·  ')}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Action buttons — hidden at print */}
