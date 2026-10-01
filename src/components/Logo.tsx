@@ -1,5 +1,7 @@
 import React from 'react';
-import logoImage from '../../Lo.png';
+
+// Logo officiel (déposé dans public/, servi à la racine)
+const logoImage = '/logo-officiel.jpg';
 
 interface LogoProps {
   className?: string;
