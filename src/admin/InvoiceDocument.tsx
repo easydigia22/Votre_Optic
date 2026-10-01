@@ -89,8 +89,8 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
               <tr key={idx} className="border-b border-gray-200">
                 <td className="py-2 px-3 text-sm text-gray-800">{item.label}</td>
                 <td className="py-2 px-3 text-sm text-center text-gray-800">{item.qty}</td>
-                <td className="py-2 px-3 text-sm text-right text-gray-800">{formatMad(item.unitPriceHt)}</td>
-                <td className="py-2 px-3 text-sm text-right text-gray-800">{formatMad(item.qty * item.unitPriceHt)}</td>
+                <td className="py-2 px-3 text-sm text-right text-gray-800">{(Number(item.unitPriceHt) || 0).toFixed(2)}</td>
+                <td className="py-2 px-3 text-sm text-right text-gray-800">{((Number(item.qty) || 0) * (Number(item.unitPriceHt) || 0)).toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
