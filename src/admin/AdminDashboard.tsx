@@ -53,7 +53,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       {/* Welcome header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#EDB21B]">
             Tableau de Bord Exécutif
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -67,7 +67,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={onOpenProductForm}
-            className="px-4 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-sm"
+            className="px-4 py-2.5 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-sm"
           >
             <Plus className="w-4 h-4" />
             <span>Nouveau Produit (&lt;60s)</span>
@@ -80,11 +80,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         {/* Total Products */}
         <div
           onClick={() => onNavigateTab('products')}
-          className="bg-[#1B1A15] border border-white/5 hover:border-[#C9A42C]/40 p-4 cursor-pointer transition-all"
+          className="bg-[#1B1A15] border border-white/5 hover:border-[#EDB21B]/40 p-4 cursor-pointer transition-all"
         >
           <div className="flex items-center justify-between text-[#9F9A8E] mb-2">
             <span className="text-[11px] uppercase tracking-wider font-semibold">Produits</span>
-            <Glasses className="w-4 h-4 text-[#C9A42C]" />
+            <Glasses className="w-4 h-4 text-[#EDB21B]" />
           </div>
           <p className="font-mono text-2xl font-bold text-white tabular-nums">{totalProducts}</p>
           <span className="text-[10px] text-[#9F9A8E]">Au catalogue</span>
@@ -154,7 +154,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         >
           <div className="flex items-center justify-between text-[#9F9A8E] mb-2">
             <span className="text-[11px] uppercase tracking-wider font-semibold">Catégories</span>
-            <Tags className="w-4 h-4 text-[#C9A42C]" />
+            <Tags className="w-4 h-4 text-[#EDB21B]" />
           </div>
           <p className="font-mono text-2xl font-bold text-white tabular-nums">
             {categories.length}
@@ -169,9 +169,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         >
           <div className="flex items-center justify-between text-[#9F9A8E] mb-2">
             <span className="text-[11px] uppercase tracking-wider font-semibold">Promotions</span>
-            <Sparkles className="w-4 h-4 text-[#E2BE54]" />
+            <Sparkles className="w-4 h-4 text-[#F5C94E]" />
           </div>
-          <p className="font-mono text-2xl font-bold text-[#E2BE54] tabular-nums">
+          <p className="font-mono text-2xl font-bold text-[#F5C94E] tabular-nums">
             {activePromotions}
           </p>
           <span className="text-[10px] text-[#9F9A8E]">Campagnes en cours</span>
@@ -184,12 +184,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         >
           <div className="flex items-center justify-between text-[#9F9A8E] mb-2">
             <span className="text-[11px] uppercase tracking-wider font-semibold">Demandes</span>
-            <MessageSquare className="w-4 h-4 text-[#C9A42C]" />
+            <MessageSquare className="w-4 h-4 text-[#EDB21B]" />
           </div>
           <p className="font-mono text-2xl font-bold text-[#F5E6A6] tabular-nums">
             {messages.length}
           </p>
-          <span className="text-[10px] text-[#C9A42C]">
+          <span className="text-[10px] text-[#EDB21B]">
             {unreadMessages} non lue{unreadMessages > 1 ? 's' : ''}
           </span>
         </div>
@@ -203,7 +203,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         >
           <div className="flex items-center justify-between text-[#9F9A8E] mb-2">
             <span className="text-[11px] uppercase tracking-wider font-semibold">Avis Clients</span>
-            <Star className={`w-4 h-4 ${pendingReviews > 0 ? 'text-amber-400 fill-current' : 'text-[#C9A42C]'}`} />
+            <Star className={`w-4 h-4 ${pendingReviews > 0 ? 'text-amber-400 fill-current' : 'text-[#EDB21B]'}`} />
           </div>
           <p className="font-mono text-2xl font-bold text-white tabular-nums">
             {totalReviews}
@@ -225,7 +225,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </div>
           <button
             onClick={() => onNavigateTab('stock')}
-            className="text-xs text-[#C9A42C] hover:underline flex items-center gap-1"
+            className="text-xs text-[#EDB21B] hover:underline flex items-center gap-1"
           >
             <span>Gérer tous les stocks</span>
             <ArrowRight className="w-3 h-3" />
@@ -258,7 +258,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-bold text-white">{item.name}</span>
-                        <span className="text-[10px] font-mono text-[#C9A42C] bg-[#1B1A15] px-1.5 py-0.2">
+                        <span className="text-[10px] font-mono text-[#EDB21B] bg-[#1B1A15] px-1.5 py-0.2">
                           Réf: {item.reference}
                         </span>
                         <span className="text-[10px] text-[#9F9A8E]">{brand?.name}</span>
@@ -282,7 +282,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                     <button
                       onClick={() => onQuickAddStock(item.id, 5)}
-                      className="px-3 py-1 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] text-xs font-bold uppercase transition-colors flex items-center gap-1"
+                      className="px-3 py-1 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] text-xs font-bold uppercase transition-colors flex items-center gap-1"
                     >
                       <Plus className="w-3 h-3" />
                       <span>+5 Réassort</span>
@@ -309,7 +309,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </h3>
             <button
               onClick={() => onNavigateTab('messages')}
-              className="text-xs text-[#C9A42C] hover:underline"
+              className="text-xs text-[#EDB21B] hover:underline"
             >
               Voir tout ({messages.length})
             </button>
@@ -319,12 +319,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             {messages.slice(0, 3).map((msg) => (
               <div
                 key={msg.id}
-                className="p-3.5 bg-[#11110F] border border-white/5 hover:border-[#C9A42C]/30 transition-colors"
+                className="p-3.5 bg-[#11110F] border border-white/5 hover:border-[#EDB21B]/30 transition-colors"
               >
                 <div className="flex items-center justify-between text-xs mb-1">
                   <div className="flex items-center gap-2">
                     <strong className="text-white">{msg.name}</strong>
-                    <span className="font-mono text-[11px] text-[#C9A42C]">{msg.phone}</span>
+                    <span className="font-mono text-[11px] text-[#EDB21B]">{msg.phone}</span>
                   </div>
                   <span className="text-[10px] text-[#9F9A8E]">
                     {new Date(msg.createdAt).toLocaleDateString('fr-FR', {
@@ -354,34 +354,34 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <div className="space-y-2.5">
               <button
                 onClick={onOpenProductForm}
-                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#C9A42C] text-left text-xs text-white hover:text-[#C9A42C] flex items-center justify-between transition-colors"
+                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#EDB21B] text-left text-xs text-white hover:text-[#EDB21B] flex items-center justify-between transition-colors"
               >
                 <span>Ajouter une nouvelle monture (&lt; 60 sec)</span>
-                <Plus className="w-4 h-4 text-[#C9A42C]" />
+                <Plus className="w-4 h-4 text-[#EDB21B]" />
               </button>
 
               <button
                 onClick={() => onNavigateTab('promotions')}
-                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#C9A42C] text-left text-xs text-white hover:text-[#C9A42C] flex items-center justify-between transition-colors"
+                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#EDB21B] text-left text-xs text-white hover:text-[#EDB21B] flex items-center justify-between transition-colors"
               >
                 <span>Lancer une offre promotionnelle</span>
-                <Sparkles className="w-4 h-4 text-[#C9A42C]" />
+                <Sparkles className="w-4 h-4 text-[#EDB21B]" />
               </button>
 
               <button
                 onClick={() => onNavigateTab('banners')}
-                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#C9A42C] text-left text-xs text-white hover:text-[#C9A42C] flex items-center justify-between transition-colors"
+                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#EDB21B] text-left text-xs text-white hover:text-[#EDB21B] flex items-center justify-between transition-colors"
               >
                 <span>Modifier les bannières publicitaires</span>
-                <TrendingUp className="w-4 h-4 text-[#C9A42C]" />
+                <TrendingUp className="w-4 h-4 text-[#EDB21B]" />
               </button>
 
               <button
                 onClick={() => onNavigateTab('settings')}
-                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#C9A42C] text-left text-xs text-white hover:text-[#C9A42C] flex items-center justify-between transition-colors"
+                className="w-full p-3 bg-[#11110F] border border-white/10 hover:border-[#EDB21B] text-left text-xs text-white hover:text-[#EDB21B] flex items-center justify-between transition-colors"
               >
                 <span>Coordonnées boutique & WhatsApp</span>
-                <ArrowRight className="w-4 h-4 text-[#C9A42C]" />
+                <ArrowRight className="w-4 h-4 text-[#EDB21B]" />
               </button>
             </div>
           </div>

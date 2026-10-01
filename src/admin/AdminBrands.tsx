@@ -68,7 +68,7 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#EDB21B]">
             Partenaires & Maisons
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -81,7 +81,7 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
 
         <button
           onClick={openNewModal}
-          className="px-4 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
+          className="px-4 py-2.5 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
         >
           <Plus className="w-4 h-4" />
           <span>+ Ajouter une marque</span>
@@ -98,21 +98,21 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
               <div className="flex items-start justify-between mb-2">
                 <h3 className="font-serif-luxury text-2xl text-white font-semibold">{b.name}</h3>
                 {b.isFeatured && (
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A42C] border border-[#C9A42C]/40 px-2 py-0.5 flex items-center gap-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#EDB21B] border border-[#EDB21B]/40 px-2 py-0.5 flex items-center gap-1">
                     <Star className="w-2.5 h-2.5 fill-current" />
                     En vedette
                   </span>
                 )}
               </div>
 
-              <p className="text-xs font-mono text-[#C9A42C] mb-2">Origine : {b.country || 'International'}</p>
+              <p className="text-xs font-mono text-[#EDB21B] mb-2">Origine : {b.country || 'International'}</p>
               <p className="text-xs text-[#9F9A8E] leading-relaxed mb-4">{b.description}</p>
             </div>
 
             <div className="pt-4 border-t border-white/5 flex items-center justify-end gap-2">
               <button
                 onClick={() => openEditModal(b)}
-                className="p-1.5 text-[#9F9A8E] hover:text-[#C9A42C]"
+                className="p-1.5 text-[#9F9A8E] hover:text-[#EDB21B]"
               >
                 <Edit2 className="w-4 h-4" />
               </button>
@@ -133,7 +133,7 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-[#1B1A15] border border-[#C9A42C]/40 p-6 shadow-2xl relative">
+          <div className="w-full max-w-md bg-[#1B1A15] border border-[#EDB21B]/40 p-6 shadow-2xl relative">
             <button
               onClick={() => setModalOpen(false)}
               className="absolute top-4 right-4 text-[#9F9A8E] hover:text-white"
@@ -156,7 +156,7 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
                   value={form.name}
                   onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
                   placeholder="Ex: Prada Eyewear"
-                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#EDB21B]"
                 />
               </div>
 
@@ -191,7 +191,7 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
                     type="checkbox"
                     checked={form.isFeatured}
                     onChange={(e) => setForm((p) => ({ ...p, isFeatured: e.target.checked }))}
-                    className="accent-[#C9A42C]"
+                    className="accent-[#EDB21B]"
                   />
                   <span>Mettre en avant sur la page d'accueil</span>
                 </label>
@@ -207,7 +207,7 @@ export const AdminBrands: React.FC<AdminBrandsProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold uppercase"
+                  className="px-6 py-2 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold uppercase"
                 >
                   Enregistrer
                 </button>

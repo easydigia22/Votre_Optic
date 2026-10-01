@@ -24,11 +24,11 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
         type="button"
         onClick={handleClick}
         title="Installer Votre Optique sur cet appareil"
-        className={`flex items-center justify-center gap-2 border border-[#C9A42C]/50 bg-[#1B1A15] hover:bg-[#C9A42C]/10 text-[#F5E6A6] text-xs uppercase tracking-wider font-medium transition-colors shadow-lg ${
+        className={`flex items-center justify-center gap-2 border border-[#EDB21B]/50 bg-[#1B1A15] hover:bg-[#EDB21B]/10 text-[#F5E6A6] text-xs uppercase tracking-wider font-medium transition-colors shadow-lg ${
           compact ? 'px-2.5 py-1.5' : 'px-3.5 py-2.5'
         }`}
       >
-        <Download className="w-4 h-4 text-[#C9A42C]" />
+        <Download className="w-4 h-4 text-[#EDB21B]" />
         <span>{compact ? 'Installer' : "Installer l'application"}</span>
       </button>
 
@@ -39,7 +39,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
           aria-modal="true"
           aria-labelledby="pwa-install-title"
         >
-          <div className="w-full max-w-sm border border-[#C9A42C]/40 bg-[#1B1A15] p-6 text-left shadow-2xl relative">
+          <div className="w-full max-w-sm border border-[#EDB21B]/40 bg-[#1B1A15] p-6 text-left shadow-2xl relative">
             <button
               type="button"
               onClick={() => setShowGuide(false)}
@@ -50,7 +50,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
             </button>
 
             <div className="flex items-center gap-3 mb-5 pr-8">
-              <div className="w-10 h-10 shrink-0 border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C]">
+              <div className="w-10 h-10 shrink-0 border border-[#EDB21B]/40 flex items-center justify-center text-[#EDB21B]">
                 <Smartphone className="w-5 h-5" />
               </div>
               <div>
@@ -62,7 +62,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
             </div>
 
             {isInAppBrowser && (
-              <div className="mb-5 border border-[#C9A42C]/30 bg-[#C9A42C]/10 p-3 text-xs text-[#F5E6A6]">
+              <div className="mb-5 border border-[#EDB21B]/30 bg-[#EDB21B]/10 p-3 text-xs text-[#F5E6A6]">
                 <div className="flex items-start gap-2">
                   <ExternalLink className="w-4 h-4 shrink-0 mt-0.5" />
                   <p>
@@ -104,7 +104,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
             <button
               type="button"
               onClick={() => setShowGuide(false)}
-              className="mt-6 w-full py-2.5 bg-[#C9A42C] text-[#11110F] font-semibold text-xs uppercase tracking-wider hover:bg-[#E2BE54] transition-colors"
+              className="mt-6 w-full py-2.5 bg-[#EDB21B] text-[#11110F] font-semibold text-xs uppercase tracking-wider hover:bg-[#F5C94E] transition-colors"
             >
               J'ai compris
             </button>
@@ -121,11 +121,11 @@ const GuideStep: React.FC<{
   children: React.ReactNode;
 }> = ({ number, icon, children }) => (
   <div className="flex items-start gap-3">
-    <span className="w-6 h-6 shrink-0 bg-[#11110F] border border-[#C9A42C]/40 text-[#C9A42C] flex items-center justify-center font-mono text-xs">
+    <span className="w-6 h-6 shrink-0 bg-[#11110F] border border-[#EDB21B]/40 text-[#EDB21B] flex items-center justify-center font-mono text-xs">
       {number}
     </span>
     <div className="flex gap-2 leading-relaxed">
-      <span className="text-[#C9A42C] mt-0.5">{icon}</span>
+      <span className="text-[#EDB21B] mt-0.5">{icon}</span>
       <p>{children}</p>
     </div>
   </div>

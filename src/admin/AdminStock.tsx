@@ -79,7 +79,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#EDB21B]">
             Logistique & Inventaire Réel
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -108,13 +108,13 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       {/* Search and Filters */}
       <div className="bg-[#1B1A15] border border-white/5 p-4 flex items-center justify-between">
         <div className="relative w-full max-w-sm">
-          <Search className="w-4 h-4 text-[#C9A42C] absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-[#EDB21B] absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Rechercher par modèle ou référence..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#EDB21B]"
           />
         </div>
       </div>
@@ -146,7 +146,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                     <div className="text-[11px] text-[#9F9A8E]">{brand?.name}</div>
                   </td>
 
-                  <td className="py-3 px-4 font-mono text-[11px] text-[#C9A42C]">
+                  <td className="py-3 px-4 font-mono text-[11px] text-[#EDB21B]">
                     {p.reference}
                   </td>
 
@@ -216,7 +216,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                       <button
                         onClick={() => onAdjustStock(p.id, 1, false, 'Entrée unitaire réassort', 'reassort')}
                         title="Ajouter 1 exemplaire"
-                        className="w-7 h-7 flex items-center justify-center text-[#C9A42C] hover:bg-[#C9A42C]/20"
+                        className="w-7 h-7 flex items-center justify-center text-[#EDB21B] hover:bg-[#EDB21B]/20"
                       >
                         <Plus className="w-3.5 h-3.5" />
                       </button>
@@ -227,7 +227,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                   <td className="py-3 px-4 text-right">
                     <button
                       onClick={() => handleOpenAdjustModal(p)}
-                      className="px-2.5 py-1.5 bg-[#11110F] hover:bg-[#29271F] border border-white/10 text-xs text-[#E8E5DD] hover:text-[#C9A42C] inline-flex items-center gap-1.5 transition-colors"
+                      className="px-2.5 py-1.5 bg-[#11110F] hover:bg-[#29271F] border border-white/10 text-xs text-[#E8E5DD] hover:text-[#EDB21B] inline-flex items-center gap-1.5 transition-colors"
                     >
                       <Sliders className="w-3.5 h-3.5" />
                       <span>Ajuster</span>
@@ -243,7 +243,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       {/* Stock History Audit Log Table */}
       <div className="bg-[#1B1A15] border border-white/5 p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-[#C9A42C]">
+          <div className="flex items-center gap-2 text-[#EDB21B]">
             <History className="w-4 h-4" />
             <h2 className="font-serif-luxury text-lg text-white font-medium">
               Journal d'Audit des Mouvements de Stock
@@ -321,11 +321,11 @@ export const AdminStock: React.FC<AdminStockProps> = ({
       {/* Full Stock Adjustment Modal */}
       {adjustModalProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-[#1B1A15] border border-[#C9A42C]/40 p-6 shadow-2xl">
+          <div className="w-full max-w-md bg-[#1B1A15] border border-[#EDB21B]/40 p-6 shadow-2xl">
             <h3 className="font-serif-luxury text-xl text-white mb-1">
               Ajuster le stock : {adjustModalProduct.name}
             </h3>
-            <p className="text-xs text-[#C9A42C] font-mono mb-4">
+            <p className="text-xs text-[#EDB21B] font-mono mb-4">
               Réf : {adjustModalProduct.reference} · Quantité actuelle : {adjustModalProduct.stockQuantity} unités
             </p>
 
@@ -360,7 +360,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                   required
                   value={newQuantityValue}
                   onChange={(e) => setNewQuantityValue(Number(e.target.value))}
-                  className="w-full bg-[#11110F] border border-white/10 font-mono text-base text-white p-2.5 outline-none focus:border-[#C9A42C]"
+                  className="w-full bg-[#11110F] border border-white/10 font-mono text-base text-white p-2.5 outline-none focus:border-[#EDB21B]"
                 />
               </div>
 
@@ -373,7 +373,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                   placeholder="Ex: Facture BL #4920, inventaire mensuel..."
                   value={adjustmentComment}
                   onChange={(e) => setAdjustmentComment(e.target.value)}
-                  className="w-full bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C9A42C]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#EDB21B]"
                 />
               </div>
 
@@ -387,7 +387,7 @@ export const AdminStock: React.FC<AdminStockProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold uppercase tracking-wider"
+                  className="px-5 py-2 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold uppercase tracking-wider"
                 >
                   Valider le mouvement
                 </button>

@@ -80,12 +80,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       <div className="fixed inset-0" onClick={onClose} />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-5xl bg-[#15140F] border border-[#C9A42C]/30 shadow-2xl z-10 overflow-hidden my-4 max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-5xl bg-[#15140F] border border-[#EDB21B]/30 shadow-2xl z-10 overflow-hidden my-4 max-h-[92vh] flex flex-col">
         {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Fermer"
-          className="absolute top-4 right-4 z-20 p-2 bg-[#11110F]/80 text-[#9F9A8E] hover:text-white border border-white/10 hover:border-[#C9A42C] transition-colors"
+          className="absolute top-4 right-4 z-20 p-2 bg-[#11110F]/80 text-[#9F9A8E] hover:text-white border border-white/10 hover:border-[#EDB21B] transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
@@ -97,7 +97,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {/* Main Stage */}
               <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-[#1B1A15]/60 overflow-hidden border border-white/5">
                 {product.inPromo && (
-                  <div className="absolute top-4 left-4 z-10 bg-[#C9A42C] text-[#11110F] text-xs font-bold px-3 py-1 uppercase tracking-widest">
+                  <div className="absolute top-4 left-4 z-10 bg-[#EDB21B] text-[#11110F] text-xs font-bold px-3 py-1 uppercase tracking-widest">
                     Promotion {product.discountPercentage ? `-${product.discountPercentage}%` : ''}
                   </div>
                 )}
@@ -110,7 +110,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     className="w-full h-full object-contain p-4 transform hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="text-[#C9A42C]/50 flex flex-col items-center">
+                  <div className="text-[#EDB21B]/50 flex flex-col items-center">
                     <Eye className="w-16 h-16 stroke-1 mb-2" />
                     <span className="text-xs uppercase tracking-widest text-[#9F9A8E]">
                       Haute Lunetterie
@@ -128,7 +128,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       onClick={() => setSelectedImageIndex(idx)}
                       className={`relative w-16 h-16 shrink-0 bg-[#1B1A15] border p-1 transition-all ${
                         selectedImageIndex === idx
-                          ? 'border-[#C9A42C] shadow-md shadow-[#C9A42C]/20'
+                          ? 'border-[#EDB21B] shadow-md shadow-[#EDB21B]/20'
                           : 'border-white/10 opacity-70 hover:opacity-100'
                       }`}
                     >
@@ -141,15 +141,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {/* Trust Badges */}
               <div className="pt-6 mt-6 border-t border-white/5 grid grid-cols-3 gap-2 text-[11px] text-[#9F9A8E]">
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-[#C9A42C] shrink-0" />
+                  <Shield className="w-4 h-4 text-[#EDB21B] shrink-0" />
                   <span>100% Authentique Certifié</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#C9A42C] shrink-0" />
+                  <Truck className="w-4 h-4 text-[#EDB21B] shrink-0" />
                   <span>Livraison partout au Maroc</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <RotateCcw className="w-4 h-4 text-[#C9A42C] shrink-0" />
+                  <RotateCcw className="w-4 h-4 text-[#EDB21B] shrink-0" />
                   <span>Ajustement & centrage offerts</span>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               <div className="space-y-4">
                 {/* Brand & Reference */}
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-widest text-[#C9A42C] uppercase">
+                  <span className="text-xs font-bold tracking-widest text-[#EDB21B] uppercase">
                     {brand?.name || 'Maison Optique'}
                   </span>
                   <span className="text-xs font-mono text-[#9F9A8E]">
@@ -175,7 +175,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </h2>
                   {/* Rating Stars under Title */}
                   <div className="flex items-center gap-2 mt-1.5">
-                    <div className="flex items-center gap-0.5 text-[#C9A42C]">
+                    <div className="flex items-center gap-0.5 text-[#EDB21B]">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}
@@ -198,7 +198,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="flex items-baseline gap-3 pt-1 pb-2 border-b border-white/10">
                   <span className="font-mono text-2xl font-bold text-[#F5E6A6] tabular-nums">
                     {product.price.toLocaleString('fr-FR')}{' '}
-                    <span className="text-sm font-normal text-[#E2BE54]">DH</span>
+                    <span className="text-sm font-normal text-[#F5C94E]">DH</span>
                   </span>
                   {product.oldPrice && product.oldPrice > product.price && (
                     <span className="font-mono text-sm text-[#9F9A8E] line-through tabular-nums">
@@ -206,7 +206,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     </span>
                   )}
                   {product.discountPercentage && (
-                    <span className="text-xs text-[#C9A42C] border border-[#C9A42C]/40 px-2 py-0.5">
+                    <span className="text-xs text-[#EDB21B] border border-[#EDB21B]/40 px-2 py-0.5">
                       Économisez {product.discountPercentage}%
                     </span>
                   )}
@@ -246,7 +246,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           onClick={() => setSelectedColor(c)}
                           className={`text-xs px-2.5 py-1 border transition-all ${
                             selectedColor === c
-                              ? 'border-[#C9A42C] text-[#F5E6A6] bg-[#C9A42C]/10'
+                              ? 'border-[#EDB21B] text-[#F5E6A6] bg-[#EDB21B]/10'
                               : 'border-white/10 text-[#9F9A8E] hover:text-white'
                           }`}
                         >
@@ -297,7 +297,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sm:col-span-3 py-3.5 px-4 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-[#C9A42C]/20"
+                    className="sm:col-span-3 py-3.5 px-4 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-[#EDB21B]/20"
                   >
                     <MessageCircle className="w-4 h-4 fill-current" />
                     <span>Commander sur WhatsApp</span>
@@ -309,11 +309,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     title={wishlistState ? 'Retirer de la liste de souhaits' : 'Ajouter à la liste de souhaits'}
                     className={`py-3.5 px-3 border transition-colors flex items-center justify-center gap-1.5 text-xs font-semibold ${
                       wishlistState
-                        ? 'border-[#C9A42C] bg-[#C9A42C]/15 text-[#C9A42C]'
-                        : 'border-white/15 text-white hover:border-[#C9A42C] hover:text-[#C9A42C]'
+                        ? 'border-[#EDB21B] bg-[#EDB21B]/15 text-[#EDB21B]'
+                        : 'border-white/15 text-white hover:border-[#EDB21B] hover:text-[#EDB21B]'
                     }`}
                   >
-                    <Heart className={`w-4 h-4 ${wishlistState ? 'fill-current text-[#C9A42C]' : ''}`} />
+                    <Heart className={`w-4 h-4 ${wishlistState ? 'fill-current text-[#EDB21B]' : ''}`} />
                     <span className="sm:hidden">{wishlistState ? 'Enregistré' : 'Favori'}</span>
                   </button>
                 </div>
@@ -322,7 +322,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span>Numéro officiel : <strong>+212 770 420 663</strong></span>
                   <button
                     onClick={handleShare}
-                    className="hover:text-[#C9A42C] flex items-center gap-1 transition-colors"
+                    className="hover:text-[#EDB21B] flex items-center gap-1 transition-colors"
                   >
                     <Share2 className="w-3.5 h-3.5" />
                     <span>{copiedLink ? 'Lien copié !' : 'Partager'}</span>

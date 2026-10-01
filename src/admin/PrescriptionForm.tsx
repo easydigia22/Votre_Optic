@@ -14,7 +14,7 @@ interface Props {
 }
 
 const inputCls =
-  'w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C9A42C] text-center';
+  'w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#EDB21B] text-center';
 
 // ─── Module-scope component — must NOT be defined inside PrescriptionForm ───
 interface EyeRowProps {
@@ -26,7 +26,7 @@ interface EyeRowProps {
 
 const EyeRow: React.FC<EyeRowProps> = ({ label, eye, vp, onChange }) => (
   <tr className="border-b border-white/5">
-    <td className="py-2 pr-3 text-xs font-semibold text-[#C9A42C] whitespace-nowrap">{label}</td>
+    <td className="py-2 pr-3 text-xs font-semibold text-[#EDB21B] whitespace-nowrap">{label}</td>
     <td className="py-1.5 px-1">
       <input
         type="number"
@@ -116,7 +116,7 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
             type="date"
             value={form.prescriptionDate}
             onChange={(e) => setForm((p) => ({ ...p, prescriptionDate: e.target.value }))}
-            className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#EDB21B]"
             required
           />
         </div>
@@ -128,7 +128,7 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
             type="text"
             value={form.prescriber}
             onChange={(e) => setForm((p) => ({ ...p, prescriber: e.target.value }))}
-            className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#EDB21B]"
             placeholder="Dr. …"
           />
         </div>
@@ -184,7 +184,7 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
               onChange={(e) =>
                 setForm((p) => ({ ...p, [field]: num(e.target.value) }))
               }
-              className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C9A42C]"
+              className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#EDB21B]"
               placeholder="—"
             />
           </div>
@@ -200,7 +200,7 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
           value={form.notes}
           onChange={(e) => setForm((p) => ({ ...p, notes: e.target.value }))}
           rows={2}
-          className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C9A42C] resize-none"
+          className="w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#EDB21B] resize-none"
           placeholder="Remarques…"
         />
       </div>
@@ -216,7 +216,7 @@ export const PrescriptionForm: React.FC<Props> = ({ clientId, initial, onSubmit,
         </button>
         <button
           type="submit"
-          className="bg-[#C9A42C] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-widest hover:bg-[#E2BE54] transition-colors"
+          className="bg-[#EDB21B] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-widest hover:bg-[#F5C94E] transition-colors"
         >
           Enregistrer
         </button>
