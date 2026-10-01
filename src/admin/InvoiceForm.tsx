@@ -18,7 +18,7 @@ const STATUS_LABELS: Record<InvoiceStatus, string> = {
 };
 
 const inputCls =
-  'w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#C6A53A]';
+  'w-full bg-[#11110F] border border-white/10 text-white px-2 py-1.5 text-xs outline-none focus:border-[#E3A72A]';
 
 const labelCls = 'block text-[10px] uppercase tracking-widest text-[#9F9A8E] mb-1';
 
@@ -287,7 +287,7 @@ export const InvoiceForm: React.FC<Props> = ({
         <button
           type="button"
           onClick={addItem}
-          className="mt-3 flex items-center gap-1.5 text-[#C6A53A] hover:text-[#F5E6A6] text-xs font-medium transition-colors"
+          className="mt-3 flex items-center gap-1.5 text-[#E3A72A] hover:text-[#F5E6A6] text-xs font-medium transition-colors"
         >
           <Plus size={14} />
           Ajouter une ligne
@@ -335,7 +335,7 @@ export const InvoiceForm: React.FC<Props> = ({
           <span>TVA ({form.tvaRate}%)</span>
           <span className="font-mono">{formatMad(totals.tvaAmount)}</span>
         </div>
-        <div className="flex justify-between text-sm font-semibold text-[#C6A53A] border-t border-white/10 pt-2 mt-1">
+        <div className="flex justify-between text-sm font-semibold text-[#E3A72A] border-t border-white/10 pt-2 mt-1">
           <span>Total TTC</span>
           <span className="font-mono">{formatMad(totals.totalTtc)}</span>
         </div>
@@ -353,7 +353,7 @@ export const InvoiceForm: React.FC<Props> = ({
         <button
           type="submit"
           disabled={saving}
-          className="px-5 py-2 text-xs bg-[#C6A53A] text-[#0D0C0B] font-semibold hover:bg-[#F5E6A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-5 py-2 text-xs bg-[#E3A72A] text-[#0D0C0B] font-semibold hover:bg-[#F5E6A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saving ? 'Enregistrement…' : 'Enregistrer'}
         </button>

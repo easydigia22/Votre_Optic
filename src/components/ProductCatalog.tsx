@@ -176,7 +176,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         <div className="border-b border-white/10 pb-8 mb-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#C6A53A]">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#E3A72A]">
                 Haute Lunetterie · Marrakech
               </span>
               <h1 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl text-white font-medium mt-1">
@@ -204,8 +204,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onClick={() => setFilters((prev) => ({ ...prev, gender: tab.id }))}
                   className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                     filters.gender === tab.id
-                      ? 'bg-[#C6A53A] text-[#11110F] font-semibold'
-                      : 'text-[#E8E5DD] hover:text-[#C6A53A]'
+                      ? 'bg-[#E3A72A] text-[#11110F] font-semibold'
+                      : 'text-[#E8E5DD] hover:text-[#E3A72A]'
                   }`}
                 >
                   {tab.label}
@@ -225,8 +225,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onClick={() => setFilters((prev) => ({ ...prev, type: t.id }))}
                   className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                     filters.type === t.id
-                      ? 'bg-[#E3C866] text-[#11110F] font-semibold'
-                      : 'text-[#E8E5DD] hover:text-[#C6A53A]'
+                      ? 'bg-[#F0C24A] text-[#11110F] font-semibold'
+                      : 'text-[#E8E5DD] hover:text-[#E3A72A]'
                   }`}
                 >
                   {t.label}
@@ -240,13 +240,13 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">
           {/* Search bar input */}
           <div className="relative flex-grow max-w-lg">
-            <Search className="w-4 h-4 text-[#C6A53A] absolute left-3 top-3.5" />
+            <Search className="w-4 h-4 text-[#E3A72A] absolute left-3 top-3.5" />
             <input
               type="text"
               placeholder="Rechercher par nom, marque, référence (RB, TF, Cartier)..."
               value={filters.search}
               onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
-              className="w-full bg-[#1B1A15] border border-white/10 focus:border-[#C6A53A] text-sm text-white pl-9 pr-8 py-2.5 outline-none transition-colors placeholder:text-[#9F9A8E]"
+              className="w-full bg-[#1B1A15] border border-white/10 focus:border-[#E3A72A] text-sm text-white pl-9 pr-8 py-2.5 outline-none transition-colors placeholder:text-[#9F9A8E]"
             />
             {filters.search && (
               <button
@@ -268,7 +268,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   sortBy: e.target.value as FilterState['sortBy'],
                 }))
               }
-              className="bg-[#1B1A15] border border-white/10 text-xs text-[#E8E5DD] px-3 py-2.5 outline-none focus:border-[#C6A53A]"
+              className="bg-[#1B1A15] border border-white/10 text-xs text-[#E8E5DD] px-3 py-2.5 outline-none focus:border-[#E3A72A]"
             >
               <option value="featured">Sélection Vedette</option>
               <option value="newest">Nouveautés récentes</option>
@@ -279,12 +279,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             {/* Mobile Filter Drawer Button */}
             <button
               onClick={() => setMobileFiltersOpen(true)}
-              className="lg:hidden px-3 py-2.5 bg-[#1B1A15] border border-[#C6A53A]/40 text-xs font-semibold text-[#F5E6A6] flex items-center gap-1.5"
+              className="lg:hidden px-3 py-2.5 bg-[#1B1A15] border border-[#E3A72A]/40 text-xs font-semibold text-[#F5E6A6] flex items-center gap-1.5"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
               <span>Filtres</span>
               {hasActiveFilters && (
-                <span className="w-2 h-2 rounded-full bg-[#C6A53A]" />
+                <span className="w-2 h-2 rounded-full bg-[#E3A72A]" />
               )}
             </button>
           </div>
@@ -295,13 +295,13 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           {/* Desktop Filter Sidebar (lg:col-span-1) */}
           <aside className="hidden lg:block space-y-6 bg-[#15140F] border border-white/5 p-6 h-fit sticky top-28">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#C6A53A]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#E3A72A]">
                 Filtres & Sélection
               </span>
               {hasActiveFilters && (
                 <button
                   onClick={resetFilters}
-                  className="text-[11px] text-[#9F9A8E] hover:text-[#C6A53A] flex items-center gap-1 transition-colors"
+                  className="text-[11px] text-[#9F9A8E] hover:text-[#E3A72A] flex items-center gap-1 transition-colors"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Réinitialiser</span>
@@ -319,12 +319,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onClick={() => setFilters((prev) => ({ ...prev, brandId: 'all' }))}
                   className={`w-full text-left text-xs py-1 px-2 flex justify-between items-center transition-colors ${
                     filters.brandId === 'all'
-                      ? 'text-[#C6A53A] font-semibold bg-[#29271F]'
+                      ? 'text-[#E3A72A] font-semibold bg-[#29271F]'
                       : 'text-[#9F9A8E] hover:text-white'
                   }`}
                 >
                   <span>Toutes les marques</span>
-                  {filters.brandId === 'all' && <Check className="w-3 h-3 text-[#C6A53A]" />}
+                  {filters.brandId === 'all' && <Check className="w-3 h-3 text-[#E3A72A]" />}
                 </button>
                 {brands.map((b) => (
                   <button
@@ -332,12 +332,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     onClick={() => setFilters((prev) => ({ ...prev, brandId: b.id }))}
                     className={`w-full text-left text-xs py-1 px-2 flex justify-between items-center transition-colors ${
                       filters.brandId === b.id
-                        ? 'text-[#C6A53A] font-semibold bg-[#29271F]'
+                        ? 'text-[#E3A72A] font-semibold bg-[#29271F]'
                         : 'text-[#9F9A8E] hover:text-white'
                     }`}
                   >
                     <span>{b.name}</span>
-                    {filters.brandId === b.id && <Check className="w-3 h-3 text-[#C6A53A]" />}
+                    {filters.brandId === b.id && <Check className="w-3 h-3 text-[#E3A72A]" />}
                   </button>
                 ))}
               </div>
@@ -353,12 +353,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onClick={() => setFilters((prev) => ({ ...prev, categoryId: 'all' }))}
                   className={`w-full text-left text-xs py-1 px-2 flex justify-between items-center transition-colors ${
                     filters.categoryId === 'all'
-                      ? 'text-[#C6A53A] font-semibold bg-[#29271F]'
+                      ? 'text-[#E3A72A] font-semibold bg-[#29271F]'
                       : 'text-[#9F9A8E] hover:text-white'
                   }`}
                 >
                   <span>Toutes catégories</span>
-                  {filters.categoryId === 'all' && <Check className="w-3 h-3 text-[#C6A53A]" />}
+                  {filters.categoryId === 'all' && <Check className="w-3 h-3 text-[#E3A72A]" />}
                 </button>
                 {categories.map((c) => (
                   <button
@@ -366,12 +366,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     onClick={() => setFilters((prev) => ({ ...prev, categoryId: c.id }))}
                     className={`w-full text-left text-xs py-1 px-2 flex justify-between items-center transition-colors ${
                       filters.categoryId === c.id
-                        ? 'text-[#C6A53A] font-semibold bg-[#29271F]'
+                        ? 'text-[#E3A72A] font-semibold bg-[#29271F]'
                         : 'text-[#9F9A8E] hover:text-white'
                     }`}
                   >
                     <span>{c.name}</span>
-                    {filters.categoryId === c.id && <Check className="w-3 h-3 text-[#C6A53A]" />}
+                    {filters.categoryId === c.id && <Check className="w-3 h-3 text-[#E3A72A]" />}
                   </button>
                 ))}
               </div>
@@ -386,7 +386,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onChange={(e) =>
                     setFilters((prev) => ({ ...prev, inStockOnly: e.target.checked }))
                   }
-                  className="rounded accent-[#C6A53A] bg-[#29271F] border-white/20"
+                  className="rounded accent-[#E3A72A] bg-[#29271F] border-white/20"
                 />
                 <span>En stock uniquement</span>
               </label>
@@ -398,7 +398,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onChange={(e) =>
                     setFilters((prev) => ({ ...prev, promoOnly: e.target.checked }))
                   }
-                  className="rounded accent-[#C6A53A] bg-[#29271F] border-white/20"
+                  className="rounded accent-[#E3A72A] bg-[#29271F] border-white/20"
                 />
                 <span>Offres & Promotions</span>
               </label>
@@ -410,7 +410,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   onChange={(e) =>
                     setFilters((prev) => ({ ...prev, newOnly: e.target.checked }))
                   }
-                  className="rounded accent-[#C6A53A] bg-[#29271F] border-white/20"
+                  className="rounded accent-[#E3A72A] bg-[#29271F] border-white/20"
                 />
                 <span>Nouveautés</span>
               </label>
@@ -435,7 +435,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onChange={(e) =>
                   setFilters((prev) => ({ ...prev, maxPrice: Number(e.target.value) }))
                 }
-                className="w-full accent-[#C6A53A]"
+                className="w-full accent-[#E3A72A]"
               />
             </div>
 
@@ -450,7 +450,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     onClick={() => setFilters((prev) => ({ ...prev, color: 'all' }))}
                     className={`text-[11px] px-2 py-0.5 border ${
                       filters.color === 'all'
-                        ? 'border-[#C6A53A] text-[#F5E6A6] bg-[#C6A53A]/10'
+                        ? 'border-[#E3A72A] text-[#F5E6A6] bg-[#E3A72A]/10'
                         : 'border-white/10 text-[#9F9A8E] hover:text-white'
                     }`}
                   >
@@ -462,7 +462,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                       onClick={() => setFilters((prev) => ({ ...prev, color: col }))}
                       className={`text-[11px] px-2 py-0.5 border ${
                         filters.color === col
-                          ? 'border-[#C6A53A] text-[#F5E6A6] bg-[#C6A53A]/10'
+                          ? 'border-[#E3A72A] text-[#F5E6A6] bg-[#E3A72A]/10'
                           : 'border-white/10 text-[#9F9A8E] hover:text-white'
                       }`}
                     >
@@ -485,7 +485,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
               {hasActiveFilters && (
                 <button
                   onClick={resetFilters}
-                  className="text-xs text-[#C6A53A] hover:underline"
+                  className="text-xs text-[#E3A72A] hover:underline"
                 >
                   Effacer les filtres
                 </button>
@@ -513,7 +513,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             ) : (
               /* Empty State */
               <div className="bg-[#1B1A15] border border-white/5 p-12 text-center flex flex-col items-center">
-                <Search className="w-10 h-10 text-[#C6A53A]/40 mb-4" />
+                <Search className="w-10 h-10 text-[#E3A72A]/40 mb-4" />
                 <h3 className="font-serif-luxury text-xl text-white font-medium mb-2">
                   Aucun modèle ne correspond à vos critères
                 </h3>
@@ -523,7 +523,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 </p>
                 <button
                   onClick={resetFilters}
-                  className="px-5 py-2.5 bg-[#C6A53A] text-[#11110F] font-bold text-xs uppercase tracking-wider"
+                  className="px-5 py-2.5 bg-[#E3A72A] text-[#11110F] font-bold text-xs uppercase tracking-wider"
                 >
                   Voir toutes les montures
                 </button>
@@ -536,7 +536,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
       {/* Mobile Filters Drawer */}
       {mobileFiltersOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-black/80 backdrop-blur-sm lg:hidden">
-          <div className="w-full max-w-xs bg-[#1B1A15] h-full p-6 overflow-y-auto flex flex-col justify-between border-l border-[#C6A53A]/30">
+          <div className="w-full max-w-xs bg-[#1B1A15] h-full p-6 overflow-y-auto flex flex-col justify-between border-l border-[#E3A72A]/30">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="font-serif-luxury text-lg text-white">Filtres</span>
@@ -596,7 +596,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     onChange={(e) =>
                       setFilters((prev) => ({ ...prev, inStockOnly: e.target.checked }))
                     }
-                    className="accent-[#C6A53A]"
+                    className="accent-[#E3A72A]"
                   />
                   <span>En stock uniquement</span>
                 </label>
@@ -608,7 +608,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     onChange={(e) =>
                       setFilters((prev) => ({ ...prev, promoOnly: e.target.checked }))
                     }
-                    className="accent-[#C6A53A]"
+                    className="accent-[#E3A72A]"
                   />
                   <span>Promotions uniquement</span>
                 </label>
@@ -618,7 +618,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             <div className="pt-6 border-t border-white/10 space-y-2">
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="w-full py-3 bg-[#C6A53A] text-[#11110F] font-bold text-xs uppercase"
+                className="w-full py-3 bg-[#E3A72A] text-[#11110F] font-bold text-xs uppercase"
               >
                 Appliquer ({filteredProducts.length} résultats)
               </button>
