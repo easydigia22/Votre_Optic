@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Product, Brand, Category } from '../types';
+import { uploadProductImage } from '../services/supabase';
 import {
   Plus,
   Search,
@@ -13,6 +14,7 @@ import {
   AlertTriangle,
   Glasses,
   Image as ImageIcon,
+  Upload,
 } from 'lucide-react';
 
 interface AdminProductsProps {
@@ -69,6 +71,8 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
 
   const [imageUrlInput, setImageUrlInput] = useState('');
   const [colorInput, setColorInput] = useState('');
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const openNewProductModal = () => {
     const randomCode = 'VO-' + Math.floor(1000 + Math.random() * 9000);
@@ -160,6 +164,33 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       ...prev,
       images: prev.images?.filter((_, i) => i !== index),
     }));
+  };
+
+  const handleUploadImages = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setUploadingImage(true);
+    try {
+      const uploaded: string[] = [];
+      for (const file of Array.from(files)) {
+        if (!file.type.startsWith('image/')) continue;
+        const url = await uploadProductImage(file);
+        uploaded.push(url);
+      }
+      if (uploaded.length > 0) {
+        setFormState((prev) => ({
+          ...prev,
+          images: [...(prev.images || []), ...uploaded],
+        }));
+      }
+    } catch (error) {
+      window.alert(
+        "Échec du téléversement de l'image. Vérifiez que le bucket 'product-images' existe et est public dans Supabase.\n\n" +
+          (error instanceof Error ? error.message : ''),
+      );
+    } finally {
+      setUploadingImage(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   };
 
   const handleAddColor = () => {
@@ -624,12 +655,32 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
               {/* Photos Gallery Management */}
               <div>
                 <label className="block text-[#9F9A8E] uppercase tracking-wider mb-1 font-semibold">
-                  Photos du modèle (URL ou visuels prédéfinis)
+                  Photos du modèle (téléverser ou coller une URL)
                 </label>
+
+                {/* Téléversement depuis l'ordinateur */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="hidden"
+                  onChange={(e) => void handleUploadImages(e.target.files)}
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploadingImage}
+                  className="w-full flex items-center justify-center gap-2 mb-2 px-4 py-2.5 border-2 border-dashed border-[#C6A53A]/50 text-[#C6A53A] hover:bg-[#C6A53A]/10 font-semibold uppercase tracking-wide text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Upload className="w-4 h-4" />
+                  {uploadingImage ? 'Téléversement…' : "Téléverser depuis l'ordinateur"}
+                </button>
+
                 <div className="flex gap-2 mb-2">
                   <input
                     type="url"
-                    placeholder="Coller l'URL d'une photo..."
+                    placeholder="…ou coller l'URL d'une photo"
                     value={imageUrlInput}
                     onChange={(e) => setImageUrlInput(e.target.value)}
                     className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C6A53A]"
