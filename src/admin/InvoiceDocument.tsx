@@ -21,6 +21,11 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
         {/* Header */}
         <div className="flex justify-between items-start mb-8 pb-4 border-b border-gray-300">
           <div>
+            <img
+              src="/logo-officiel.jpg"
+              alt="Vôtre Optique"
+              className="h-16 w-auto object-contain mb-2"
+            />
             <h1 className="text-2xl font-bold text-gray-900">{settings.storeName}</h1>
             <p className="text-sm text-gray-600 mt-1">
               {settings.address}
