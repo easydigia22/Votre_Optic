@@ -12,11 +12,14 @@ interface Props {
 export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, onClose }) => {
   const title = invoice.docType === 'facture' ? 'FACTURE' : 'DEVIS';
   const legal = settings.legal ?? {};
+  // Mode sans TVA : taux 0 (ou montant TVA nul) -> on masque le détail HT/TVA
+  const noTva = !invoice.tvaRate || invoice.tvaAmount === 0;
+  const htSuffix = noTva ? '' : ' HT';
 
   return (
     <div className="fixed inset-0 z-50 bg-black/70 overflow-auto p-4">
       {/* Printable document */}
-      <div className="mx-auto max-w-3xl bg-white text-black print-document">
+      <div className="mx-auto max-w-3xl bg-white text-black print-document border-t-4 border-[#EDB21B] p-8 sm:p-10">
 
         {/* Header */}
         <div className="flex justify-between items-start mb-8 pb-4 border-b border-gray-300">
@@ -27,6 +30,9 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
               className="h-16 w-auto object-contain mb-2"
             />
             <h1 className="text-2xl font-bold text-gray-900">{settings.storeName}</h1>
+            {settings.tagline && (
+              <p className="text-xs italic text-[#C6900F] mb-1">{settings.tagline}</p>
+            )}
             <p className="text-sm text-gray-600 mt-1">
               {settings.address}
               {settings.city ? `, ${settings.city}` : ''}
@@ -40,8 +46,8 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
             )}
           </div>
           <div className="text-right">
-            <div className="text-3xl font-bold text-gray-800">{title}</div>
-            <div className="text-lg font-semibold text-gray-700 mt-1">{invoice.number}</div>
+            <div className="text-3xl font-extrabold text-[#C6900F] tracking-wide">{title}</div>
+            <div className="text-lg font-semibold text-gray-800 mt-1">{invoice.number}</div>
             <div className="text-sm text-gray-600 mt-1">Date : {invoice.docDate}</div>
             <div className="mt-2">
               <span className="inline-block px-2 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-700 border border-gray-300">
@@ -69,11 +75,11 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
         {/* Items table */}
         <table className="w-full mb-6 border-collapse">
           <thead>
-            <tr className="bg-gray-100 border-b-2 border-gray-300">
-              <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Désignation</th>
-              <th className="text-center py-2 px-3 text-sm font-semibold text-gray-700 w-16">Qté</th>
-              <th className="text-right py-2 px-3 text-sm font-semibold text-gray-700 w-28">PU HT</th>
-              <th className="text-right py-2 px-3 text-sm font-semibold text-gray-700 w-28">Total HT</th>
+            <tr className="bg-[#EDB21B] border-b-2 border-[#C6900F]">
+              <th className="text-left py-2 px-3 text-sm font-bold text-[#11110F]">Désignation</th>
+              <th className="text-center py-2 px-3 text-sm font-bold text-[#11110F] w-16">Qté</th>
+              <th className="text-right py-2 px-3 text-sm font-bold text-[#11110F] w-28">PU{htSuffix}</th>
+              <th className="text-right py-2 px-3 text-sm font-bold text-[#11110F] w-28">Total{htSuffix}</th>
             </tr>
           </thead>
           <tbody>
@@ -90,18 +96,24 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
 
         {/* Totals recap */}
         <div className="flex justify-end mb-6">
-          <div className="w-64">
-            <div className="flex justify-between py-1 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Total HT</span>
-              <span className="text-sm font-medium text-gray-900">{formatMad(invoice.totalHt)}</span>
-            </div>
-            <div className="flex justify-between py-1 border-b border-gray-200">
-              <span className="text-sm text-gray-600">TVA ({invoice.tvaRate} %)</span>
-              <span className="text-sm font-medium text-gray-900">{formatMad(invoice.tvaAmount)}</span>
-            </div>
-            <div className="flex justify-between py-2 mt-1 border-t-2 border-gray-400">
-              <span className="text-base font-bold text-gray-900">Total TTC</span>
-              <span className="text-base font-bold text-gray-900">{formatMad(invoice.totalTtc)}</span>
+          <div className="w-72">
+            {!noTva && (
+              <>
+                <div className="flex justify-between py-1 border-b border-gray-200">
+                  <span className="text-sm text-gray-600">Total HT</span>
+                  <span className="text-sm font-medium text-gray-900">{formatMad(invoice.totalHt)}</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-gray-200">
+                  <span className="text-sm text-gray-600">TVA ({invoice.tvaRate} %)</span>
+                  <span className="text-sm font-medium text-gray-900">{formatMad(invoice.tvaAmount)}</span>
+                </div>
+              </>
+            )}
+            <div className="flex justify-between items-center py-2.5 px-3 mt-1 bg-[#EDB21B] border border-[#C6900F]">
+              <span className="text-base font-extrabold text-[#11110F]">
+                {noTva ? 'Total' : 'Total TTC'}
+              </span>
+              <span className="text-base font-extrabold text-[#11110F]">{formatMad(invoice.totalTtc)}</span>
             </div>
           </div>
         </div>
