@@ -1,6 +1,6 @@
 import React from 'react';
 import { Invoice, Client, StoreSettings } from '../types';
-import { formatMad } from '../services/billing';
+import { formatMad, amountToFrenchMad } from '../services/billing';
 
 interface Props {
   invoice: Invoice;
@@ -97,7 +97,7 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
         </table>
 
         {/* Totals recap */}
-        <div className="flex justify-end mb-6">
+        <div className="flex justify-end mb-3">
           <div className="w-72">
             {!noTva && (
               <>
@@ -118,6 +118,16 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
               <span className="text-base font-extrabold text-[#11110F]">{formatMad(invoice.totalTtc)}</span>
             </div>
           </div>
+        </div>
+
+        {/* Montant en toutes lettres (sous le total, à gauche) */}
+        <div className="mb-6 text-sm text-gray-800 border-l-4 border-[#EDB21B] pl-3 py-1">
+          <span className="font-semibold">
+            {invoice.docType === 'facture'
+              ? 'Arrêtée la présente facture à la somme de : '
+              : 'Arrêté le présent devis à la somme de : '}
+          </span>
+          <span className="italic">{amountToFrenchMad(invoice.totalTtc)}</span>.
         </div>
 
         {/* Notes */}
