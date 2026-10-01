@@ -74,7 +74,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       {/* Header & Overall Rating Summary */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
             Retours d'expérience
           </span>
           <h3 className="font-serif-luxury text-2xl text-white font-medium mt-0.5">
@@ -87,7 +87,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             setShowForm(!showForm);
             setSubmittedSuccess(false);
           }}
-          className="px-4 py-2.5 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 self-start sm:self-auto"
+          className="px-4 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5 self-start sm:self-auto"
         >
           <MessageSquare className="w-3.5 h-3.5" />
           <span>{showForm ? 'Masquer le formulaire' : 'Rédiger un avis'}</span>
@@ -118,7 +118,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
             <span className="text-sm font-mono text-[#9F9A8E]">/ 5</span>
           </div>
 
-          <div className="flex items-center justify-center md:justify-start gap-1 text-[#E3A72A] my-2">
+          <div className="flex items-center justify-center md:justify-start gap-1 text-[#C9A42C] my-2">
             {[1, 2, 3, 4, 5].map((s) => (
               <Star
                 key={s}
@@ -143,11 +143,11 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               <div key={s} className="flex items-center gap-3">
                 <span className="w-12 font-mono text-[#9F9A8E] text-right flex items-center justify-end gap-1">
                   <span>{s}</span>
-                  <Star className="w-3 h-3 text-[#E3A72A] fill-current" />
+                  <Star className="w-3 h-3 text-[#C9A42C] fill-current" />
                 </span>
                 <div className="flex-1 h-2 bg-[#201F18] overflow-hidden">
                   <div
-                    className="h-full bg-[#E3A72A] transition-all duration-500"
+                    className="h-full bg-[#C9A42C] transition-all duration-500"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
@@ -164,7 +164,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
       {showForm && (
         <form
           onSubmit={handleSubmitReview}
-          className="bg-[#1B1A15] border border-[#E3A72A]/40 p-6 sm:p-8 space-y-4 text-xs animate-in fade-in duration-300"
+          className="bg-[#1B1A15] border border-[#C9A42C]/40 p-6 sm:p-8 space-y-4 text-xs animate-in fade-in duration-300"
         >
           <h4 className="font-serif-luxury text-xl text-white font-medium mb-1">
             Partagez votre expérience sur {product.name}
@@ -192,13 +192,13 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                   >
                     <Star
                       className={`w-6 h-6 ${
-                        active ? 'text-[#E3A72A] fill-current' : 'text-neutral-600'
+                        active ? 'text-[#C9A42C] fill-current' : 'text-neutral-600'
                       }`}
                     />
                   </button>
                 );
               })}
-              <span className="font-mono text-[#F0C24A] font-bold text-sm ml-2">
+              <span className="font-mono text-[#E2BE54] font-bold text-sm ml-2">
                 {hoverRating || rating} / 5
               </span>
             </div>
@@ -215,7 +215,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                 placeholder="Ex: Yassine E."
                 value={authorName}
                 onChange={(e) => setAuthorName(e.target.value)}
-                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
               />
             </div>
 
@@ -228,7 +228,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                 placeholder="Ex: Marrakech, Casablanca, Rabat..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
               />
             </div>
           </div>
@@ -242,7 +242,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               placeholder="Ex: Confort exceptionnel et design somptueux"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
             />
           </div>
 
@@ -256,7 +256,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
               placeholder="Décrivez le confort, la tenue sur le nez, la clarté des verres ou l'accueil en boutique..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
             />
           </div>
 
@@ -266,14 +266,14 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                 type="checkbox"
                 checked={verifiedPurchase}
                 onChange={(e) => setVerifiedPurchase(e.target.checked)}
-                className="accent-[#E3A72A]"
+                className="accent-[#C9A42C]"
               />
               <span>J'ai essayé ou acheté cette monture chez Votre Optique</span>
             </label>
 
             <button
               type="submit"
-              className="px-6 py-2.5 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold uppercase tracking-wider flex items-center gap-2 transition-colors"
+              className="px-6 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold uppercase tracking-wider flex items-center gap-2 transition-colors"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Publier mon avis</span>
@@ -305,7 +305,7 @@ export const ProductReviewsSection: React.FC<ProductReviewsSectionProps> = ({
                 </div>
 
                 <div className="flex items-center gap-2 text-[#9F9A8E] text-[11px]">
-                  <div className="flex items-center gap-0.5 text-[#E3A72A]">
+                  <div className="flex items-center gap-0.5 text-[#C9A42C]">
                     {[1, 2, 3, 4, 5].map((s) => (
                       <Star
                         key={s}

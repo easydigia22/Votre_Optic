@@ -125,7 +125,7 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
       <div className="no-print mx-auto max-w-3xl flex gap-2 mt-4">
         <button
           onClick={() => window.print()}
-          className="bg-[#E3A72A] text-[#11110F] font-bold px-6 py-2 rounded hover:bg-[#F0C24A] transition-colors"
+          className="bg-[#C9A42C] text-[#11110F] font-bold px-6 py-2 rounded hover:bg-[#E2BE54] transition-colors"
         >
           Imprimer / PDF
         </button>

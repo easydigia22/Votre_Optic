@@ -47,7 +47,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
           required
           value={form.fullName}
           onChange={(e) => set('fullName', e.target.value)}
-          className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+          className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
           placeholder="Prénom Nom"
         />
       </div>
@@ -62,7 +62,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
             type="tel"
             value={form.phone}
             onChange={(e) => set('phone', e.target.value)}
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
             placeholder="+212 6XX XXX XXX"
           />
         </div>
@@ -76,7 +76,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
             type="email"
             value={form.email}
             onChange={(e) => set('email', e.target.value)}
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
             placeholder="client@email.com"
           />
         </div>
@@ -91,7 +91,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
           type="text"
           value={form.address}
           onChange={(e) => set('address', e.target.value)}
-          className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+          className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
           placeholder="Rue, quartier…"
         />
       </div>
@@ -106,7 +106,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
             type="text"
             value={form.city}
             onChange={(e) => set('city', e.target.value)}
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
           />
         </div>
 
@@ -119,7 +119,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
             type="date"
             value={form.birthDate ?? ''}
             onChange={(e) => set('birthDate', e.target.value || null)}
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
           />
         </div>
       </div>
@@ -133,7 +133,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
           rows={3}
           value={form.notes}
           onChange={(e) => set('notes', e.target.value)}
-          className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A] resize-none"
+          className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C] resize-none"
           placeholder="Remarques internes…"
         />
       </div>
@@ -141,7 +141,7 @@ export const ClientForm: React.FC<Props> = ({ initial, onSubmit, onCancel }) => 
       <div className="flex gap-2 pt-1">
         <button
           type="submit"
-          className="bg-[#E3A72A] text-[#11110F] font-bold px-4 py-2 hover:bg-[#F0C24A] transition-colors"
+          className="bg-[#C9A42C] text-[#11110F] font-bold px-4 py-2 hover:bg-[#E2BE54] transition-colors"
         >
           Enregistrer
         </button>

@@ -790,7 +790,7 @@ export default function App() {
   const featuredProducts = products.filter((p) => p.status === 'active' && p.isFeatured).slice(0, 6);
 
   return (
-    <div className="brand-light min-h-screen bg-[#FFFDF7] text-[#171612] flex flex-col font-sans selection:bg-[#E3A72A] selection:text-[#171612]">
+    <div className="brand-light min-h-screen bg-[#FFFDF7] text-[#171612] flex flex-col font-sans selection:bg-[#C9A42C] selection:text-[#171612]">
       {/* Header with Sticky Behavior & WhatsApp Button */}
       <Header
         currentView={currentView}
@@ -822,8 +822,8 @@ export default function App() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1B1A15] border border-[#E3A72A]/30 text-[#F0C24A] text-[10px] font-mono uppercase tracking-widest mb-2">
-                      <Sparkles className="w-3 h-3 text-[#E3A72A]" />
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1B1A15] border border-[#C9A42C]/30 text-[#E2BE54] text-[10px] font-mono uppercase tracking-widest mb-2">
+                      <Sparkles className="w-3 h-3 text-[#C9A42C]" />
                       <span>Sélection Signature</span>
                     </div>
                     <h2 className="font-serif-luxury text-3xl sm:text-4xl text-white font-medium">
@@ -833,7 +833,7 @@ export default function App() {
 
                   <button
                     onClick={() => handleNavigate('catalogue')}
-                    className="text-xs uppercase tracking-widest font-semibold text-[#E3A72A] hover:text-[#F0C24A] flex items-center gap-1.5 transition-colors self-start md:self-auto"
+                    className="text-xs uppercase tracking-widest font-semibold text-[#C9A42C] hover:text-[#E2BE54] flex items-center gap-1.5 transition-colors self-start md:self-auto"
                   >
                     <span>Voir l'ensemble du catalogue</span>
                     <ArrowRight className="w-4 h-4" />

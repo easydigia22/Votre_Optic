@@ -27,7 +27,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
   return (
     <div className="space-y-8 max-w-3xl">
       <div className="border-b border-white/10 pb-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+        <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
           Configuration Générale
         </span>
         <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -62,7 +62,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
                 required
                 value={form.storeName}
                 onChange={(e) => setForm((p) => ({ ...p, storeName: e.target.value }))}
-                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
               />
             </div>
 
@@ -74,7 +74,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
                 type="text"
                 value={form.tagline}
                 onChange={(e) => setForm((p) => ({ ...p, tagline: e.target.value }))}
-                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
               />
             </div>
           </div>
@@ -87,7 +87,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
               type="text"
               value={form.subtitle}
               onChange={(e) => setForm((p) => ({ ...p, subtitle: e.target.value }))}
-              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+              className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
             />
           </div>
         </div>
@@ -262,7 +262,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({
         <div className="flex justify-end">
           <button
             type="submit"
-            className="px-8 py-3 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-widest flex items-center gap-2"
+            className="px-8 py-3 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-widest flex items-center gap-2"
           >
             <Save className="w-4 h-4" />
             <span>Enregistrer tous les paramètres</span>

@@ -6,8 +6,8 @@
     --color-noir-profond: #0A0A08;
     --color-noir-card: #1B1A15;
     --color-noir-elevated: #29271F;
-    --color-or-solaire: #E3A72A;
-    --color-or-lumineux: #F0C24A;
+    --color-or-solaire: #C9A42C;
+    --color-or-lumineux: #E2BE54;
     --color-ivoire: #FFFDF7;
     --color-sable: #F5E6A6;
     --color-gris-texte: #9F9A8E;
@@ -32,22 +32,22 @@
 
 /* Custom Luxury Gradients & Borders */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #FFF4C4 0%, #E3A72A 48%, #F0C24A 100%);
+  background: linear-gradient(135deg, #FFF4C4 0%, #C9A42C 48%, #E2BE54 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #C08E1C 0%, #E3A72A 48%, #F0C24A 100%);
+  background: linear-gradient(135deg, #A9871B 0%, #C9A42C 48%, #E2BE54 100%);
 }
 
 .gold-border-glow {
-  border-color: rgba(227, 167, 42, 0.42);
-  box-shadow: 0 0 22px rgba(227, 167, 42, 0.14);
+  border-color: rgba(201, 164, 44, 0.42);
+  box-shadow: 0 0 22px rgba(201, 164, 44, 0.14);
 }
 
 .gold-border-subtle {
-  border-color: rgba(227, 167, 42, 0.24);
+  border-color: rgba(201, 164, 44, 0.24);
 }
 
 .brand-surface {
@@ -91,12 +91,12 @@
 
 .brand-light > header {
   background: rgba(255, 253, 247, 0.96) !important;
-  border-color: rgba(227, 167, 42, 0.36) !important;
+  border-color: rgba(201, 164, 44, 0.36) !important;
 }
 
 .brand-light footer {
   background: #171612 !important;
-  border-color: rgba(227, 167, 42, 0.42) !important;
+  border-color: rgba(201, 164, 44, 0.42) !important;
 }
 
 .brand-light footer [class*="text-[#171612]"],

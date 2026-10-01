@@ -228,7 +228,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
             Catalogue & Fiches Modèles
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -241,7 +241,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
 
         <button
           onClick={openNewProductModal}
-          className="px-5 py-3 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-widest flex items-center gap-2 transition-colors shadow-lg"
+          className="px-5 py-3 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-widest flex items-center gap-2 transition-colors shadow-lg"
         >
           <Plus className="w-4 h-4" />
           <span>+ Ajouter un produit</span>
@@ -251,13 +251,13 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       {/* Filter & Search Bar */}
       <div className="bg-[#1B1A15] border border-white/5 p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-[#E3A72A] absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-[#C9A42C] absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Filtrer par nom ou référence..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#E3A72A]"
+            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#C9A42C]"
           />
         </div>
 
@@ -265,7 +265,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#E3A72A]"
+            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#C9A42C]"
           >
             <option value="all">Toutes les catégories</option>
             {categories.map((c) => (
@@ -278,7 +278,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#E3A72A]"
+            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#C9A42C]"
           >
             <option value="all">Tous les statuts</option>
             <option value="active">Actif</option>
@@ -330,7 +330,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   {/* Product & Brand */}
                   <td className="py-3 px-4">
                     <div className="font-semibold text-white">{p.name}</div>
-                    <div className="text-[11px] text-[#E3A72A]">{brand?.name || 'Maison'}</div>
+                    <div className="text-[11px] text-[#C9A42C]">{brand?.name || 'Maison'}</div>
                   </td>
 
                   {/* Reference */}
@@ -347,7 +347,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   <td className="py-3 px-4 font-mono font-semibold tabular-nums text-white">
                     {p.price.toLocaleString('fr-FR')} DH
                     {p.inPromo && (
-                      <span className="block text-[10px] text-[#E3A72A]">Promo</span>
+                      <span className="block text-[10px] text-[#C9A42C]">Promo</span>
                     )}
                   </td>
 
@@ -391,7 +391,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       <button
                         onClick={() => openEditProductModal(p)}
                         title="Modifier le produit"
-                        className="p-1.5 text-[#9F9A8E] hover:text-[#E3A72A] transition-colors"
+                        className="p-1.5 text-[#9F9A8E] hover:text-[#C9A42C] transition-colors"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
@@ -435,7 +435,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
       {/* ULTRA-FAST (<60s) PRODUCT FORM MODAL */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-          <div className="relative w-full max-w-3xl bg-[#1B1A15] border border-[#E3A72A]/40 shadow-2xl p-6 sm:p-8 my-6">
+          <div className="relative w-full max-w-3xl bg-[#1B1A15] border border-[#C9A42C]/40 shadow-2xl p-6 sm:p-8 my-6">
             <button
               onClick={() => setModalOpen(false)}
               className="absolute top-4 right-4 text-[#9F9A8E] hover:text-white p-2"
@@ -444,7 +444,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
             </button>
 
             <div className="mb-6">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
                 {editingProduct ? 'Édition Rapide' : 'Formulaire Express (< 60s)'}
               </span>
               <h2 className="font-serif-luxury text-2xl text-white font-medium">
@@ -465,7 +465,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Ex: Clubmaster Classic Or"
                     value={formState.name}
                     onChange={(e) => setFormState((p) => ({ ...p, name: e.target.value }))}
-                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                    className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
                   />
                 </div>
 
@@ -479,7 +479,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Ex: RB-3016-W0365"
                     value={formState.reference}
                     onChange={(e) => setFormState((p) => ({ ...p, reference: e.target.value }))}
-                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C9A42C]"
                   />
                 </div>
               </div>
@@ -569,7 +569,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     onChange={(e) =>
                       setFormState((p) => ({ ...p, price: Number(e.target.value) }))
                     }
-                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C9A42C]"
                   />
                 </div>
 
@@ -589,7 +589,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                         inPromo: !!e.target.value,
                       }))
                     }
-                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C9A42C]"
                   />
                 </div>
 
@@ -605,7 +605,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     onChange={(e) =>
                       setFormState((p) => ({ ...p, stockQuantity: Number(e.target.value) }))
                     }
-                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                    className="w-full bg-[#11110F] border border-white/10 font-mono text-white p-2.5 outline-none focus:border-[#C9A42C]"
                   />
                 </div>
               </div>
@@ -671,7 +671,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={uploadingImage}
-                  className="w-full flex items-center justify-center gap-2 mb-2 px-4 py-2.5 border-2 border-dashed border-[#E3A72A]/50 text-[#E3A72A] hover:bg-[#E3A72A]/10 font-semibold uppercase tracking-wide text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 mb-2 px-4 py-2.5 border-2 border-dashed border-[#C9A42C]/50 text-[#C9A42C] hover:bg-[#C9A42C]/10 font-semibold uppercase tracking-wide text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Upload className="w-4 h-4" />
                   {uploadingImage ? 'Téléversement…' : "Téléverser depuis l'ordinateur"}
@@ -683,12 +683,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="…ou coller l'URL d'une photo"
                     value={imageUrlInput}
                     onChange={(e) => setImageUrlInput(e.target.value)}
-                    className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#E3A72A]"
+                    className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C9A42C]"
                   />
                   <button
                     type="button"
                     onClick={handleAddImage}
-                    className="px-4 py-2 bg-[#E3A72A] text-[#11110F] font-bold uppercase"
+                    className="px-4 py-2 bg-[#C9A42C] text-[#11110F] font-bold uppercase"
                   >
                     Ajouter
                   </button>
@@ -728,12 +728,12 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                     placeholder="Ex: Or Rose, Noir Brillant..."
                     value={colorInput}
                     onChange={(e) => setColorInput(e.target.value)}
-                    className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#E3A72A]"
+                    className="flex-1 bg-[#11110F] border border-white/10 text-white p-2 outline-none focus:border-[#C9A42C]"
                   />
                   <button
                     type="button"
                     onClick={handleAddColor}
-                    className="px-4 py-2 bg-[#29271F] text-white hover:text-[#E3A72A] font-semibold"
+                    className="px-4 py-2 bg-[#29271F] text-white hover:text-[#C9A42C] font-semibold"
                   >
                     + Teinte
                   </button>
@@ -766,7 +766,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                   rows={2}
                   value={formState.description}
                   onChange={(e) => setFormState((p) => ({ ...p, description: e.target.value }))}
-                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
                 />
               </div>
 
@@ -778,7 +778,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       type="checkbox"
                       checked={formState.isNew}
                       onChange={(e) => setFormState((p) => ({ ...p, isNew: e.target.checked }))}
-                      className="accent-[#E3A72A]"
+                      className="accent-[#C9A42C]"
                     />
                     <span>Nouveauté</span>
                   </label>
@@ -790,7 +790,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
                       onChange={(e) =>
                         setFormState((p) => ({ ...p, isFeatured: e.target.checked }))
                       }
-                      className="accent-[#E3A72A]"
+                      className="accent-[#C9A42C]"
                     />
                     <span>En vedette</span>
                   </label>
@@ -827,7 +827,7 @@ export const AdminProducts: React.FC<AdminProductsProps> = ({
 
                 <button
                   type="submit"
-                  className="px-6 py-2.5 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold uppercase tracking-wider transition-colors"
+                  className="px-6 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold uppercase tracking-wider transition-colors"
                 >
                   {editingProduct ? 'Enregistrer les modifications' : 'Créer la monture (<60s)'}
                 </button>

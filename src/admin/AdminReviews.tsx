@@ -59,7 +59,7 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
             E-Réputation & Confiance
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -95,10 +95,10 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({
           <p className="font-mono text-2xl font-bold text-emerald-300 mt-1">{approvedCount}</p>
         </div>
 
-        <div className="bg-[#1B1A15] border border-[#E3A72A]/30 p-4">
-          <span className="text-[11px] uppercase tracking-wider text-[#F0C24A]">Note Moyenne</span>
+        <div className="bg-[#1B1A15] border border-[#C9A42C]/30 p-4">
+          <span className="text-[11px] uppercase tracking-wider text-[#E2BE54]">Note Moyenne</span>
           <div className="flex items-baseline gap-1.5 mt-1">
-            <p className="font-mono text-2xl font-bold text-[#F0C24A]">{globalAverage}</p>
+            <p className="font-mono text-2xl font-bold text-[#E2BE54]">{globalAverage}</p>
             <span className="text-xs text-[#9F9A8E]">/ 5.0</span>
           </div>
         </div>
@@ -107,13 +107,13 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({
       {/* Filter and Search Bar */}
       <div className="bg-[#1B1A15] border border-white/5 p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-[#E3A72A] absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-[#C9A42C] absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Rechercher par client, modèle ou mot-clé..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#E3A72A]"
+            className="w-full bg-[#11110F] border border-white/10 text-xs text-white pl-9 pr-3 py-2 outline-none focus:border-[#C9A42C]"
           />
         </div>
 
@@ -122,7 +122,7 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#E3A72A]"
+            className="bg-[#11110F] border border-white/10 text-xs text-white px-3 py-2 outline-none focus:border-[#C9A42C]"
           >
             <option value="all">Tous les avis ({reviews.length})</option>
             <option value="pending">En attente ({pendingCount})</option>
@@ -165,7 +165,7 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2 mt-1">
-                      <Glasses className="w-3.5 h-3.5 text-[#E3A72A]" />
+                      <Glasses className="w-3.5 h-3.5 text-[#C9A42C]" />
                       <span className="text-xs text-white font-semibold">{rev.productName}</span>
                       <span className="font-mono text-[11px] text-[#9F9A8E]">[{rev.productRef}]</span>
                     </div>
@@ -173,7 +173,7 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({
 
                   {/* Rating & Date & Status */}
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-0.5 text-[#E3A72A]">
+                    <div className="flex items-center gap-0.5 text-[#C9A42C]">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}

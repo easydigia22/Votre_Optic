@@ -76,7 +76,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
             Communication Visuelle
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -89,7 +89,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
 
         <button
           onClick={openNewModal}
-          className="px-4 py-2.5 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
+          className="px-4 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
         >
           <Plus className="w-4 h-4" />
           <span>+ Nouvelle Bannière</span>
@@ -104,7 +104,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
           >
             <div className="relative w-full md:w-72 h-44 bg-[#11110F] shrink-0">
               <img src={b.image} alt={b.title} className="w-full h-full object-cover filter brightness-85" />
-              <div className="absolute top-3 left-3 bg-[#11110F]/80 text-[#E3A72A] text-[10px] font-mono px-2 py-0.5 border border-[#E3A72A]/30 uppercase">
+              <div className="absolute top-3 left-3 bg-[#11110F]/80 text-[#C9A42C] text-[10px] font-mono px-2 py-0.5 border border-[#C9A42C]/30 uppercase">
                 {b.position}
               </div>
             </div>
@@ -124,14 +124,14 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
                   </span>
                 </div>
                 <p className="text-xs text-[#9F9A8E]">{b.subtitle}</p>
-                <div className="mt-3 flex items-center gap-3 text-[11px] text-[#E3A72A]">
+                <div className="mt-3 flex items-center gap-3 text-[11px] text-[#C9A42C]">
                   <span>Bouton : <strong>{b.buttonText}</strong></span>
                   <span>→ {b.buttonLink}</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-white/5 mt-4 flex justify-end gap-2">
-                <button onClick={() => openEditModal(b)} className="p-1.5 text-[#9F9A8E] hover:text-[#E3A72A]">
+                <button onClick={() => openEditModal(b)} className="p-1.5 text-[#9F9A8E] hover:text-[#C9A42C]">
                   <Edit2 className="w-4 h-4" />
                 </button>
                 <button
@@ -152,7 +152,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-          <div className="w-full max-w-lg bg-[#1B1A15] border border-[#E3A72A]/40 p-6 shadow-2xl relative my-6">
+          <div className="w-full max-w-lg bg-[#1B1A15] border border-[#C9A42C]/40 p-6 shadow-2xl relative my-6">
             <button onClick={() => setModalOpen(false)} className="absolute top-4 right-4 text-[#9F9A8E] hover:text-white">
               <X className="w-5 h-5" />
             </button>
@@ -169,7 +169,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
                   required
                   value={form.title}
                   onChange={(e) => setForm((p) => ({ ...p, title: e.target.value }))}
-                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
                 />
               </div>
 
@@ -226,7 +226,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
                     type="checkbox"
                     checked={form.isActive}
                     onChange={(e) => setForm((p) => ({ ...p, isActive: e.target.checked }))}
-                    className="accent-[#E3A72A]"
+                    className="accent-[#C9A42C]"
                   />
                   <span>Bannière active et visible</span>
                 </label>
@@ -236,7 +236,7 @@ export const AdminBanners: React.FC<AdminBannersProps> = ({
                 <button type="button" onClick={() => setModalOpen(false)} className="px-4 py-2 border border-white/10 text-[#9F9A8E]">
                   Annuler
                 </button>
-                <button type="submit" className="px-6 py-2 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold uppercase">
+                <button type="submit" className="px-6 py-2 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold uppercase">
                   Enregistrer
                 </button>
               </div>
