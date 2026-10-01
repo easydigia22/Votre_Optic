@@ -154,7 +154,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Product Name */}
           <h3
             onClick={() => onSelectProduct(product)}
-            className="text-sm font-semibold text-[#FFFDF7] hover:text-[#EDB21B] transition-colors line-clamp-1 cursor-pointer"
+            className="text-sm font-semibold text-[#FFFFFF] hover:text-[#EDB21B] transition-colors line-clamp-1 cursor-pointer"
             title={product.name}
           >
             {product.name}
@@ -182,7 +182,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-2">
           <button
             onClick={() => onSelectProduct(product)}
-            className="w-full py-2 px-2 text-center text-xs font-medium border border-white/10 hover:border-[#EDB21B] text-[#FFFDF7] hover:text-[#EDB21B] transition-colors"
+            className="w-full py-2 px-2 text-center text-xs font-medium border border-white/10 hover:border-[#EDB21B] text-[#FFFFFF] hover:text-[#EDB21B] transition-colors"
           >
             Voir le modèle
           </button>

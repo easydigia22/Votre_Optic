@@ -8,10 +8,10 @@
     --color-noir-elevated: #29271F;
     --color-or-solaire: #EDB21B;
     --color-or-lumineux: #F5C94E;
-    --color-ivoire: #FFFDF7;
+    --color-ivoire: #FFFFFF;
     --color-sable: #F5E6A6;
     --color-gris-texte: #9F9A8E;
-    --surface-page: #FFFDF7;
+    --surface-page: #FFFFFF;
     --surface-card: #FFFFFF;
     --surface-soft: #F5F0E4;
     --text-primary: #171612;
@@ -61,7 +61,7 @@
 }
 
 .brand-light [class*="bg-[#11110F]"] {
-  background-color: #FFFDF7 !important;
+  background-color: #FFFFFF !important;
 }
 
 .brand-light [class*="bg-[#1B1A15]"] {
@@ -72,7 +72,7 @@
   background-color: #F5F0E4 !important;
 }
 
-.brand-light [class*="text-[#FFFDF7]"],
+.brand-light [class*="text-[#FFFFFF]"],
 .brand-light [class*="text-white"] {
   color: #171612 !important;
 }
@@ -101,7 +101,7 @@
 
 .brand-light footer [class*="text-[#171612]"],
 .brand-light footer [class*="text-white"] {
-  color: #FFFDF7 !important;
+  color: #FFFFFF !important;
 }
 
 /* Hide scrollbar for category carousels while allowing smooth scrolling */

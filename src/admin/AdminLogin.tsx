@@ -34,7 +34,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] flex items-center justify-center p-4 relative">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFFFF] flex items-center justify-center p-4 relative">
       {/* Back to store button */}
       <button
         onClick={onBackToStore}

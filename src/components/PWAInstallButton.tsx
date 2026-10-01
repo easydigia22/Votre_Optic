@@ -54,7 +54,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
                 <Smartphone className="w-5 h-5" />
               </div>
               <div>
-                <h3 id="pwa-install-title" className="font-serif-luxury text-lg text-[#FFFDF7] font-semibold">
+                <h3 id="pwa-install-title" className="font-serif-luxury text-lg text-[#FFFFFF] font-semibold">
                   Installer Votre Optique
                 </h3>
                 <p className="text-xs text-[#9F9A8E]">Sur votre {deviceLabel}</p>

@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const subtitle = banner?.subtitle || 'Des montures sélectionnées pour sublimer votre regard.';
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-between bg-[#11110F] text-[#FFFDF7] pt-32 pb-28 sm:pb-12 overflow-hidden border-b border-[#EDB21B]/25">
+    <section className="relative min-h-[92vh] flex flex-col justify-between bg-[#11110F] text-[#FFFFFF] pt-32 pb-28 sm:pb-12 overflow-hidden border-b border-[#EDB21B]/25">
       {/* Background Ambience & Lighting */}
       <div className="absolute inset-0 z-0 opacity-25">
         {banner?.image ? (
@@ -33,10 +33,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="w-full h-full object-cover object-center filter brightness-60 contrast-110"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-[#FFFDF7] via-[#F5F0E4] to-[#FFFDF7]" />
+          <div className="w-full h-full bg-gradient-to-r from-[#FFFFFF] via-[#F5F0E4] to-[#FFFFFF]" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF7] via-[#FFFDF7]/90 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFDF7] via-[#FFFDF7]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF] via-[#FFFFFF]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/80 to-transparent" />
       </div>
 
       {/* Main Content Area */}
@@ -53,7 +53,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Main Title inspired by reference poster */}
-          <h1 className="font-serif-luxury text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#FFFDF7] leading-[1.15] mb-6">
+          <h1 className="font-serif-luxury text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#FFFFFF] leading-[1.15] mb-6">
             Votre optique, <br />
             <span className="italic text-[#F5C94E]">votre Élégance</span> <br />
             entre nos mains

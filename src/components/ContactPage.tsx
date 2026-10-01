@@ -59,7 +59,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
         particleCount: 50,
         spread: 60,
         origin: { y: 0.7 },
-        colors: ['#EDB21B', '#F5C94E', '#FFFDF7'],
+        colors: ['#EDB21B', '#F5C94E', '#FFFFFF'],
       });
     } catch {
       // ignore
@@ -76,7 +76,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] pt-28 pb-20">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFFFF] pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

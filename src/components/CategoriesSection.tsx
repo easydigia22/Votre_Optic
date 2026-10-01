@@ -14,7 +14,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({
   const activeCategories = categories.filter((c) => c.isActive);
 
   return (
-    <section className="py-20 bg-[#11110F] text-[#FFFDF7] border-b border-white/5">
+    <section className="py-20 bg-[#11110F] text-[#FFFFFF] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
