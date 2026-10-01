@@ -170,7 +170,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 {/* Title */}
                 <div>
-                  <h2 className="text-xl lg:text-2xl font-semibold text-[#FFFDF7] leading-snug">
+                  <h2 className="text-xl lg:text-2xl font-semibold text-[#FFFFFF] leading-snug">
                     {product.name}
                   </h2>
                   {/* Rating Stars under Title */}

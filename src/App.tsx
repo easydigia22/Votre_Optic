@@ -790,7 +790,7 @@ export default function App() {
   const featuredProducts = products.filter((p) => p.status === 'active' && p.isFeatured).slice(0, 6);
 
   return (
-    <div className="brand-light min-h-screen bg-[#FFFDF7] text-[#171612] flex flex-col font-sans selection:bg-[#EDB21B] selection:text-[#171612]">
+    <div className="brand-light min-h-screen bg-[#FFFFFF] text-[#171612] flex flex-col font-sans selection:bg-[#EDB21B] selection:text-[#171612]">
       {/* Header with Sticky Behavior & WhatsApp Button */}
       <Header
         currentView={currentView}

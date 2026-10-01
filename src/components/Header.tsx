@@ -279,7 +279,7 @@ export const Header: React.FC<HeaderProps> = ({
                     onNavigate(item.view, item.param);
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-between py-3.5 text-left border-b border-white/5 text-base font-medium text-[#FFFDF7] hover:text-[#EDB21B]"
+                  className="w-full flex items-center justify-between py-3.5 text-left border-b border-white/5 text-base font-medium text-[#FFFFFF] hover:text-[#EDB21B]"
                 >
                   <span>{item.label}</span>
                   <ChevronRight className="w-4 h-4 text-[#EDB21B]" />
@@ -306,7 +306,7 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
 
             <div className="text-center space-y-1">
-              <p className="text-[#FFFDF7]">{settings.address}</p>
+              <p className="text-[#FFFFFF]">{settings.address}</p>
               <p>{settings.city}, {settings.country} · {settings.hours}</p>
             </div>
           </div>

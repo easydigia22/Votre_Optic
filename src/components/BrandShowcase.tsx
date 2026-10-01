@@ -9,7 +9,7 @@ interface BrandShowcaseProps {
 
 export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ brands, onSelectBrand }) => {
   return (
-    <section className="py-16 bg-[#11110F] text-[#FFFDF7] border-b border-white/5">
+    <section className="py-16 bg-[#11110F] text-[#FFFFFF] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs uppercase tracking-widest text-[#EDB21B] font-semibold">

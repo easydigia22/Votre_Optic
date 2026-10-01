@@ -95,7 +95,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] flex">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFFFF] flex">
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-col justify-between w-64 bg-[#15140F] border-r border-[#EDB21B]/20 shrink-0">
         <div>

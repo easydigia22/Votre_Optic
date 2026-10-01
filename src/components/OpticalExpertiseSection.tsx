@@ -13,7 +13,7 @@ export const OpticalExpertiseSection: React.FC<OpticalExpertiseSectionProps> = (
   const cleanNumber = whatsappNumber.replace(/[^0-9]/g, '') || '212770420663';
 
   return (
-    <section className="py-20 bg-[#11110F] text-[#FFFDF7] border-b border-white/5 relative overflow-hidden">
+    <section className="py-20 bg-[#11110F] text-[#FFFFFF] border-b border-white/5 relative overflow-hidden">
       {/* Decorative gradient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#EDB21B]/5 rounded-full blur-[140px] pointer-events-none" />
 

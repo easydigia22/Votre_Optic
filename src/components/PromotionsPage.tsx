@@ -17,7 +17,7 @@ export const PromotionsPage: React.FC<PromotionsPageProps> = ({
   const cleanNumber = settings.whatsapp.replace(/[^0-9]/g, '') || '212770420663';
 
   return (
-    <div className="min-h-screen bg-[#11110F] text-[#FFFDF7] pt-28 pb-20">
+    <div className="min-h-screen bg-[#11110F] text-[#FFFFFF] pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
