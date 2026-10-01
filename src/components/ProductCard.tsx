@@ -32,7 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const isOutOfStock = product.stockQuantity <= 0;
 
   return (
-    <div className="group relative flex flex-col bg-[#1B1A15] border border-white/5 hover:border-[#C9A42C]/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-0.5">
+    <div className="group relative flex flex-col bg-[#1B1A15] border border-white/5 hover:border-[#EDB21B]/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-0.5">
       {/* Visual Image Showcase */}
       <div
         onClick={() => onSelectProduct(product)}
@@ -52,13 +52,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           title={isInWishlist ? 'Retirer des favoris' : 'Ajouter à la liste de souhaits'}
           className={`absolute top-3 right-3 z-20 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
             isInWishlist
-              ? 'bg-[#11110F] text-[#C9A42C] border border-[#C9A42C]'
-              : 'bg-[#11110F]/70 hover:bg-[#11110F] text-white/70 hover:text-[#C9A42C] border border-white/10'
+              ? 'bg-[#11110F] text-[#EDB21B] border border-[#EDB21B]'
+              : 'bg-[#11110F]/70 hover:bg-[#11110F] text-white/70 hover:text-[#EDB21B] border border-white/10'
           }`}
         >
           <Heart
             className={`w-4 h-4 transition-transform active:scale-125 ${
-              isInWishlist ? 'fill-current text-[#C9A42C]' : ''
+              isInWishlist ? 'fill-current text-[#EDB21B]' : ''
             }`}
           />
         </button>
@@ -66,13 +66,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Badges / Indicators */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1 items-start">
           {product.inPromo && (
-            <span className="bg-[#C9A42C] text-[#11110F] text-[10px] font-bold tracking-widest uppercase px-2 py-0.5">
+            <span className="bg-[#EDB21B] text-[#11110F] text-[10px] font-bold tracking-widest uppercase px-2 py-0.5">
               PROMO {product.discountPercentage ? `-${product.discountPercentage}%` : ''}
             </span>
           )}
           {product.isNew && !product.inPromo && (
-            <span className="bg-[#29271F] border border-[#C9A42C]/50 text-[#F5E6A6] text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 flex items-center gap-1">
-              <Sparkles className="w-2.5 h-2.5 text-[#C9A42C]" />
+            <span className="bg-[#29271F] border border-[#EDB21B]/50 text-[#F5E6A6] text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 flex items-center gap-1">
+              <Sparkles className="w-2.5 h-2.5 text-[#EDB21B]" />
               NOUVEAU
             </span>
           )}
@@ -102,7 +102,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
         ) : (
           /* Graceful Luxury SVG Optical Eyewear Fallback */
-          <div className="w-full h-full flex flex-col items-center justify-center text-[#C9A42C]/60 p-4">
+          <div className="w-full h-full flex flex-col items-center justify-center text-[#EDB21B]/60 p-4">
             <svg
               className="w-24 h-16 transform group-hover:scale-105 transition-transform duration-300"
               viewBox="0 0 120 60"
@@ -124,7 +124,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Hover Quick Look Overlay */}
         <div className="absolute inset-0 bg-[#11110F]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-          <span className="px-3 py-1.5 bg-[#11110F]/90 border border-[#C9A42C] text-[#F5E6A6] text-xs uppercase tracking-wider flex items-center gap-1.5">
+          <span className="px-3 py-1.5 bg-[#11110F]/90 border border-[#EDB21B] text-[#F5E6A6] text-xs uppercase tracking-wider flex items-center gap-1.5">
             <Eye className="w-3.5 h-3.5" />
             Aperçu rapide
           </span>
@@ -136,13 +136,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div>
           {/* Brand & Reference */}
           <div className="flex items-center justify-between text-xs text-[#9F9A8E] mb-1">
-            <span className="uppercase tracking-widest text-[#C9A42C] font-semibold text-[11px]">
+            <span className="uppercase tracking-widest text-[#EDB21B] font-semibold text-[11px]">
               {brandName}
             </span>
             <div className="flex items-center gap-1.5">
               {ratingSummary.count > 0 && (
-                <span className="flex items-center gap-0.5 text-[#E2BE54] font-mono text-[10px]">
-                  <Star className="w-3 h-3 fill-current text-[#C9A42C]" />
+                <span className="flex items-center gap-0.5 text-[#F5C94E] font-mono text-[10px]">
+                  <Star className="w-3 h-3 fill-current text-[#EDB21B]" />
                   <span>{ratingSummary.average.toFixed(1)}</span>
                   <span className="text-[#9F9A8E]">({ratingSummary.count})</span>
                 </span>
@@ -154,7 +154,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Product Name */}
           <h3
             onClick={() => onSelectProduct(product)}
-            className="text-sm font-semibold text-[#FFFDF7] hover:text-[#C9A42C] transition-colors line-clamp-1 cursor-pointer"
+            className="text-sm font-semibold text-[#FFFDF7] hover:text-[#EDB21B] transition-colors line-clamp-1 cursor-pointer"
             title={product.name}
           >
             {product.name}
@@ -182,7 +182,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-2">
           <button
             onClick={() => onSelectProduct(product)}
-            className="w-full py-2 px-2 text-center text-xs font-medium border border-white/10 hover:border-[#C9A42C] text-[#FFFDF7] hover:text-[#C9A42C] transition-colors"
+            className="w-full py-2 px-2 text-center text-xs font-medium border border-white/10 hover:border-[#EDB21B] text-[#FFFDF7] hover:text-[#EDB21B] transition-colors"
           >
             Voir le modèle
           </button>
@@ -192,7 +192,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             title="Discuter sur WhatsApp"
-            className="w-full py-2 px-2 text-center text-xs font-semibold bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] transition-colors flex items-center justify-center gap-1.5"
+            className="w-full py-2 px-2 text-center text-xs font-semibold bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] transition-colors flex items-center justify-center gap-1.5"
           >
             <MessageCircle className="w-3.5 h-3.5 shrink-0" />
             <span className="truncate">WhatsApp</span>

@@ -59,7 +59,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
         particleCount: 50,
         spread: 60,
         origin: { y: 0.7 },
-        colors: ['#C9A42C', '#E2BE54', '#FFFDF7'],
+        colors: ['#EDB21B', '#F5C94E', '#FFFDF7'],
       });
     } catch {
       // ignore
@@ -80,7 +80,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#C9A42C] font-semibold">
+          <span className="text-xs uppercase tracking-widest text-[#EDB21B] font-semibold">
             Boutique & Espace Conseil · Marrakech
           </span>
           <h1 className="font-serif-luxury text-4xl sm:text-5xl text-white font-medium mt-1 mb-4">
@@ -95,7 +95,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Left: Contact Info & Store Details (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#1B1A15] border border-[#C9A42C]/20 p-6 sm:p-8 space-y-6">
+            <div className="bg-[#1B1A15] border border-[#EDB21B]/20 p-6 sm:p-8 space-y-6">
               <h2 className="font-serif-luxury text-2xl text-[#F5E6A6]">
                 Informations du Magasin
               </h2>
@@ -103,7 +103,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
               <div className="space-y-4 text-xs sm:text-sm">
                 {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C] shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#EDB21B]/40 flex items-center justify-center text-[#EDB21B] shrink-0">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
@@ -112,7 +112,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                     </span>
                     <a
                       href={`tel:${settings.phone.replace(/\s+/g, '')}`}
-                      className="font-mono font-bold text-white hover:text-[#C9A42C] transition-colors"
+                      className="font-mono font-bold text-white hover:text-[#EDB21B] transition-colors"
                     >
                       {settings.phone}
                     </a>
@@ -121,7 +121,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
 
                 {/* WhatsApp */}
                 <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C] shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#EDB21B]/40 flex items-center justify-center text-[#EDB21B] shrink-0">
                     <MessageCircle className="w-4 h-4" />
                   </div>
                   <div>
@@ -132,7 +132,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                       href={`https://wa.me/${cleanNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-mono font-bold text-[#E2BE54] hover:underline"
+                      className="font-mono font-bold text-[#F5C94E] hover:underline"
                     >
                       +212 770 420 663
                     </a>
@@ -144,7 +144,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
 
                 {/* Address */}
                 <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C] shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#EDB21B]/40 flex items-center justify-center text-[#EDB21B] shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
@@ -158,7 +158,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
 
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C] shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#EDB21B]/40 flex items-center justify-center text-[#EDB21B] shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
@@ -167,7 +167,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                     </span>
                     <a
                       href={`mailto:${settings.email}`}
-                      className="text-white hover:text-[#C9A42C]"
+                      className="text-white hover:text-[#EDB21B]"
                     >
                       {settings.email}
                     </a>
@@ -176,7 +176,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
 
                 {/* Hours */}
                 <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#C9A42C]/40 flex items-center justify-center text-[#C9A42C] shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-[#11110F] border border-[#EDB21B]/40 flex items-center justify-center text-[#EDB21B] shrink-0">
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
@@ -199,7 +199,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                       href={settings.socialLinks.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-[#11110F] border border-white/10 text-white hover:text-[#C9A42C] hover:border-[#C9A42C] transition-colors"
+                      className="p-2 bg-[#11110F] border border-white/10 text-white hover:text-[#EDB21B] hover:border-[#EDB21B] transition-colors"
                       title="Instagram"
                     >
                       <Instagram className="w-4 h-4" />
@@ -210,7 +210,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                       href={settings.socialLinks.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-[#11110F] border border-white/10 text-white hover:text-[#C9A42C] hover:border-[#C9A42C] transition-colors"
+                      className="p-2 bg-[#11110F] border border-white/10 text-white hover:text-[#EDB21B] hover:border-[#EDB21B] transition-colors"
                       title="Facebook"
                     >
                       <Facebook className="w-4 h-4" />
@@ -221,7 +221,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                       href={settings.socialLinks.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-[#11110F] border border-white/10 text-[#C9A42C] hover:border-[#C9A42C] transition-colors"
+                      className="p-2 bg-[#11110F] border border-white/10 text-[#EDB21B] hover:border-[#EDB21B] transition-colors"
                       title="WhatsApp"
                     >
                       <MessageCircle className="w-4 h-4" />
@@ -239,15 +239,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                   href={settings.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C9A42C] hover:underline"
+                  className="text-[#EDB21B] hover:underline"
                 >
                   Ouvrir Google Maps →
                 </a>
               </div>
               <div className="h-44 bg-[#11110F] border border-white/5 relative flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#C9A42C_1px,transparent_1px)] [background-size:16px_16px]" />
+                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#EDB21B_1px,transparent_1px)] [background-size:16px_16px]" />
                 <div className="relative text-center z-10 p-4">
-                  <MapPin className="w-8 h-8 text-[#C9A42C] mx-auto mb-1 animate-bounce" />
+                  <MapPin className="w-8 h-8 text-[#EDB21B] mx-auto mb-1 animate-bounce" />
                   <p className="text-xs font-semibold text-white">{settings.address}</p>
                   <p className="text-[11px] text-[#9F9A8E]">Dyour Marjane · Marrakech 40000</p>
                 </div>
@@ -267,8 +267,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
               </p>
 
               {submitted ? (
-                <div className="bg-[#11110F] border border-[#C9A42C]/40 p-8 text-center space-y-4 animate-in fade-in">
-                  <div className="w-12 h-12 rounded-full bg-[#1B1A15] border border-[#C9A42C] text-[#C9A42C] flex items-center justify-center mx-auto">
+                <div className="bg-[#11110F] border border-[#EDB21B]/40 p-8 text-center space-y-4 animate-in fade-in">
+                  <div className="w-12 h-12 rounded-full bg-[#1B1A15] border border-[#EDB21B] text-[#EDB21B] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h3 className="font-serif-luxury text-2xl text-[#F5E6A6]">
@@ -296,7 +296,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                     </button>
                     <button
                       onClick={handleWhatsAppDirect}
-                      className="px-4 py-2 bg-[#C9A42C] text-[#11110F] font-bold text-xs uppercase flex items-center gap-1.5"
+                      className="px-4 py-2 bg-[#EDB21B] text-[#11110F] font-bold text-xs uppercase flex items-center gap-1.5"
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
                       <span>Continuer sur WhatsApp</span>
@@ -318,7 +318,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                         onChange={(e) =>
                           setFormData((prev) => ({ ...prev, name: e.target.value }))
                         }
-                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#C9A42C] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors"
+                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#EDB21B] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors"
                       />
                     </div>
 
@@ -334,7 +334,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                         onChange={(e) =>
                           setFormData((prev) => ({ ...prev, phone: e.target.value }))
                         }
-                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#C9A42C] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors font-mono"
+                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#EDB21B] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors font-mono"
                       />
                     </div>
                   </div>
@@ -351,7 +351,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                         onChange={(e) =>
                           setFormData((prev) => ({ ...prev, email: e.target.value }))
                         }
-                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#C9A42C] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors"
+                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#EDB21B] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors"
                       />
                     </div>
 
@@ -364,7 +364,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                         onChange={(e) =>
                           setFormData((prev) => ({ ...prev, subject: e.target.value }))
                         }
-                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#C9A42C] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors"
+                        className="w-full bg-[#11110F] border border-white/10 focus:border-[#EDB21B] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors"
                       >
                         <option value="Renseignement monture">Renseignement monture</option>
                         <option value="Devis verres optiques">Devis verres optiques / ordonnance</option>
@@ -387,7 +387,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                       onChange={(e) =>
                         setFormData((prev) => ({ ...prev, message: e.target.value }))
                       }
-                      className="w-full bg-[#11110F] border border-white/10 focus:border-[#C9A42C] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors resize-y"
+                      className="w-full bg-[#11110F] border border-white/10 focus:border-[#EDB21B] px-3.5 py-2.5 text-xs sm:text-sm text-white outline-none transition-colors resize-y"
                     />
                   </div>
 
@@ -396,7 +396,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full sm:w-auto px-8 py-3.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto px-8 py-3.5 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
                     >
                       <Send className="w-3.5 h-3.5" />
                       <span>{submitting ? 'Envoi...' : 'Envoyer'}</span>
@@ -405,9 +405,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings }) => {
                     <button
                       type="button"
                       onClick={handleWhatsAppDirect}
-                      className="w-full sm:w-auto px-6 py-3.5 border border-[#C9A42C]/40 bg-[#11110F] hover:bg-[#29271F] text-[#F5E6A6] font-semibold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto px-6 py-3.5 border border-[#EDB21B]/40 bg-[#11110F] hover:bg-[#29271F] text-[#F5E6A6] font-semibold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
                     >
-                      <MessageCircle className="w-4 h-4 text-[#C9A42C]" />
+                      <MessageCircle className="w-4 h-4 text-[#EDB21B]" />
                       <span>WhatsApp</span>
                     </button>
                   </div>

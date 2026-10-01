@@ -43,8 +43,8 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6 mb-8">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1B1A15] border border-[#C9A42C]/30 text-[#E2BE54] text-[11px] font-mono uppercase tracking-widest mb-2">
-              <Heart className="w-3.5 h-3.5 text-[#C9A42C] fill-current" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1B1A15] border border-[#EDB21B]/30 text-[#F5C94E] text-[11px] font-mono uppercase tracking-widest mb-2">
+              <Heart className="w-3.5 h-3.5 text-[#EDB21B] fill-current" />
               <span>Sélection Personnelle</span>
             </div>
             <h1 className="font-serif-luxury text-3xl sm:text-4xl text-white font-medium">
@@ -84,7 +84,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
         {wishlistedProducts.length === 0 ? (
           <div className="bg-[#1B1A15] border border-white/5 p-12 sm:p-16 text-center max-w-xl mx-auto my-8">
             <div className="w-16 h-16 rounded-full bg-[#11110F] border border-white/10 mx-auto flex items-center justify-center text-[#9F9A8E] mb-4">
-              <Heart className="w-8 h-8 text-[#C9A42C]/40" />
+              <Heart className="w-8 h-8 text-[#EDB21B]/40" />
             </div>
             <h2 className="font-serif-luxury text-2xl text-white font-medium mb-2">
               Votre liste de souhaits est vide
@@ -94,7 +94,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
             </p>
             <button
               onClick={() => onNavigate('catalogue')}
-              className="px-6 py-3 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-widest inline-flex items-center gap-2 transition-colors shadow-md"
+              className="px-6 py-3 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-widest inline-flex items-center gap-2 transition-colors shadow-md"
             >
               <Glasses className="w-4 h-4" />
               <span>Explorer le catalogue</span>
@@ -113,7 +113,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                 return (
                   <div
                     key={product.id}
-                    className="bg-[#1B1A15] border border-white/5 hover:border-[#C9A42C]/40 flex flex-col justify-between transition-all duration-300 group"
+                    className="bg-[#1B1A15] border border-white/5 hover:border-[#EDB21B]/40 flex flex-col justify-between transition-all duration-300 group"
                   >
                     {/* Visual */}
                     <div className="relative aspect-4/3 bg-[#11110F] p-4 flex items-center justify-center overflow-hidden">
@@ -157,7 +157,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between text-[11px] mb-1">
-                          <span className="text-[#C9A42C] font-semibold tracking-wider uppercase">
+                          <span className="text-[#EDB21B] font-semibold tracking-wider uppercase">
                             {brand?.name || 'Maison de Haute Optique'}
                           </span>
                           <span className="font-mono text-[#9F9A8E]">{product.reference}</span>
@@ -165,7 +165,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
 
                         <h3
                           onClick={() => onSelectProduct(product)}
-                          className="font-serif-luxury text-lg text-white font-medium hover:text-[#C9A42C] cursor-pointer transition-colors"
+                          className="font-serif-luxury text-lg text-white font-medium hover:text-[#EDB21B] cursor-pointer transition-colors"
                         >
                           {product.name}
                         </h3>
@@ -188,7 +188,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                             )}
                           </div>
                           {product.inPromo && (
-                            <span className="text-[10px] font-mono font-bold text-[#C9A42C] bg-[#11110F] px-1.5 py-0.5 border border-[#C9A42C]/30">
+                            <span className="text-[10px] font-mono font-bold text-[#EDB21B] bg-[#11110F] px-1.5 py-0.5 border border-[#EDB21B]/30">
                               -{product.discountPercentage}%
                             </span>
                           )}
@@ -198,7 +198,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                         <div className="grid grid-cols-2 gap-2">
                           <button
                             onClick={() => onSelectProduct(product)}
-                            className="py-2 bg-[#11110F] hover:bg-[#201F18] border border-white/10 text-white hover:text-[#C9A42C] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                            className="py-2 bg-[#11110F] hover:bg-[#201F18] border border-white/10 text-white hover:text-[#EDB21B] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
                           >
                             <Eye className="w-3.5 h-3.5" />
                             <span>Détails</span>
@@ -208,7 +208,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                             href={whatsappItemUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="py-2 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1 transition-colors"
+                            className="py-2 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1 transition-colors"
                           >
                             <MessageCircle className="w-3.5 h-3.5" />
                             <span>Commander</span>
@@ -222,16 +222,16 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
             </div>
 
             {/* Bottom info banner */}
-            <div className="mt-10 p-6 bg-[#15140F] border border-[#C9A42C]/20 text-xs text-[#9F9A8E] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-10 p-6 bg-[#15140F] border border-[#EDB21B]/20 text-xs text-[#9F9A8E] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-[#C9A42C] shrink-0" />
+                <Sparkles className="w-5 h-5 text-[#EDB21B] shrink-0" />
                 <span>
                   Besoin d'un conseil personnalisé sur votre morphologie ou le choix des verres ? Nos opticiens diplômés vous répondent directement sur WhatsApp au <strong className="text-white">{settings.whatsapp}</strong>.
                 </span>
               </div>
               <button
                 onClick={() => onNavigate('contact')}
-                className="text-xs uppercase font-semibold text-[#C9A42C] hover:underline shrink-0"
+                className="text-xs uppercase font-semibold text-[#EDB21B] hover:underline shrink-0"
               >
                 Prendre rendez-vous en boutique →
               </button>

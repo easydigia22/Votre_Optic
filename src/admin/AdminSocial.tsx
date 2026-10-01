@@ -24,7 +24,7 @@ export const AdminSocial: React.FC<AdminSocialProps> = ({ settings, onUpdateSett
   return (
     <div className="space-y-6 max-w-2xl">
       <div className="border-b border-white/10 pb-4">
-        <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
+        <span className="text-xs font-mono uppercase tracking-widest text-[#EDB21B]">
           Visibilité & Réseaux Sociaux
         </span>
         <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -46,7 +46,7 @@ export const AdminSocial: React.FC<AdminSocialProps> = ({ settings, onUpdateSett
         {/* Instagram */}
         <div>
           <label className="flex items-center gap-2 text-[#9F9A8E] uppercase tracking-wider mb-1.5 font-semibold">
-            <Instagram className="w-4 h-4 text-[#C9A42C]" />
+            <Instagram className="w-4 h-4 text-[#EDB21B]" />
             <span>Profil Instagram</span>
           </label>
           <input
@@ -54,14 +54,14 @@ export const AdminSocial: React.FC<AdminSocialProps> = ({ settings, onUpdateSett
             value={social.instagram || ''}
             onChange={(e) => setSocial((p) => ({ ...p, instagram: e.target.value }))}
             placeholder="https://instagram.com/votreoptique_maroc"
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#EDB21B]"
           />
         </div>
 
         {/* Facebook */}
         <div>
           <label className="flex items-center gap-2 text-[#9F9A8E] uppercase tracking-wider mb-1.5 font-semibold">
-            <Facebook className="w-4 h-4 text-[#C9A42C]" />
+            <Facebook className="w-4 h-4 text-[#EDB21B]" />
             <span>Page Facebook</span>
           </label>
           <input
@@ -69,14 +69,14 @@ export const AdminSocial: React.FC<AdminSocialProps> = ({ settings, onUpdateSett
             value={social.facebook || ''}
             onChange={(e) => setSocial((p) => ({ ...p, facebook: e.target.value }))}
             placeholder="https://facebook.com/votreoptiquemaroc"
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#EDB21B]"
           />
         </div>
 
         {/* TikTok */}
         <div>
           <label className="flex items-center gap-2 text-[#9F9A8E] uppercase tracking-wider mb-1.5 font-semibold">
-            <Video className="w-4 h-4 text-[#C9A42C]" />
+            <Video className="w-4 h-4 text-[#EDB21B]" />
             <span>Compte TikTok</span>
           </label>
           <input
@@ -84,14 +84,14 @@ export const AdminSocial: React.FC<AdminSocialProps> = ({ settings, onUpdateSett
             value={social.tiktok || ''}
             onChange={(e) => setSocial((p) => ({ ...p, tiktok: e.target.value }))}
             placeholder="https://tiktok.com/@votreoptique.ma"
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#EDB21B]"
           />
         </div>
 
         {/* WhatsApp Link */}
         <div>
           <label className="flex items-center gap-2 text-[#9F9A8E] uppercase tracking-wider mb-1.5 font-semibold">
-            <MessageCircle className="w-4 h-4 text-[#C9A42C]" />
+            <MessageCircle className="w-4 h-4 text-[#EDB21B]" />
             <span>Lien WhatsApp Direct</span>
           </label>
           <input
@@ -99,14 +99,14 @@ export const AdminSocial: React.FC<AdminSocialProps> = ({ settings, onUpdateSett
             value={social.whatsapp || ''}
             onChange={(e) => setSocial((p) => ({ ...p, whatsapp: e.target.value }))}
             placeholder="https://wa.me/212770420663"
-            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C9A42C]"
+            className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#EDB21B]"
           />
         </div>
 
         <div className="pt-4 border-t border-white/5 flex justify-end">
           <button
             type="submit"
-            className="px-6 py-2.5 bg-[#C9A42C] hover:bg-[#E2BE54] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
+            className="px-6 py-2.5 bg-[#EDB21B] hover:bg-[#F5C94E] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
           >
             <Save className="w-4 h-4" />
             <span>Enregistrer les liens</span>

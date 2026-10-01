@@ -98,7 +98,7 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
       {/* Header */}
       <div className="border-b border-white/10 pb-4 flex flex-col sm:flex-row sm:items-end gap-4 justify-between">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#C9A42C]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#EDB21B]">
             Gestion
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -110,7 +110,7 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
         </div>
         <button
           onClick={() => { setAddingNew(true); setEditing(false); setSelectedId(null); }}
-          className="flex items-center gap-2 bg-[#C9A42C] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-widest hover:bg-[#E2BE54] transition-colors self-start sm:self-auto"
+          className="flex items-center gap-2 bg-[#EDB21B] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-widest hover:bg-[#F5C94E] transition-colors self-start sm:self-auto"
         >
           <UserPlus className="w-4 h-4" />
           Nouveau client
@@ -142,7 +142,7 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Rechercher…"
-              className="w-full bg-[#11110F] border border-white/10 text-white pl-8 pr-3 py-2.5 text-xs outline-none focus:border-[#C9A42C]"
+              className="w-full bg-[#11110F] border border-white/10 text-white pl-8 pr-3 py-2.5 text-xs outline-none focus:border-[#EDB21B]"
             />
           </div>
 
@@ -156,13 +156,13 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                     onClick={() => { setSelectedId(c.id); setEditing(false); }}
                     className={`w-full text-left px-3 py-2.5 text-xs transition-colors ${
                       selectedId === c.id
-                        ? 'bg-[#C9A42C]/10 border border-[#C9A42C]/30 text-white'
+                        ? 'bg-[#EDB21B]/10 border border-[#EDB21B]/30 text-white'
                         : 'bg-[#1B1A15] border border-white/5 text-[#9F9A8E] hover:text-white hover:bg-[#15140F]'
                     }`}
                   >
                     <div className="font-semibold text-white truncate">{c.fullName}</div>
                     <div className="flex gap-2 mt-0.5 text-[10px]">
-                      <span className="text-[#C9A42C]">{c.clientCode || '—'}</span>
+                      <span className="text-[#EDB21B]">{c.clientCode || '—'}</span>
                       <span>{c.city}</span>
                     </div>
                   </button>
@@ -187,12 +187,12 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <h2 className="font-serif-luxury text-lg text-[#F5E6A6]">{selected.fullName}</h2>
-                    <span className="text-[10px] font-mono text-[#C9A42C]">{selected.clientCode}</span>
+                    <span className="text-[10px] font-mono text-[#EDB21B]">{selected.clientCode}</span>
                   </div>
                   <div className="flex gap-2">
                     <button
                       onClick={openPrescriptionForm}
-                      className="flex items-center gap-1.5 bg-[#C9A42C] text-[#11110F] font-bold px-3 py-1.5 text-xs uppercase tracking-wide hover:bg-[#E2BE54] transition-colors"
+                      className="flex items-center gap-1.5 bg-[#EDB21B] text-[#11110F] font-bold px-3 py-1.5 text-xs uppercase tracking-wide hover:bg-[#F5C94E] transition-colors"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       Mesures de vue
@@ -239,16 +239,16 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
               </div>
 
               {/* ── Ordonnances — mesures de vue ── */}
-              <div ref={prescriptionRef} className="bg-[#1B1A15] border border-[#C9A42C]/20 p-5 space-y-3">
+              <div ref={prescriptionRef} className="bg-[#1B1A15] border border-[#EDB21B]/20 p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                    <Eye className="w-4 h-4 text-[#C9A42C]" />
+                    <Eye className="w-4 h-4 text-[#EDB21B]" />
                     Ordonnances — mesures de vue
                   </h3>
                   {!addingPrescription && !editingPrescription && (
                     <button
                       onClick={openPrescriptionForm}
-                      className="flex items-center gap-1.5 bg-[#C9A42C] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-wide hover:bg-[#E2BE54] transition-colors"
+                      className="flex items-center gap-1.5 bg-[#EDB21B] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-wide hover:bg-[#F5C94E] transition-colors"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       Saisir les mesures de vue
@@ -279,13 +279,13 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
 
                 {clientPrescriptions.length === 0 ? (
                   !addingPrescription && !editingPrescription && (
-                    <div className="border border-dashed border-[#C9A42C]/30 bg-[#11110F] px-4 py-6 text-center space-y-3">
+                    <div className="border border-dashed border-[#EDB21B]/30 bg-[#11110F] px-4 py-6 text-center space-y-3">
                       <p className="text-xs text-[#9F9A8E]">
                         Aucune mesure de vue enregistrée pour ce client.
                       </p>
                       <button
                         onClick={openPrescriptionForm}
-                        className="inline-flex items-center gap-1.5 bg-[#C9A42C] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-wide hover:bg-[#E2BE54] transition-colors"
+                        className="inline-flex items-center gap-1.5 bg-[#EDB21B] text-[#11110F] font-bold px-4 py-2 text-xs uppercase tracking-wide hover:bg-[#F5C94E] transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         Saisir les mesures de vue
@@ -307,7 +307,7 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
                           <div className="flex gap-2">
                             <button
                               onClick={() => { setEditingPrescription(p); setAddingPrescription(false); }}
-                              className="text-[#9F9A8E] hover:text-[#C9A42C] transition-colors"
+                              className="text-[#9F9A8E] hover:text-[#EDB21B] transition-colors"
                               title="Modifier"
                             >
                               <Pencil className="w-3 h-3" />
@@ -342,12 +342,12 @@ export const AdminClients: React.FC<AdminClientsProps> = ({
               <div className="bg-[#1B1A15] border border-white/5 p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[#C9A42C]" />
+                    <FileText className="w-4 h-4 text-[#EDB21B]" />
                     Devis &amp; Factures
                   </h3>
                   <button
                     onClick={() => onNavigateToInvoice(selected.id)}
-                    className="flex items-center gap-1.5 border border-[#C9A42C]/40 text-[#C9A42C] px-3 py-1.5 text-xs hover:bg-[#C9A42C]/10 transition-colors"
+                    className="flex items-center gap-1.5 border border-[#EDB21B]/40 text-[#EDB21B] px-3 py-1.5 text-xs hover:bg-[#EDB21B]/10 transition-colors"
                   >
                     Voir dans Facturation
                   </button>
