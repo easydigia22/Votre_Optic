@@ -323,9 +323,9 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
                 onClick={() => setEditing(null)}
                 aria-label="Fermer sans enregistrer"
                 title="Fermer sans enregistrer"
-                className="flex items-center gap-1.5 border border-white/25 text-white/80 hover:text-white hover:border-white/50 hover:bg-white/5 px-3 py-1.5 text-xs font-medium transition-colors"
+                className="flex items-center gap-1.5 bg-[#C6A53A] text-[#11110F] font-bold px-3 py-2 text-xs uppercase tracking-wide hover:bg-[#F5E6A6] transition-colors shadow-lg"
               >
-                <X size={14} />
+                <X size={18} strokeWidth={3} />
                 Fermer
               </button>
             </div>
