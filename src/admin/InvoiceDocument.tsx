@@ -30,7 +30,7 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
   return (
     <div className="fixed inset-0 z-50 bg-black/70 overflow-auto p-4">
       {/* Printable document */}
-      <div className="mx-auto max-w-3xl bg-white text-black print-document border-t-4 border-[#EDB21B] p-8 sm:p-10">
+      <div className="mx-auto max-w-3xl min-h-[277mm] flex flex-col bg-white text-black print-document border-t-4 border-[#EDB21B] p-8 sm:p-10">
 
         {/* Header */}
         <div className="flex justify-between items-start mb-8 pb-4 border-b border-gray-300">
@@ -138,8 +138,20 @@ export const InvoiceDocument: React.FC<Props> = ({ invoice, client, settings, on
           </div>
         )}
 
+        {/* Zone signature & cachet — présentation classique de facture */}
+        <div className="flex justify-between items-start gap-6 mt-auto pt-8 mb-10">
+          <div className="text-xs text-gray-500 max-w-xs">
+            <p className="font-semibold text-gray-700 mb-1">Conditions de règlement</p>
+            <p>Merci de votre confiance.</p>
+          </div>
+          <div className="text-center shrink-0">
+            <p className="text-sm font-semibold text-gray-700 mb-1">Cachet et signature</p>
+            <div className="h-28 w-56 border border-gray-300 rounded" />
+          </div>
+        </div>
+
         {/* Pied de page — coordonnées du magasin + mentions légales */}
-        <div className="mt-10 pt-4 border-t-2 border-[#EDB21B] text-xs text-gray-600 space-y-1 text-center">
+        <div className="pt-4 border-t-2 border-[#EDB21B] text-xs text-gray-600 space-y-1 text-center">
           <p className="font-bold text-gray-800">{settings.storeName}</p>
           {locationLine && <p>{locationLine}</p>}
           <p>
