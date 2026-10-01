@@ -441,6 +441,22 @@ export async function deleteAdminRow(table: string, id: string): Promise<void> {
   if (error) throw error;
 }
 
+/** Nom du bucket Supabase Storage pour les photos de produits (à créer, public). */
+export const PRODUCT_IMAGE_BUCKET = 'product-images';
+
+/** Téléverse une image dans Supabase Storage et renvoie son URL publique. */
+export async function uploadProductImage(file: File): Promise<string> {
+  const client = requireClient();
+  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const path = `${crypto.randomUUID()}.${ext || 'jpg'}`;
+  const { error } = await client.storage
+    .from(PRODUCT_IMAGE_BUCKET)
+    .upload(path, file, { cacheControl: '3600', upsert: false, contentType: file.type || undefined });
+  if (error) throw error;
+  const { data } = client.storage.from(PRODUCT_IMAGE_BUCKET).getPublicUrl(path);
+  return data.publicUrl;
+}
+
 export const saveAdminProduct = (item: Product) => upsertAdminRow('products', productToRow(item));
 export const deleteAdminProduct = (id: string) => deleteAdminRow('products', id);
 
