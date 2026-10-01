@@ -117,7 +117,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
           <div className="text-[10px] uppercase tracking-widest text-[#9F9A8E] mb-1">
             CA Facturé TTC
           </div>
-          <div className="text-xl font-bold text-[#C6A53A] font-mono">
+          <div className="text-xl font-bold text-[#E3A72A] font-mono">
             {formatMad(caFacture)}
           </div>
           <div className="text-[10px] text-[#9F9A8E] mt-0.5">factures non annulées</div>
@@ -143,7 +143,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Rechercher numéro, client…"
-            className="w-full bg-[#11110F] border border-white/10 text-white pl-8 pr-3 py-1.5 text-xs outline-none focus:border-[#C6A53A]"
+            className="w-full bg-[#11110F] border border-white/10 text-white pl-8 pr-3 py-1.5 text-xs outline-none focus:border-[#E3A72A]"
           />
         </div>
 
@@ -155,7 +155,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
               onClick={() => setTypeFilter(t)}
               className={`px-3 py-1.5 text-xs border transition-colors ${
                 typeFilter === t
-                  ? 'bg-[#C6A53A] text-[#0D0C0B] border-[#C6A53A] font-semibold'
+                  ? 'bg-[#E3A72A] text-[#0D0C0B] border-[#E3A72A] font-semibold'
                   : 'border-white/10 text-white/60 hover:border-white/30 hover:text-white'
               }`}
             >
@@ -166,7 +166,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
 
         {/* Client filter chip */}
         {filteredClient && (
-          <div className="flex items-center gap-1.5 bg-[#C6A53A]/10 border border-[#C6A53A]/40 px-3 py-1.5 text-xs text-[#C6A53A]">
+          <div className="flex items-center gap-1.5 bg-[#E3A72A]/10 border border-[#E3A72A]/40 px-3 py-1.5 text-xs text-[#E3A72A]">
             <span>{filteredClient.fullName}</span>
             <button
               onClick={() => setClientFilter(null)}
@@ -181,14 +181,14 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
         <div className="flex gap-2 ml-auto">
           <button
             onClick={() => setEditing(seedInvoice('devis'))}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-white/10 text-white/70 hover:border-[#C6A53A] hover:text-[#C6A53A] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-white/10 text-white/70 hover:border-[#E3A72A] hover:text-[#E3A72A] transition-colors"
           >
             <FilePlus size={14} />
             Nouveau devis
           </button>
           <button
             onClick={() => setEditing(seedInvoice('facture'))}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#C6A53A] text-[#0D0C0B] font-semibold hover:bg-[#F5E6A6] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#E3A72A] text-[#0D0C0B] font-semibold hover:bg-[#F5E6A6] transition-colors"
           >
             <FilePlus size={14} />
             Nouvelle facture
@@ -235,7 +235,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
                   key={row.id}
                   className="border-b border-white/5 hover:bg-white/5 transition-colors"
                 >
-                  <td className="px-4 py-3 font-mono text-[#C6A53A]">
+                  <td className="px-4 py-3 font-mono text-[#E3A72A]">
                     {row.number || <span className="text-white/30 italic">—</span>}
                   </td>
                   <td className="px-4 py-3">
@@ -243,7 +243,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
                       className={`px-2 py-0.5 text-[10px] uppercase tracking-wider border ${
                         row.docType === 'devis'
                           ? 'border-blue-500/30 text-blue-400 bg-blue-500/10'
-                          : 'border-[#C6A53A]/30 text-[#C6A53A] bg-[#C6A53A]/10'
+                          : 'border-[#E3A72A]/30 text-[#E3A72A] bg-[#E3A72A]/10'
                       }`}
                     >
                       {row.docType}
@@ -311,7 +311,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
           <div className="mx-auto max-w-2xl bg-[#18170F] border border-white/10">
             {/* En-tête collant avec bouton Fermer bien visible */}
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-[#18170F] border-b border-white/10 px-6 py-4">
-              <h2 className="text-sm font-semibold text-[#C6A53A] uppercase tracking-widest">
+              <h2 className="text-sm font-semibold text-[#E3A72A] uppercase tracking-widest">
                 {editing.number
                   ? `Modifier ${editing.docType} ${editing.number}`
                   : editing.docType === 'facture'
@@ -323,7 +323,7 @@ export const AdminInvoices: React.FC<AdminInvoicesProps> = ({
                 onClick={() => setEditing(null)}
                 aria-label="Fermer sans enregistrer"
                 title="Fermer sans enregistrer"
-                className="flex items-center gap-1.5 bg-[#C6A53A] text-[#11110F] font-bold px-3 py-2 text-xs uppercase tracking-wide hover:bg-[#F5E6A6] transition-colors shadow-lg"
+                className="flex items-center gap-1.5 bg-[#E3A72A] text-[#11110F] font-bold px-3 py-2 text-xs uppercase tracking-wide hover:bg-[#F5E6A6] transition-colors shadow-lg"
               >
                 <X size={18} strokeWidth={3} />
                 Fermer

@@ -88,7 +88,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#C6A53A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#E3A72A]">
             Structure & Rayons
           </span>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl text-white font-medium mt-1">
@@ -101,7 +101,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
 
         <button
           onClick={openNewModal}
-          className="px-4 py-2.5 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
+          className="px-4 py-2.5 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-wider flex items-center gap-2"
         >
           <Plus className="w-4 h-4" />
           <span>+ Nouvelle Catégorie</span>
@@ -122,7 +122,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
                   alt={cat.name}
                   className="w-full h-full object-cover filter brightness-80"
                 />
-                <div className="absolute top-3 left-3 bg-[#11110F]/80 text-[#C6A53A] text-[10px] font-mono px-2 py-0.5 border border-[#C6A53A]/30">
+                <div className="absolute top-3 left-3 bg-[#11110F]/80 text-[#E3A72A] text-[10px] font-mono px-2 py-0.5 border border-[#E3A72A]/30">
                   Ordre: #{cat.order}
                 </div>
                 <div className="absolute top-3 right-3">
@@ -141,7 +141,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
 
               <div className="p-4">
                 <h3 className="font-serif-luxury text-xl text-white font-semibold">{cat.name}</h3>
-                <p className="text-xs font-mono text-[#C6A53A] mb-2">slug: /{cat.slug}</p>
+                <p className="text-xs font-mono text-[#E3A72A] mb-2">slug: /{cat.slug}</p>
                 <p className="text-xs text-[#9F9A8E] line-clamp-2">{cat.description}</p>
               </div>
             </div>
@@ -167,7 +167,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => openEditModal(cat)}
-                  className="p-1.5 text-[#9F9A8E] hover:text-[#C6A53A]"
+                  className="p-1.5 text-[#9F9A8E] hover:text-[#E3A72A]"
                 >
                   <Edit2 className="w-4 h-4" />
                 </button>
@@ -190,7 +190,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
       {/* Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-lg bg-[#1B1A15] border border-[#C6A53A]/40 p-6 shadow-2xl relative">
+          <div className="w-full max-w-lg bg-[#1B1A15] border border-[#E3A72A]/40 p-6 shadow-2xl relative">
             <button
               onClick={() => setModalOpen(false)}
               className="absolute top-4 right-4 text-[#9F9A8E] hover:text-white"
@@ -213,7 +213,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
                   value={form.name}
                   onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
                   placeholder="Ex: Lunettes Haute Joaillerie"
-                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#C6A53A]"
+                  className="w-full bg-[#11110F] border border-white/10 text-white p-2.5 outline-none focus:border-[#E3A72A]"
                 />
               </div>
 
@@ -261,7 +261,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
                     type="checkbox"
                     checked={form.isActive}
                     onChange={(e) => setForm((p) => ({ ...p, isActive: e.target.checked }))}
-                    className="accent-[#C6A53A]"
+                    className="accent-[#E3A72A]"
                   />
                   <span>Catégorie active</span>
                 </label>
@@ -288,7 +288,7 @@ export const AdminCategories: React.FC<AdminCategoriesProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold uppercase"
+                  className="px-6 py-2 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold uppercase"
                 >
                   Enregistrer
                 </button>

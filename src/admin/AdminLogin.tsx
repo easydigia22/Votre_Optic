@@ -38,22 +38,22 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
       {/* Back to store button */}
       <button
         onClick={onBackToStore}
-        className="absolute top-6 left-6 text-xs text-[#9F9A8E] hover:text-[#C6A53A] flex items-center gap-1.5 transition-colors"
+        className="absolute top-6 left-6 text-xs text-[#9F9A8E] hover:text-[#E3A72A] flex items-center gap-1.5 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Retour au site public</span>
       </button>
 
-      <div className="w-full max-w-md bg-[#1B1A15] border border-[#C6A53A]/30 p-8 sm:p-10 shadow-2xl relative">
+      <div className="w-full max-w-md bg-[#1B1A15] border border-[#E3A72A]/30 p-8 sm:p-10 shadow-2xl relative">
         {/* Decorative corner accent */}
-        <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#C6A53A]" />
+        <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#E3A72A]" />
 
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <Logo size="md" />
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#11110F] border border-[#C6A53A]/30 text-[#E3C866] text-[11px] font-mono uppercase tracking-wider mb-2">
-            <Shield className="w-3 h-3 text-[#C6A53A]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#11110F] border border-[#E3A72A]/30 text-[#F0C24A] text-[11px] font-mono uppercase tracking-wider mb-2">
+            <Shield className="w-3 h-3 text-[#E3A72A]" />
             <span>Portail Administrateur</span>
           </div>
           <h1 className="font-serif-luxury text-2xl text-white font-medium">
@@ -84,7 +84,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Votre.optique3@gmail.com"
-                className="w-full bg-[#11110F] border border-white/10 focus:border-[#C6A53A] text-xs sm:text-sm text-white pl-9 pr-3 py-2.5 outline-none transition-colors"
+                className="w-full bg-[#11110F] border border-white/10 focus:border-[#E3A72A] text-xs sm:text-sm text-white pl-9 pr-3 py-2.5 outline-none transition-colors"
               />
             </div>
           </div>
@@ -101,7 +101,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-[#11110F] border border-white/10 focus:border-[#C6A53A] text-xs sm:text-sm text-white pl-9 pr-3 py-2.5 outline-none transition-colors"
+                className="w-full bg-[#11110F] border border-white/10 focus:border-[#E3A72A] text-xs sm:text-sm text-white pl-9 pr-3 py-2.5 outline-none transition-colors"
               />
             </div>
           </div>
@@ -109,7 +109,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 py-3 bg-[#C6A53A] hover:bg-[#E3C866] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+            className="w-full mt-2 py-3 bg-[#E3A72A] hover:bg-[#F0C24A] text-[#11110F] font-bold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
           >
             <KeyRound className="w-3.5 h-3.5" />
             <span>{loading ? 'Connexion en cours...' : 'Se connecter'}</span>
@@ -119,7 +119,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         {/* Security notice */}
         <div className="mt-8 pt-6 border-t border-white/10 text-center">
           <div className="p-3 bg-[#11110F] border border-white/5 text-[11px] text-[#9F9A8E] space-y-1.5">
-            <p className="text-[#E3C866] font-semibold">Authentification sécurisée Supabase</p>
+            <p className="text-[#F0C24A] font-semibold">Authentification sécurisée Supabase</p>
             <p>La session est limitée aux administrateurs autorisés.</p>
           </div>
         </div>
